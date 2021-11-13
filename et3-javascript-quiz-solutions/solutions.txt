@@ -1,0 +1,151 @@
+#########  What are arrays? ##########
+. const Oranges = 45;
+  const Apples = 23;
+  const array = [ Oranges,Apples ];
+
+. array.map is used to manipulate each element in the original ( parent ) array. it will return an array with same length of the parent array with elements manipulated. And more if we are working with objects inside an array we can manipulate a specifique element of this object and return only an array containing this elemnts manipulated
+	let arrayModified = array.map(item=>{
+ 	  return item * 3.5;
+	 })  
+
+. array.filter is used to clone a part of an array in a new array. The part that is cloned is chosen by condition returned .
+
+.   const test = employees.filter(item=>{
+      return item.status === 'intern';
+	}).filter(item=>{
+    	    return item.age > 23;
+	})
+
+
+. the array.reduce is used to make a callback function the calculate and work on a specifique element in the object in an array have multiple objects and  return an array with one value who is the result of this calculation coming from the callback funtion 
+
+. var result = employees.reduce(function (acc, obj) { return acc + obj.age; }, 0); 
+  console.log(result);
+ //0 is initializing the accumulator (acc) who will be the result and obj is refering the the object inside the array
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#########  Promises ##########
+.The difference between asynchronous and synchronous is that the synchronous code is executed in sequence, each statement waits for the previous statement finish to be executed. The asynchronous don't have to wait (between sequences) .The asynchronous helps us to build a responsive system.
+A synchronous code will start from the top to the bottom. A asynchronous code will also start from the top to the bottom but when we get to a asynchronous method the code will execute it without making the rest of the code to wait, the code will execute this method and the rest at the same time.
+The synchronous code will be executed always in the same order. But the asynchronous code will be executes each time in a order.It depends in wich path taken by the user. For example setTimeout is a asynchronous function.  
+
+. Promises is a unique JavaScript object that allows us to perform asynchronous operations.
+  Promises is :
+	-Promise: The element responsible of doing the process or the method
+	-Asynchronous operation : the process that has to be executes (the function or the method)
+	-Promise return value : the result that come from the process 
+	-Promise is said to be fulfilled: we get the result desired from the Promise return value
+	-Promise is said to be rejected: we get the result not desered from the Promise return value
+	-Success callback : this is the method executed if we get a Promise fulfilled
+	-Failure callback : this is the method executed if we get a Promise rejected
+
+ There are three statesor Promises : Pending and resolve and rejected.
+  	-Pending state : it is the initial state of the promise before it secceed or fail.
+	-Resolves state : it is a promise that is completed succefully.
+	-Rejected state:  it is a failed promise.
+.. This solution if for this question and the next one at the same time 
+ 
+ 	code:
+ 	//lets make an a promise that resolve when we get a value greater than 5 and reject it we get a valur equal or under five;
+	import PromptSync from "prompt-sync";
+	const prompt = PromptSync();
+	const takeNumber = prompt('Please enter a number: ');
+	const promise = new Promise((resolve,reject)=>{
+    
+
+    	if(takeNumber > 5){
+     	   resolve('Correct Number');
+   	 }
+   	 else{
+       	 reject('Wrong Number')
+   	 }
+
+	})
+
+	promise.then((message)=>{
+ 	   console.log(message)
+	}).catch((message)=>{
+  	  console.log(message);
+	})
+
+
+----------------------------------------Explaination of the code:
+	this code is making a Promise that can be resolved or rejected:
+	we created a new Promise that have take a parameter an arrow function where this arrow function take two parameters (resolve and reject).
+	this callback function will specify the conditions of the two cases ( Success or Failure ) ( reslve or reject ). we created our conditions by usinf if 		statement. We tested the Promise state ( Success or Fail ) by using the PromiseName.then().catch()
+	Then if for the Succecful part and catch if for the failure or error part .
+
+. we should use then() because if we use await the code will be paused utill the promise settle. we we use then() the rest of code wil execute and javascript won't execute then() untill the pomise settle.
+
+.Promise.all allow us to perform multiple aynschronous operations and do something when all this operation has completed ot fulfilled. So it is a Promise who will return a value when al the promises inside it are fulfillled so this promise is also fulfilled.
+
+.Promise.race is similarto Promise.all by concept of parameters but it is fulfilled when one their promises parameters is fulfilled.
+
+
+.Promise.race is settled as soon as any of the promises you feed it settle, whether they are fulfilled or rejected. It returns a promise that resolves to the value from the first settled promise.
+
+. We use Promise.race when we have promises that take some time to be fulfilled so we use it to benefit from the first promise fulfilled. We use Promise.all when it requires that all promises most fulfilled ( fow example obtaining the imformations of a user loging to a website )
+
+. setTimeout is an asynchronous function but it can be used synchronous. It is asynchronous because the code won't wait for it te be executed. For example if we try this code : 
+	-------------------------------------------
+	console.log('1');
+
+	setTimeout(function(){
+		console.log('2')},2000);
+	
+	console.log('3');
+	-------------------------------------------
+	the output will be :  1
+		                3
+		                2
+
+	so we can conclude it is asynchronous because the code did not wait for it, the 3 is printed befor 2
+
+ we can use setTimeout in a synchronous way and that by using a callback function:
+	For example if we modify the previous code :
+	-------------------------------------------
+	console.log('1');
+	const printNoTwo = function(callback){
+    	setTimeout(function(){
+       	  console.log('2');
+      	  callback();
+   	 },2000)
+	}
+
+	printNoTwo(function(){
+    	console.log('3');
+	});	
+	-------------------------------------------
+	the output will be :  1
+		                2
+		                3
+
+	the program will wait 2 seconds and print 2 then it will print 3.
+	so we can conclude that the call back function has obliged the setTimeout to execute in a synchronous way
+
+. A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of  routine or action.We used one in the previous question
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#########  Loadash ##########
+
+. const olerEmployee = maxBy(employees, function(o) { return o.age; });
+
+ console.log(olerEmployee)
+
+. const test = orderBy(employees,'age','desc')
+
+ console.log(test)
+
+. const test = orderBy(employees,'age','asc')
+
+ console.log(test)
+
+. const test = get(employees[1],'age','default value')
+
+  console.log(test)
+
+. const test = map(employees,'status');
+
+  console.log(test)
+	
+
+
+  
