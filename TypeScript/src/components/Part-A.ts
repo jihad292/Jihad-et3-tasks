@@ -118,4 +118,4 @@ const costDiscounted = () : void =>{
     console.log(array);
 }
 
-export {  printStaticOrder, automaticOrderInfos, costSorted, costFiltred, costDiscounted }
+export {  printStaticOrder, automaticOrderInfos, costSorted, costFiltred, costDiscounted, OrderInterface, orderInformation }
