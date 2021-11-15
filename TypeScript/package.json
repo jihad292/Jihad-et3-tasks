@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@types/prompts": "^2.0.14",
+    "lodash.sortby": "^4.7.0",
+    "prompt-sync": "^4.2.0"
+  },
+  "allowSyntheticDefaultImports": true
+}
