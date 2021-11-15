@@ -1,9 +1,9 @@
 import promptSync from "prompt-sync";
 const prompt = promptSync();
 import { Order } from './components/Order'
-import { billOutput, menu, searchChoose, indexMenu } from './output/Output';
+import { billOutput, menu, indexMenu } from './output/Output';
 import {  printStaticOrder, automaticOrderInfos, costSorted, costFiltred,costDiscounted } from './components/Part-A';
-import { addOrder, printOrders, deleteOrder, findOrder } from './components/Part-B';
+import { partB } from './components/Part-B'
 let quit = false;  
 let orderArray = [];
 
@@ -12,7 +12,7 @@ while(quit === false){
     let optionChoose = prompt("Please choose an option from 1 to 6 : ");
 
     if(optionChoose === 'Q'){
-        quit = true;
+        quit = true; 
     }
 
     else if(optionChoose === '1'){
@@ -28,7 +28,7 @@ while(quit === false){
         costSorted();
     }
 
-    else if (optionChoose === '4'){   
+    else if (optionChoose === '4'){    
         costFiltred();
     }
 
@@ -37,13 +37,7 @@ while(quit === false){
     }
        
     else if (optionChoose === '6'){
-        // addOrder(45);
-        // addOrder(54);
-        // addOrder(64);
-        addOrder(45); 
-        addOrder(53);
-        addOrder(20); 
-        findOrder(53);
+        partB();
     }
 }
 console.log('GoodBye!!');          

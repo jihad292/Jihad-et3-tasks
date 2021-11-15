@@ -1,68 +1,38 @@
-import { Order }  from './Order';
-import {  OrderInterface, orderInformation } from './Part-A';
-let array = [];
+import { menu } from '../output/Output';
+import PromptSync from 'prompt-sync';
+import { addOrder,  deleteOrder, findOrder, chashoutOrders } from './Part-B-Functions';
+const prompt = PromptSync();
 
-const orderObjects = () : OrderInterface[]=>{
-    return array;
-}
-   
-const addOrder = (number : number) : void =>{
-    const order1 = new Order(number);
-    const orderObject = orderInformation(order1);
-    array = [...array,orderObject];
-}
-
-const printOrders = ()  =>{
-    if (array.length === 0){
-        console.log('No Orders yet!!')
-    }
-    else{
-        console.log(array);
-    }
-}
-
-
-const deleteOrder = (number : number) : void =>{
-    let testOrderExistance = false;
-    const arrayTest = orderObjects();
-    for ( var i =0; i<arrayTest.length;i++){
-        if (arrayTest[i].bagsNumber === Number(number)){
-            testOrderExistance = true;
-            const arrayFiltred = arrayTest.filter(item=>{
-                return item.bagsNumber != Number(number);
-            });
-            array = arrayFiltred;
+export const partB = () : void =>{
+    let quit = false;
+    let chooseNumber  = 0;
+    while(quit === false){
+        menu();
+        let chooseOption = prompt('Please choose an option: ');
+        if (chooseOption === 'Q'){
+            quit = true;
+        }
+    
+        else if(chooseOption === 'A'){
+             chooseNumber = prompt('Please enter the number of bags: ');
+            addOrder(Number(chooseNumber));
+        }
+    
+        else if(chooseOption === 'B'){
+             chooseNumber = prompt('Please enter ther number of bags: ');
+             deleteOrder(Number(chooseNumber));
+        }
+    
+        else if (chooseOption === 'C'){
+            chooseNumber = prompt('Please enter ther number of bags: ');
+            findOrder(Number(chooseNumber));
+        }
+    
+        else if (chooseOption === 'D'){ 
+            chashoutOrders();
+        }
+        else{
+            console.log('Please choose a valid option!!')
         }
     }
-    if(testOrderExistance === false){
-        console.log('Your order do not exist!!');
-    }
-    else{
-        console.log('Your order with number of bags '+Number(number),' has been deleted!!');
-    }
 }
-
-const findOrder = (number : number) : void =>{
-    let arrayTest = orderObjects();
-    let orderExistance = arrayTest.map(item=>{
-        return item.bagsNumber === Number(number);
-    });
-    console.log(orderExistance);
-    // if (orderExistance === true){
-    //     const arrayTest2 = arrayTest.filter(item=>{
-    //         return item.bagsNumber === Number(number);
-    //     }).map(item=>{
-    //         return item.bagsNumber;
-    //     });
-    //     console.table(arrayTest2);
-    // }
-    // else{
-    //     console.log('This Order do not exist!')
-    // }
-
-}
-
-export { addOrder, printOrders, deleteOrder, findOrder }
-
-
-

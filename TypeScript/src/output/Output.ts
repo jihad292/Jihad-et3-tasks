@@ -12,11 +12,6 @@ const menu = () : void =>{
     console.log(`----------------------------------------------------\n A for add order\n B for delete order\n C find an order\n D for checkout\n Q for exit\n----------------------------------------------------`);
 }
 
-
-const searchChoose = () : void=>{  
-    console.log('Please choose :','\n','A- Display all Orders with a cost higher than 280$','\n','B- Specific Order','\n','Q- Cancel the search')
-}
-  
 const indexMenu = () : void =>{  
       console.log('\n','1- Show the imformations of an order ','\n','2- Automatic orders calculate ','\n'
       ,'3- Print the cost from the lowest to the highest ','\n','4- Print only the cost above 280$','\n'
@@ -32,4 +27,4 @@ const function1PartA = () : void =>{
     function1PartAText(5,110),function1PartAText(6,5),function1PartAText(7,88),function1PartAText(8,300),'Q-For Cancel','\n');
 }
 
-export { billOutput, menu, searchChoose, indexMenu, function1PartA }
+export { billOutput, menu, indexMenu, function1PartA }
