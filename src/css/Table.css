@@ -1,0 +1,55 @@
+.main-table{
+    width: 95%;
+    border-collapse: collapse;
+    margin :25px 0;
+    font-size:0.9em;
+    min-width:500px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
+    margin-left: 30px;;
+
+}
+
+.main-table thead tr{
+    background-color: rgb(73, 172, 230); /*same color of tha navbar*/
+    color:#ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.main-table thead #edit-title{
+    color: rgb(0, 38, 255);
+    font-weight: bold;
+}
+
+.main-table thead #delete-title{
+    color:darkred;
+    font-weight: bold;
+}
+
+.main-table th,
+.main-table td{
+    padding : 8px 9px;
+}
+
+.main-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.main-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.main-table tbody tr:hover{
+    background-color: rgb(73, 172, 230);
+}
+
+.main-table tbody td:hover{
+    background-color: rgb(200, 199, 207);
+    font-weight: bold;
+}
+
+.main-table tbody tr:last-of-type{
+    border-bottom : 2px solid rgb(73, 172, 230);  /*last row border have yhe same color of the navbar */
+}

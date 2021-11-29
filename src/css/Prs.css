@@ -1,0 +1,108 @@
+html {
+    scroll-behavior: smooth;
+   }
+
+
+.main-prs{
+    background-color:#f1e7d8;
+    height:auto;
+}
+
+.arrow-div{
+    width:3%;
+    color:rgb(68, 115, 143);
+    position:fixed;
+}
+
+/*add form*/
+.add-button{
+    border-radius: 50%;
+    background-color:rgb(73, 172, 230);
+    color: azure;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.add-button:hover{
+    background-color:darkcyan;
+    font-style: italic;
+}
+
+.add-form{
+    display: flex;
+    width: 100%;
+}
+
+.add-form .add-section{
+    display: flex;
+    flex-direction: column;
+    width:30%;
+    padding-left: 15px;
+}
+
+.add-form .add-section-button{
+    display: flex;
+    flex-direction: column;
+    width:15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-form .add-section-button .submit-add-button{
+    border-radius: 50%;
+    background-color:rgb(73, 172, 230);
+    color: azure;
+    cursor: pointer;
+}
+
+.add-form .add-section-button .submit-add-button:hover{
+    background-color:darkcyan;
+    font-style: italic;
+}
+
+.calendar-div{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.calendar-div .calendar{
+    width:100%;
+    background-color:rgb(73, 172, 230);
+    color:red;
+    font-weight: bold;
+    padding-bottom:15px;
+}
+
+.error-message{
+    font-weight: bold;
+    color:red;
+    text-decoration: underline;
+}
+
+.sort-button{
+    background-color: rgb(73, 172, 230);
+    margin-top: 10px;
+}
+
+.sort-search-div{
+    display:flex;
+    justify-content:space-around;
+}
+
+
+
+
+/*update form*/
+.update-main-div{
+    display:flex;
+}
+
+.update-main-div .update-section{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding-left:15px;
+}
