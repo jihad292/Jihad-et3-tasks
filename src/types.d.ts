@@ -22,3 +22,13 @@ type  DeletePr= (selectedPr : PR)=>void;
 type SubmitUpdate = (seletedPr: PR)=> void;
 
 type HandleUpdate = (selectedPr : PR) => void;
+
+type HandleAddPr = () => void;
+
+type CommentHandler = (value : ChangeEvent<HTMLInputElement>) => void;
+
+type PrLinkHandler = (value : ChangeEvent<HTMLInputElement>) => void;
+
+type HandleSubmit = (value : FormEvent<HTMLButtonElement>) => void;
+
+type ReviewChecker = (state : boolean) => void;

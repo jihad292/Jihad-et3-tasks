@@ -40,7 +40,6 @@ export const  Prs : React.FC = () =>{
     const handleSort = () : void =>{
         
         if (sortButtonStatus === true){
-            console.log(sortButtonStatus)
             setInitialPrs(prs);
             setSortButtonName("Sort ASC By Date");
             let prsTest = sortBy(prs,'Date','desc');
