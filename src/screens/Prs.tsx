@@ -34,7 +34,6 @@ export const  Prs : React.FC = () =>{
     const [prs,setPrs] = useState<Array<PR>>(initialPrs);
     const [sortButtonStatus,setSortButtonStatus] = useState<boolean>(true)
     const [sortButtonName,setSortButtonName] = useState<string>("Sort DESC By Date");
-    const [search,setSearch] = useState<string>("");
     const [searchStatus,setSearchStatus] = useState<boolean>(false);
     const [searchArray,setSearchArray] = useState<Array<PR>>([]);
 
@@ -82,16 +81,15 @@ export const  Prs : React.FC = () =>{
      }
      
      const handleSearch  = (e: ChangeEvent<HTMLInputElement>)=>{
-         setSearch(e.target.value)
-         if(search !== ""){
+         if(e.target.value !== ""){
              setSearchStatus(true);
              setSearchArray(
                 prs.filter(pr=>{
-                    return pr.Comment.toLowerCase() === search.toLowerCase();
+                    return pr.Comment.toLowerCase().includes(e.target.value.toLowerCase()) ;
                 })
              );
          }
-         if(search === ""){
+         if(e.target.value === ""){
              setSearchStatus(false);
          }
      }
@@ -101,8 +99,8 @@ export const  Prs : React.FC = () =>{
             <Navbar />
             <a href="#down-page-div" ><BiCaretDownCircle className="arrow-div" /></a>
             <div className="sort-search-div" >
-              <div><button className="sort-button" type="submit" onClick={handleSort} >{sortButtonName}</button></div>
-               <div><label>Search By Comment : <input  type='text' value={search} placeholder="Please Press SPC after search"  onChange={handleSearch} /></label></div> 
+            <div><button className="sort-button" type="submit" onClick={handleSort} >{sortButtonName}</button></div>
+            <div><br /><label><input  type='text' placeholder="Search By Comment" onChange={handleSearch} /></label></div> 
             </div>
             {searchStatus === true && <PrItemsList  prs={searchArray} deletePr={deletePr} handleUpdate={handleUpdate} submitUpdate={submitUpdate} /> }
             {searchStatus === false && <PrItemsList  prs={prs} deletePr={deletePr} handleUpdate={handleUpdate} submitUpdate={submitUpdate} /> }
