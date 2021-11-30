@@ -1,6 +1,9 @@
 import React from 'react';
 import '../css/Table.css';
 import { PrItem } from './PrItem';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import { store } from 'react-notifications-component';
 
 interface PrItemsListProps{
     prs : Array<PR>,
@@ -10,11 +13,27 @@ interface PrItemsListProps{
 
 export const PrItemsList : React.FC<PrItemsListProps> = ({prs,deletePr,handleUpdate})=> {
   
+const showNotification = () : void =>{
+    store.addNotification({
+        title:"Success Message",
+        message:"Your update has been submited!!",
+        type:"success",
+        container:"bottom-right",
+        insert:"top",
+        // animationIn:["animated","fadeIn"],
+        // animationOut:["animated","fadeOut"],
+        dismiss:{
+            duration:2000
+        }
+    })
+}
+
 const submitUpdate : SubmitUpdate = () =>{
-    alert("Your update has been submited");
+    showNotification();
 }
     return (
         <table className="main-table">
+            <ReactNotification />
             <thead>
                 <tr>
                     <th>Date</th>
