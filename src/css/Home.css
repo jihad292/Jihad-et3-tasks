@@ -3,6 +3,12 @@
     background-size: cover;
 }
 
+@media (max-width: 767px){
+    .homeMain{
+        background-image: url(../images/ReactBackgroungMedia.jpg);
+    }
+}
+
 .body{
     height:100vh;
     width: 100%;
