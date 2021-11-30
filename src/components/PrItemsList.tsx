@@ -6,13 +6,13 @@ interface PrItemsListProps{
     prs : Array<PR>,
     deletePr : DeletePr,
     handleUpdate : HandleUpdate,
-    submitUpdate: SubmitUpdate,
 }
 
-export const PrItemsList : React.FC<PrItemsListProps> = ({prs,deletePr,handleUpdate,submitUpdate})=> {
-    const settingPrToUpdate : SubmitUpdate = selectedPr=>{
-        //
-        }
+export const PrItemsList : React.FC<PrItemsListProps> = ({prs,deletePr,handleUpdate})=> {
+  
+const submitUpdate : SubmitUpdate = () =>{
+    alert("Your update has been submited");
+}
     return (
         <table className="main-table">
             <thead>

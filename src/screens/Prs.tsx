@@ -75,10 +75,6 @@ export const  Prs : React.FC = () =>{
         setPrToBeUpdated(selectedPr);
      }
 
-     const submitUpdate : SubmitUpdate = selectedPr =>{
-         //
-     }
-     
      const handleSearch  = (e: ChangeEvent<HTMLInputElement>)=>{
          if(e.target.value !== ""){
              setSearchStatus(true);
@@ -100,9 +96,9 @@ export const  Prs : React.FC = () =>{
             <div className="sort-search-div" >
             <div><button className="sort-button" type="submit" onClick={handleSort} >{sortButtonName}</button></div>
             <div><br /><label><input  type='text' placeholder="Search By Comment" onChange={handleSearch} /></label></div> 
-            </div>
-            {searchStatus === true && <PrItemsList  prs={searchArray} deletePr={deletePr} handleUpdate={handleUpdate} submitUpdate={submitUpdate} /> }
-            {searchStatus === false && <PrItemsList  prs={prs} deletePr={deletePr} handleUpdate={handleUpdate} submitUpdate={submitUpdate} /> }
+            </div> 
+            {searchStatus === true && <PrItemsList  prs={searchArray} deletePr={deletePr} handleUpdate={handleUpdate}  /> }
+            {searchStatus === false && <PrItemsList  prs={prs} deletePr={deletePr} handleUpdate={handleUpdate}  /> }
             <div id="down-page-div">
             { updateProgress === false && <AddPr  addPR={addPR} /> }
             { updateProgress === true && <UpdatePr handleUpdate={handleUpdate}  pr={prToBeUpdated}   /> }
