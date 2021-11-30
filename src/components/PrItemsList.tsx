@@ -4,7 +4,6 @@ import { PrItem } from './PrItem';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import { store } from 'react-notifications-component';
-
 interface PrItemsListProps{
     prs : Array<PR>,
     deletePr : DeletePr,
@@ -18,10 +17,10 @@ const showNotification = () : void =>{
         title:"Success Message",
         message:"Your update has been submited!!",
         type:"success",
-        container:"bottom-right",
+        container:"top-center",
         insert:"top",
-        // animationIn:["animated","fadeIn"],
-        // animationOut:["animated","fadeOut"],
+        animationIn:["animated","fadeIn"],
+        animationOut:["animated","fadeOut"],
         dismiss:{
             duration:2000
         }

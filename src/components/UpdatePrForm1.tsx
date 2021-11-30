@@ -1,5 +1,5 @@
 import React from 'react';
-import  { sEArray, platFormArray,releaseVersionArray ,sizearray,difficultyArray,statusArray} from '../components/PrPropertiesArrays';
+import  { sEArray, platFormArray,releaseVersionArray} from '../components/PrPropertiesArrays';
 import { PrProperty } from '../components/PropertyOfItem';
 
 interface UpdatePrForm1Props{
