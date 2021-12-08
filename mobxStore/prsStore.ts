@@ -8,11 +8,19 @@ interface prItem{
 
 export class prsStoreImpl {
     prs: prItem[] = [];
-
+    comment: string ='';
+    link : string ='';
+    se : string = '';
+    setLink = (value : string) => {this.link = value};
+    setComment = (value : string)=>{this.comment = value};
+    setSE = (value : string)=>{this.se = value};
     constructor(){
         makeObservable(this,{
             prs:observable,
-            addPr:action
+            addPr:action,
+            setComment:action,
+            setLink:action,
+            setSE:action,  
         })
     }
 
