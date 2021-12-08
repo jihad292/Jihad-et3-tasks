@@ -1,25 +1,83 @@
 import React from 'react';
 import { StyleSheet, View,Text,TouchableOpacity } from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { PrsStore} from '../mobxStore/prsStore';
 
-interface prItemProps{
-    text:string,
-    id: number
+interface propertyProps{
+    text: string,
+    property: string | number ,
+}
+const Property:React.FC<propertyProps> = (props)=>{
+    return(
+        <View style={styles.propoertySection}>
+                <Text style={styles.propertyText}>{props.text}:</Text>
+                <Text style={styles.propertyData}>{props.property}</Text>
+        </View>
+    )
 }
 
-const PrItem: React.FC<prItemProps> = ({text,id}) => {
+interface prItemProps{
+    id: number,
+    comment:string,
+    link:string,
+    se:string,
+    platform:string,
+    size:string,
+    difficulty:string,
+    status:string,
+    version:string,
+    byStatus:string,
+    ahStatus:string,
+    htStatus:string
+}
+
+const PrItem: React.FC<prItemProps> = (props) => {
+    const deleteHandler = () =>{
+        PrsStore.deletePr(props.id)
+    }
     return(
         
         <View style = {styles.container} >
-            <View style={styles.propoertySection}>
-                <Text style={styles.propertyText}>Id:</Text>
-                <Text style={styles.propertyData}>{id}</Text>
+            <View style={styles.smallPropertiesDiv}>
+            <Property text='ID' property={props.id} />
+
+            <View style={styles.actionSymbol}>
+            <TouchableOpacity>
+                <FontAwesome5 name={'pen-alt'} size={25} color='white' /></TouchableOpacity>
             </View>
 
-            <View style={styles.propoertySection}>
-                <Text style={styles.propertyText}>Text:</Text>
-                <Text style={styles.propertyData}>{text}</Text>
+            <View style={styles.actionSymbol}>
+            <TouchableOpacity onPress={deleteHandler}>
+                <FontAwesome5 name={'trash-alt'} size={25} color='white' /></TouchableOpacity>
+            </View>
+            
+            </View>
+            
+            <Property text='Comment' property={props.comment} />
+            <Property text='Link' property={props.link} />
+
+            <View style={styles.smallPropertiesDiv}>
+            <Property text='SE' property={props.se} />
+            <Property text='Difficulty' property={props.difficulty} />
             </View>
 
+            <View style={styles.smallPropertiesDiv}>
+            <Property text='Platform' property={props.platform} />
+            <Property text='Size' property={props.size} />
+            </View>
+
+            <View style={styles.smallPropertiesDiv}>
+            <Property text='Status' property={props.status} />
+            <Property text='Version' property={props.version} />
+            </View>
+
+            <View style={styles.smallPropertiesDiv}>
+            <Property text='Reaview by BY' property={props.byStatus} />
+            <Property text='Reaview by AH' property={props.ahStatus} />
+            <Property text='Reaview by HT' property={props.htStatus} />
+            </View>
+            
+            
         </View>
         
     )
@@ -30,9 +88,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'lightcyan',
+        backgroundColor:'black',
         marginTop:15,
-        width:250,
+        width:290,
         borderRadius:20,
         paddingBottom:15,
         marginBottom:20,
@@ -42,19 +100,27 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         borderBottomColor:'thistle',
         borderBottomWidth:2,
-        width:100,
         alignItems:'center'
     },
     propertyText:{
         color:'slategray',
         fontWeight:'bold',
-        fontSize:25
+        fontSize:15
     },
     propertyData:{
         color:'olivedrab', 
         fontWeight:'bold',
-        fontSize:20
+        fontSize:15
     },
+    smallPropertiesDiv:{
+        flexDirection:'row',
+        justifyContent:'space-around',
+        paddingHorizontal:12,
+    },
+    actionSymbol:{
+        width:30,
+        marginHorizontal:7
+    }
 })
 
 export default PrItem

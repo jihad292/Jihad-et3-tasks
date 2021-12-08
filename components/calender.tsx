@@ -16,7 +16,6 @@ const ModalPopUp: React.FC<modalProps> = ({visible,closeModal})=>{
                 <View style={styles.modalContainer}>
                     <View style={styles.closeContainer}>
                     <TouchableOpacity onPress={closeModal}>
-                            {/* <Text style={styles.closeText}>Close</Text> */}
                             <FontAwesome5 name={'window-close'} size={25}  />
                     </TouchableOpacity>
                     </View>

@@ -1,49 +1,30 @@
 import React,{ useState } from "react";
-import { View, Text, Button, TextInput, Alert } from 'react-native';
+import { View, Text,  TextInput, Alert } from 'react-native';
 import { prsStoreImpl,PrsStore} from '../mobxStore/prsStore';
 import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../static/prProperties'
 import {issueStyle} from '../style/issueStyle';
 import IssueDropdownItem from '../components/issueDropdownItem'
-import IssueCheckBoxItam from '../components/issueCheckBoxItem'
+import IssueCheckBoxItem from '../components/issueCheckBoxItem'
 import Calender from '../components/calender';
 import AddButton from '../components/addButton'
 
-
+ 
 interface issueProps{    
     prsStore : prsStoreImpl,
 }  
 
 const IssueScreen : React.FC<issueProps> = (({prsStore}) => {
-    const [se,setSE] = useState<string>("");
-    const [platform,setPlatform] = useState<string>("");
-    const [version,setVersion] = useState<string>("");
-    const [size,setSize] = useState<string>("");
-    const [difficulty,setDifficulty] = useState<string>("");
-    const [status,setStatus] = useState<string>("");
-    const [reviewByBY, setReviewByBY] = useState<boolean>(false);
-    const [reviewByAH, setReviewByAH] = useState<boolean>(false);
-    const [reviewByHT, setReviewByHT] = useState<boolean>(false);
-
+    const [reviewByBY,setReviewByBY] = useState<boolean>(false);
+    const [reviewByAH,setReviewByAH] = useState<boolean>(false);
+    const [reviewByHT,setReviewByHT] = useState<boolean>(false);
     prsStore = PrsStore;
 
     const pressHandler = ()=>{
-        // prsStore.addPr(comment)
-        // console.log(prsStore.prs)
-        // setComment("")
-        // console.log(comment)
-        // console.log(link)
-        // console.log(se)
-        // console.log(platform)
-        // console.log(version)
-        // console.log(size)
-        // console.log(difficulty)
-        // console.log(status)
-        // console.log(reviewByBY)
-        // console.log(reviewByAH)
-        // console.log(reviewByHT)
-        // prsStore.setComment(comment);
-        console.log(prsStore.comment);
-        console.log(prsStore.link)
+        prsStore.setReviewByBY(reviewByBY);
+        prsStore.setReviewByAH(reviewByAH);
+        prsStore.setReviewByHT(reviewByHT);
+        prsStore.addPr();
+        prsStore.prs = prsStore.prs; //this helps us to refresh Prs page
     }
     
     return(
@@ -66,41 +47,41 @@ const IssueScreen : React.FC<issueProps> = (({prsStore}) => {
             </View>
 
             <View style={issueStyle.dropdownProperty}> 
-                <IssueDropdownItem data={Platform_Array} setItem={setPlatform} propertyDefinition='Platform' />
+                <IssueDropdownItem data={Platform_Array} setItem={prsStore.setPlatform} propertyDefinition='Platform' />
             </View>
             </View>
 
              <View style={issueStyle.dropdownDiv}>
              <View style={issueStyle.dropdownProperty}>
-                <IssueDropdownItem data={Size_Array} setItem={setSize} propertyDefinition='Size' />
+                <IssueDropdownItem data={Size_Array} setItem={prsStore.setSize} propertyDefinition='Size' />
              </View>
 
               <View style={issueStyle.dropdownProperty}>
-                <IssueDropdownItem data={Difficulty_Array} setItem={setDifficulty} propertyDefinition='Difficulty' />
+                <IssueDropdownItem data={Difficulty_Array} setItem={prsStore.setDifficulty} propertyDefinition='Difficulty' />
               </View>
              </View>
 
             <View style={issueStyle.dropdownDiv}>
             <View style={issueStyle.dropdownProperty}>
-                <IssueDropdownItem data={Status_Array} setItem={setStatus} propertyDefinition='Status' />
+                <IssueDropdownItem data={Status_Array} setItem={prsStore.setStatus} propertyDefinition='Status' />
             </View>
 
                 <View style={issueStyle.dropdownProperty}>
-                <IssueDropdownItem data={Release_Version_Array} setItem={setVersion} propertyDefinition='Version' />
+                <IssueDropdownItem data={Release_Version_Array} setItem={prsStore.setVersion} propertyDefinition='Version' />
                 </View> 
-            </View>  
+            </View>    
 
             <View style={issueStyle.checkBoxesDiv}>
             <View style={issueStyle.checkboxProperty}>
-                <IssueCheckBoxItam propertyText='Review by By' setReview={setReviewByBY} reviewBy={reviewByBY} />
+                <IssueCheckBoxItem propertyText='Review by By' reviewBy={reviewByBY} setReview={setReviewByBY} />
             </View>
 
             <View style={issueStyle.checkboxProperty}>
-                <IssueCheckBoxItam propertyText='Review by AH' setReview={setReviewByAH} reviewBy={reviewByAH} />
+                <IssueCheckBoxItem propertyText='Review by AH'  reviewBy={reviewByAH} setReview={setReviewByAH}  />
             </View>
 
             <View style={issueStyle.checkboxProperty}>
-                <IssueCheckBoxItam propertyText='Review by HT' setReview={setReviewByHT} reviewBy={reviewByHT} />
+                <IssueCheckBoxItem propertyText='Review by HT' reviewBy={reviewByHT}  setReview={setReviewByHT}  />
             </View>
             </View>
             <View style={issueStyle.addButtonDiv}>

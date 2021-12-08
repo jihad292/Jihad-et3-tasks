@@ -5,11 +5,11 @@ import {issueStyle} from '../style/issueStyle'
 
 interface props{
     propertyText : string,
-    setReview : React.Dispatch<React.SetStateAction<boolean>>,
+    setReview : (value : boolean) =>void,
     reviewBy : boolean
 }
 
-const IssueCheckBoxItam: React.FC<props> = ({propertyText,setReview,reviewBy}) => {
+const IssueCheckBoxItem: React.FC<props> = ({propertyText,setReview,reviewBy}) => {
     return(
         <View>
             <Text style={issueStyle.checkboxText}>{propertyText}</Text>
@@ -24,4 +24,4 @@ const IssueCheckBoxItam: React.FC<props> = ({propertyText,setReview,reviewBy}) =
     )
 }
 
-export default IssueCheckBoxItam
+export default IssueCheckBoxItem

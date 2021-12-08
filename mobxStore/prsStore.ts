@@ -1,9 +1,20 @@
 import { action, makeObservable, observable } from "mobx";
+import React from 'react'
 
 interface prItem{
     id:number;
-    text:string,
-
+    comment:string,
+    link:string,
+    se:string,
+    platform:string,
+    size:string,
+    difficulty:string,
+    status:string,
+    version:string,
+    ByStatus:string,
+    AhStatus:string,
+    HtStatus:string
+     
 }
 
 export class prsStoreImpl {
@@ -11,16 +22,38 @@ export class prsStoreImpl {
     comment: string ='';
     link : string ='';
     se : string = '';
+    platform : string ='';
+    size : string ='';
+    difficulty : string ='';
+    status : string ='';
+    version : string ='';
+    reviewByBY : boolean = false;
+    reviewByAH : boolean = false;
+    reviewByHT : boolean = false;
+    byStatus : string = 'No';
+    ahStatus : string = 'No';
+    htStatus : string = 'No';
     setLink = (value : string) => {this.link = value};
     setComment = (value : string)=>{this.comment = value};
     setSE = (value : string)=>{this.se = value};
+    setPlatform = (value : string)=>{this.platform = value};
+    setSize = (value : string)=>{this.size = value};
+    setDifficulty = (value : string)=>{this.difficulty = value};
+    setStatus = (value : string)=>{this.status = value};
+    setVersion = (value : string)=>{this.version = value};
+    setReviewByBY = (value : boolean)=>{this.reviewByBY = value};
+    setReviewByAH = (value : boolean)=>{this.reviewByAH = value};
+    setReviewByHT = (value : boolean)=>{this.reviewByHT = value};
     constructor(){
         makeObservable(this,{
             prs:observable,
             addPr:action,
             setComment:action,
-            setLink:action,
+            setLink:action,  
             setSE:action,  
+            setReviewByBY:action,  
+            setReviewByAH:action,
+            setReviewByHT:action
         })
     }
 
@@ -28,12 +61,35 @@ export class prsStoreImpl {
         return value | 0;
     }
     
-    addPr(text : string){
+    addPr(){
+        if(this.reviewByBY === true){this.byStatus = 'Yes'}
+        if(this.reviewByAH === true){this.ahStatus = 'Yes'}
+        if(this.reviewByHT === true){this.htStatus = 'Yes'}
+        if(this.reviewByBY === false){this.byStatus = 'No'}
+        if(this.reviewByAH === false){this.ahStatus = 'No'}
+        if(this.reviewByHT === false){this.htStatus = 'No'}
         const pr : prItem = {
             id : this.float2int(Number((+Math.random().toFixed(4))*10000)) ,
-            text
+            comment:this.comment,
+            link:this.link,
+            se:this.se,
+            platform:this.platform,
+            size:this.size,
+            difficulty:this.difficulty,
+            status:this.status,
+            version:this.version,
+            ByStatus:this.byStatus,
+            AhStatus:this.ahStatus,
+            HtStatus:this.htStatus
         }
         this.prs.push(pr);
+    }
+
+    deletePr (value : number){
+        let test = this.prs.filter(pr=>{
+            return pr.id != value;
+        })
+        this.prs = test;
     }
 }
 

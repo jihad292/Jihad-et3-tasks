@@ -5,7 +5,7 @@ import {issueStyle} from '../style/issueStyle'
 
 interface props{
     data: string[],
-    setItem : React.Dispatch<React.SetStateAction<string>>,
+    setItem : (value : string)=>void,
     propertyDefinition : string
 }
 
