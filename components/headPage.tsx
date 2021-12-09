@@ -29,7 +29,6 @@ interface props{
   export default HeadPage
 const styles = StyleSheet.create({
     headContainer:{
-      flex: 1,
       flexDirection:'row',
       marginTop:10,
       height:'auto', 

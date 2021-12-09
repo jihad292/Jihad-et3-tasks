@@ -35,6 +35,7 @@ export class prsStoreImpl {
     htStatus : string = 'No';
     date : Date = new Date;
     dateS : string = '';
+    updateModalStatus : boolean = false;
     setLink = (value : string) => {this.link = value};
     setComment = (value : string)=>{this.comment = value};
     setSE = (value : string)=>{this.se = value};
@@ -48,6 +49,8 @@ export class prsStoreImpl {
     setReviewByHT = (value : boolean)=>{this.reviewByHT = value};
     setDate = (value : Date)=>{this.date = value};
     setDateS = (value : Date)=>{this.dateS = ''+value};
+    
+
     constructor(){
         makeObservable(this,{
             prs:observable,
@@ -56,7 +59,7 @@ export class prsStoreImpl {
             size : observable, difficulty : observable, status : observable,
             version : observable, reviewByBY : observable, reviewByAH : observable,
             reviewByHT : observable, byStatus : observable, ahStatus : observable,
-            htStatus : observable, date:observable, dateS:observable,
+            htStatus : observable, date:observable, dateS:observable, updateModalStatus : observable,
             setLink : action, setComment : action, setSE : action,
             setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
             setVersion : action, setReviewByBY : action, setReviewByAH : action,

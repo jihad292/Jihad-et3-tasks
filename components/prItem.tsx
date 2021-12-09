@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View,Text,TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { PrsStore} from '../mobxStore/prsStore';
+import { runInAction } from "mobx";
 
 interface propertyProps{
     text: string,
@@ -37,6 +38,14 @@ const PrItem: React.FC<prItemProps> = (props) => {
         PrsStore.deletePr(props.id);
 
     }
+
+    const openUpdateModal = ()=>{
+        runInAction(
+            ()=>{
+                PrsStore.updateModalStatus = true;
+            }
+        )
+    }
     return(
         
         <View style = {styles.container} >
@@ -44,7 +53,7 @@ const PrItem: React.FC<prItemProps> = (props) => {
             <Property text='ID' property={props.id} />
 
             <View style={styles.actionSymbol}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={openUpdateModal}>
                 <FontAwesome5 name={'pen-alt'} size={25} color='white' /></TouchableOpacity>
             </View>
 
