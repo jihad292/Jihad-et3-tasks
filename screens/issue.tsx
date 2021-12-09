@@ -9,7 +9,8 @@ import IssueDropdownItem from '../components/issueDropdownItem'
 import IssueCheckBoxItem from '../components/issueCheckBoxItem'
 import Calender from '../components/calender';
 import AddButton from '../components/addButton';
-import {storeReset} from '../mobxStore/resetPrsStore'
+import {storeReset} from '../mobxStore/resetPrsStore';
+import {addIssueChecker} from '../components/addIssueChecker'
   
  
 interface issueProps{    
@@ -22,8 +23,13 @@ const IssueScreen : React.FC<issueProps> = observer(({prsStore}) => {
     const pressHandler = ()=>{
         runInAction(  //for strict mode in mobX
             ()=>{
-                prsStore.addPr();
-                storeReset();
+                addIssueChecker();
+                if(prsStore.comment !== '' && prsStore.link !== '' && prsStore.se !== '' &&
+                    prsStore.platform !== '' && prsStore.difficulty !== '' 
+                    && prsStore.status !== '' && prsStore.version !== '' ){
+                                            prsStore.addPr();
+                                            storeReset();
+                }
                  }
         )
     }
