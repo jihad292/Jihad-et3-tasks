@@ -26,14 +26,15 @@ interface prItemProps{
     difficulty:string,
     status:string,
     version:string,
-    byStatus:string,
+    byStatus:string, 
     ahStatus:string,
     htStatus:string
 }
 
 const PrItem: React.FC<prItemProps> = (props) => {
     const deleteHandler = () =>{
-        PrsStore.deletePr(props.id)
+        PrsStore.deletePr(props.id);
+
     }
     return(
         

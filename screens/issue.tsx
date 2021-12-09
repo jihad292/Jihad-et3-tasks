@@ -1,6 +1,7 @@
 import React,{ useState } from "react";
 import { View, Text,  TextInput, Alert } from 'react-native';
 import { prsStoreImpl,PrsStore} from '../mobxStore/prsStore';
+import { runInAction } from "mobx";
 import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../static/prProperties'
 import {issueStyle} from '../style/issueStyle';
 import IssueDropdownItem from '../components/issueDropdownItem'
@@ -20,11 +21,14 @@ const IssueScreen : React.FC<issueProps> = (({prsStore}) => {
     prsStore = PrsStore;
 
     const pressHandler = ()=>{
-        prsStore.setReviewByBY(reviewByBY);
-        prsStore.setReviewByAH(reviewByAH);
-        prsStore.setReviewByHT(reviewByHT);
-        prsStore.addPr();
-        prsStore.prs = prsStore.prs; //this helps us to refresh Prs page
+        runInAction(
+            ()=>{
+                prsStore.setReviewByBY(reviewByBY);
+                prsStore.setReviewByAH(reviewByAH);
+                prsStore.setReviewByHT(reviewByHT);
+                prsStore.addPr();
+                    }
+        )
     }
     
     return(

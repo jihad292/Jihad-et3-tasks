@@ -1,15 +1,16 @@
 import React from "react";
-import {StyleSheet, View, Text, TouchableOpacity,Button} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import PrsList from '../components/prsList'
 import { PrsStore } from "../mobxStore/prsStore";
+import { observer } from 'mobx-react';
 
-const PrsScreen = () => {
-    return(  
+const PrsScreen = observer(() => {
+    return( <> 
         <View style={styles.container}>
             <PrsList prsStore={PrsStore} />
-        </View>
-    )
-}
+        </View></>
+    )   
+})   
 
 const styles = StyleSheet.create({
     container:{

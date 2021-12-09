@@ -1,5 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
-import React from 'react'
+import { action, makeObservable, observable,runInAction } from "mobx";
 
 interface prItem{
     id:number;
@@ -16,8 +15,8 @@ interface prItem{
     HtStatus:string
      
 }
-
 export class prsStoreImpl {
+    
     prs: prItem[] = [];
     comment: string ='';
     link : string ='';
@@ -47,21 +46,25 @@ export class prsStoreImpl {
     constructor(){
         makeObservable(this,{
             prs:observable,
-            addPr:action,
-            setComment:action,
-            setLink:action,  
-            setSE:action,  
-            setReviewByBY:action,  
-            setReviewByAH:action,
-            setReviewByHT:action
+            addPr:action, deletePr:action,
+            comment:observable, link : observable, se : observable, platform : observable,
+            size : observable, difficulty : observable, status : observable,
+            version : observable, reviewByBY : observable, reviewByAH : observable,
+            reviewByHT : observable, byStatus : observable, ahStatus : observable,
+            htStatus : observable, setLink : action, setComment : action, setSE : action,
+            setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
+            setVersion : action, setReviewByBY : action, setReviewByAH : action,
+            setReviewByHT : action,
+
         })
     }
-
+  
     float2int (value : number) {
         return value | 0;
     }
     
     addPr(){
+   
         if(this.reviewByBY === true){this.byStatus = 'Yes'}
         if(this.reviewByAH === true){this.ahStatus = 'Yes'}
         if(this.reviewByHT === true){this.htStatus = 'Yes'}
@@ -82,8 +85,16 @@ export class prsStoreImpl {
             AhStatus:this.ahStatus,
             HtStatus:this.htStatus
         }
+        
         this.prs.push(pr);
-    }
+        //the test array will help us to update prs array automatically after add a pr
+        let test = this.prs.filter(pr=>{
+            return pr.id !== null
+        })
+        this.prs = test;
+        };
+       
+    
 
     deletePr (value : number){
         let test = this.prs.filter(pr=>{
