@@ -28,7 +28,8 @@ interface prItemProps{
     version:string,
     byStatus:string, 
     ahStatus:string,
-    htStatus:string
+    htStatus:string,
+    dateS:string,
 }
 
 const PrItem: React.FC<prItemProps> = (props) => {
@@ -78,9 +79,12 @@ const PrItem: React.FC<prItemProps> = (props) => {
             <Property text='Reaview by HT' property={props.htStatus} />
             </View>
             
+            <View style={styles.dateContainer}>
+                <Text style={styles.dateContainerText}>Date : </Text>
+                <Text style={styles.dateContainerText}>''+{props.dateS}</Text>
+            </View>
             
         </View>
-        
     )
 }
 
@@ -121,7 +125,17 @@ const styles = StyleSheet.create({
     actionSymbol:{
         width:30,
         marginHorizontal:7
-    }
+    },
+    dateContainer:{
+        width:'100%',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    dateContainerText:{
+        color:'olivedrab',
+        fontWeight:'bold',
+        fontSize:15
+    },
 })
 
 export default PrItem

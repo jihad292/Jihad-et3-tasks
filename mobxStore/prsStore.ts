@@ -12,8 +12,9 @@ interface prItem{
     version:string,
     ByStatus:string,
     AhStatus:string,
-    HtStatus:string
-     
+    HtStatus:string,
+    date:Date,
+    dateS : string, 
 }
 export class prsStoreImpl {
     
@@ -32,6 +33,8 @@ export class prsStoreImpl {
     byStatus : string = 'No';
     ahStatus : string = 'No';
     htStatus : string = 'No';
+    date : Date = new Date;
+    dateS : string = '';
     setLink = (value : string) => {this.link = value};
     setComment = (value : string)=>{this.comment = value};
     setSE = (value : string)=>{this.se = value};
@@ -43,6 +46,8 @@ export class prsStoreImpl {
     setReviewByBY = (value : boolean)=>{this.reviewByBY = value};
     setReviewByAH = (value : boolean)=>{this.reviewByAH = value};
     setReviewByHT = (value : boolean)=>{this.reviewByHT = value};
+    setDate = (value : Date)=>{this.date = value};
+    setDateS = (value : Date)=>{this.dateS = ''+value};
     constructor(){
         makeObservable(this,{
             prs:observable,
@@ -51,10 +56,11 @@ export class prsStoreImpl {
             size : observable, difficulty : observable, status : observable,
             version : observable, reviewByBY : observable, reviewByAH : observable,
             reviewByHT : observable, byStatus : observable, ahStatus : observable,
-            htStatus : observable, setLink : action, setComment : action, setSE : action,
+            htStatus : observable, date:observable, dateS:observable,
+            setLink : action, setComment : action, setSE : action,
             setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
             setVersion : action, setReviewByBY : action, setReviewByAH : action,
-            setReviewByHT : action,
+            setReviewByHT : action, setDate:action, setDateS:action
 
         })
     }
@@ -83,7 +89,9 @@ export class prsStoreImpl {
             version:this.version,
             ByStatus:this.byStatus,
             AhStatus:this.ahStatus,
-            HtStatus:this.htStatus
+            HtStatus:this.htStatus,
+            date:this.date,
+            dateS:this.dateS,
         }
         
         this.prs.push(pr);
@@ -94,7 +102,7 @@ export class prsStoreImpl {
         this.prs = test;
         };
        
-    
+      
 
     deletePr (value : number){
         let test = this.prs.filter(pr=>{
