@@ -7,7 +7,8 @@ export const issueStyle = StyleSheet.create({
     },
     inputTextContainer:{
         alignItems:'center',
-        padding:10,
+        padding:1,
+        marginBottom:2,
     },
     itemProperty:{
         fontWeight:'bold',
@@ -56,7 +57,7 @@ export const issueStyle = StyleSheet.create({
     checkboxText:{
         fontWeight:'bold',
         fontSize:15,
-        color:'goldenrod',
+        color:'darkslategrey',
         alignSelf:'center'       
     },
     checkboxContainer:{

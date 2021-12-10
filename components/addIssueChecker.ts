@@ -11,4 +11,5 @@ export const addIssueChecker = () => {
                 if(prsStore.difficulty === ''){Alert.alert('Please choose a Difficulty')}
                 if(prsStore.status === ''){Alert.alert('Please choose a status')}
                 if(prsStore.version === ''){Alert.alert('Please choose a Version')}
+                if(prsStore.dateS === ''){Alert.alert('Please choose a Date')}
 }

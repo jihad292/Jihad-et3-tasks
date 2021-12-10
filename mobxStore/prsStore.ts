@@ -1,4 +1,5 @@
 import { action, makeObservable, observable,runInAction } from "mobx";
+import { ObservableObjectAdministration } from "mobx/dist/internal";
 
 interface prItem{
     id:number;
@@ -15,10 +16,14 @@ interface prItem{
     HtStatus:string,
     date:Date,
     dateS : string, 
+    reviewByBY:boolean,
+    reviewByAH:boolean,
+    reviewByHT:boolean
 }
 export class prsStoreImpl {
     
     prs: prItem[] = [];
+    id : number = 0;
     comment: string ='';
     link : string ='';
     se : string = '';
@@ -48,8 +53,8 @@ export class prsStoreImpl {
     setReviewByAH = (value : boolean)=>{this.reviewByAH = value};
     setReviewByHT = (value : boolean)=>{this.reviewByHT = value};
     setDate = (value : Date)=>{this.date = value};
-    setDateS = (value : Date)=>{this.dateS = ''+value};
-    
+    setDateS = (value : Date)=>{this.dateS =''+value};
+    setId = (value : number )=>{this.id = value};
 
     constructor(){
         makeObservable(this,{
@@ -60,10 +65,11 @@ export class prsStoreImpl {
             version : observable, reviewByBY : observable, reviewByAH : observable,
             reviewByHT : observable, byStatus : observable, ahStatus : observable,
             htStatus : observable, date:observable, dateS:observable, updateModalStatus : observable,
+            id:observable,
             setLink : action, setComment : action, setSE : action,
             setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
             setVersion : action, setReviewByBY : action, setReviewByAH : action,
-            setReviewByHT : action, setDate:action, setDateS:action
+            setReviewByHT : action, setDate:action, setDateS:action, setId:action
 
         })
     }
@@ -95,6 +101,9 @@ export class prsStoreImpl {
             HtStatus:this.htStatus,
             date:this.date,
             dateS:this.dateS,
+            reviewByBY:this.reviewByBY,
+            reviewByAH:this.reviewByAH,
+            reviewByHT:this.reviewByHT
         }
         
         this.prs.push(pr);

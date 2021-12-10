@@ -26,7 +26,7 @@ const IssueScreen : React.FC<issueProps> = observer(({prsStore}) => {
                 addIssueChecker();
                 if(prsStore.comment !== '' && prsStore.link !== '' && prsStore.se !== '' &&
                     prsStore.platform !== '' && prsStore.difficulty !== '' 
-                    && prsStore.status !== '' && prsStore.version !== '' ){
+                    && prsStore.status !== '' && prsStore.version !== '' && prsStore.dateS !== ''){
                                             prsStore.addPr();
                                             storeReset();
                 }

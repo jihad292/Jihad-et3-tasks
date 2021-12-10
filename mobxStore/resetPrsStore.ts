@@ -13,5 +13,6 @@ export const storeReset = () =>{
                 prsStore.setReviewByBY(false);
                 prsStore.setReviewByAH(false);
                 prsStore.setReviewByHT(false);
+                prsStore.dateS = '';
 }
 

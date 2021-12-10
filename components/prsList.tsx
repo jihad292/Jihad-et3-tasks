@@ -21,7 +21,8 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
                     link={item.link} se={item.se} platform={item.platform} size={item.size}
                     difficulty={item.difficulty} status={item.status} version={item.version}
                     byStatus={item.ByStatus} ahStatus={item.AhStatus} htStatus={item.HtStatus}
-                    dateS={item.dateS}
+                    dateS={item.dateS} reviewByBY={item.reviewByBY} 
+                    reviewByAH={item.reviewByAH} reviewByHT={item.reviewByHT}
                 />}
             />
         </View>   
