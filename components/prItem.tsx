@@ -1,9 +1,11 @@
-import React from 'react';
-import { StyleSheet, View,Text,TouchableOpacity } from 'react-native';
+import React,{useState} from 'react';
+import { View,Text,TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { PrsStore} from '../mobxStore/prsStore';
 import { runInAction } from "mobx";
-import {prItemStyle} from '../style/prItemStyle'
+import {prItemStyle} from '../style/prItemStyle';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { observer } from 'mobx-react';
 
 interface propertyProps{
     text: string,
@@ -37,7 +39,9 @@ interface prItemProps{
     reviewByHT:boolean
 }
 
-const PrItem: React.FC<prItemProps> = (props) => {
+const PrItem: React.FC<prItemProps> = observer((props) => {
+    
+    const [testValue,setTestValue] = useState<string | null>()
     const deleteHandler = () =>{
         PrsStore.deletePr(props.id);
 
@@ -46,6 +50,11 @@ const PrItem: React.FC<prItemProps> = (props) => {
     const openUpdateModal = ()=>{
         runInAction(
             ()=>{
+                // AsyncStorage.setItem('commentAr','تعليق');
+                // AsyncStorage.setItem('linkAr','حلقة الوصل')
+                AsyncStorage.setItem('commentEng','Comment');
+               AsyncStorage.setItem('linkEng','Link') 
+                console.log(PrsStore.linkString)
                 PrsStore.updateModalStatus = true;
                 PrsStore.setId(props.id);
                 PrsStore.setComment(props.comment);
@@ -62,8 +71,9 @@ const PrItem: React.FC<prItemProps> = (props) => {
             }
         )
     }
+    
     return(
-        
+        <>
         <View style = {prItemStyle.container} >
             <View style={prItemStyle.smallPropertiesDiv}>
             <Property text='ID' property={props.id} />
@@ -80,8 +90,8 @@ const PrItem: React.FC<prItemProps> = (props) => {
             
             </View>
             
-            <Property text='Comment' property={props.comment} />
-            <Property text='Link' property={props.link} />
+            <Property text={''+PrsStore.commentString} property={props.comment} />
+            <Property text={''+PrsStore.linkString} property={props.link} />
 
             <View style={prItemStyle.smallPropertiesDiv}>
             <Property text='SE' property={props.se} />
@@ -110,7 +120,9 @@ const PrItem: React.FC<prItemProps> = (props) => {
             </View>
             
         </View>
+        </>
     )
-}
+    
+})
 
 export default PrItem

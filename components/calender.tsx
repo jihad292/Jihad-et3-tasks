@@ -16,7 +16,7 @@ const Calender = () => {
   };
 
   const handleConfirm = (date : Date) => {
-    console.warn("A date has been picked: ", date);
+    // console.warn("A date has been picked: ", date);
     PrsStore.setDate(date);
     PrsStore.setDateS(date);
     hideDatePicker();

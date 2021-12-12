@@ -1,5 +1,4 @@
-import { action, makeObservable, observable,runInAction } from "mobx";
-import { ObservableObjectAdministration } from "mobx/dist/internal";
+import { action, makeObservable, observable } from "mobx";
 
 interface prItem{
     id:number;
@@ -7,7 +6,7 @@ interface prItem{
     link:string,
     se:string,
     platform:string,
-    size:string,
+    size:string,    
     difficulty:string,
     status:string,
     version:string,
@@ -18,7 +17,7 @@ interface prItem{
     dateS : string, 
     reviewByBY:boolean,
     reviewByAH:boolean,
-    reviewByHT:boolean
+    reviewByHT:boolean,
 }
 export class prsStoreImpl {
     
@@ -41,6 +40,10 @@ export class prsStoreImpl {
     date : Date = new Date;
     dateS : string = '';
     updateModalStatus : boolean = false;
+    commentString : string | null= 'Comment :';
+    linkString : string | null='Link :';
+    languageState : boolean = false;
+    languageStateText : string = 'English';
     setLink = (value : string) => {this.link = value};
     setComment = (value : string)=>{this.comment = value};
     setSE = (value : string)=>{this.se = value};
@@ -53,12 +56,16 @@ export class prsStoreImpl {
     setReviewByAH = (value : boolean)=>{this.reviewByAH = value};
     setReviewByHT = (value : boolean)=>{this.reviewByHT = value};
     setDate = (value : Date)=>{this.date = value};
-    setDateS = (value : Date)=>{this.dateS =''+value};
+    setDateS = (value : Date)=>{this.dateS =''+ value};
     setId = (value : number )=>{this.id = value};
+    setCommentString = (value : string | null)=>{this.commentString = value};
+    setLinkString = (value : string | null)=>{this.linkString = value};
+    setLanguageState = (value : boolean)=>{this.languageState = value};
+    setLanguageStateText = (value : string)=>{this.languageStateText = value};
 
     constructor(){
-        makeObservable(this,{
-            prs:observable,
+        makeObservable(this,{  
+            prs:observable, 
             addPr:action, deletePr:action,
             comment:observable, link : observable, se : observable, platform : observable,
             size : observable, difficulty : observable, status : observable,
@@ -69,7 +76,8 @@ export class prsStoreImpl {
             setLink : action, setComment : action, setSE : action,
             setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
             setVersion : action, setReviewByBY : action, setReviewByAH : action,
-            setReviewByHT : action, setDate:action, setDateS:action, setId:action
+            setReviewByHT : action, setDate:action, setDateS:action, setId:action,
+            setCommentString: action , setLinkString : action
 
         })
     }
@@ -108,9 +116,7 @@ export class prsStoreImpl {
         
         this.prs.push(pr);
         //the test array will help us to update prs array automatically after add a pr
-        let test = this.prs.filter(pr=>{
-            return pr.id !== null
-        })
+        let test = this.prs.filter(pr=>{return pr.id !== null})
         this.prs = test;
         };
        
