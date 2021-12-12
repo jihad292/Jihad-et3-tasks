@@ -16,13 +16,17 @@ const PrsScreen = observer(() => {
     const handleLanguage = ()=>{
           if(PrsStore.languageState === false){
               PrsStore.setLanguageState(true);
-              PrsStore.setLanguageStateText('English');
+              PrsStore.setLanguageStateText('Arabic');
               languangeManagmentAr();
+              let test  = PrsStore.prs.filter(pr=>{return pr.id !== null});
+              PrsStore.prs = test;
           }
           else{
             PrsStore.setLanguageState(false);
-            PrsStore.setLanguageStateText('Arabic');
+            PrsStore.setLanguageStateText('English');  
             languangeManagmentEng();
+            let test  = PrsStore.prs.filter(pr=>{return pr.id !== null});
+              PrsStore.prs = test;
           }
     }
     return( <> 

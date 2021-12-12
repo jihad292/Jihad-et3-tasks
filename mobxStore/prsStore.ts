@@ -72,12 +72,12 @@ export class prsStoreImpl {
             version : observable, reviewByBY : observable, reviewByAH : observable,
             reviewByHT : observable, byStatus : observable, ahStatus : observable,
             htStatus : observable, date:observable, dateS:observable, updateModalStatus : observable,
-            id:observable,
+            id:observable, languageState:observable, languageStateText:observable,
             setLink : action, setComment : action, setSE : action,
             setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
             setVersion : action, setReviewByBY : action, setReviewByAH : action,
             setReviewByHT : action, setDate:action, setDateS:action, setId:action,
-            setCommentString: action , setLinkString : action
+            setCommentString: action , setLinkString : action ,setLanguageState:action,setLanguageStateText:action
 
         })
     }
@@ -127,6 +127,10 @@ export class prsStoreImpl {
             return pr.id != value;
         })
         this.prs = test;
+    }
+
+    languageHandler (){
+        
     }
 }
 

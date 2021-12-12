@@ -21,31 +21,17 @@ const Property:React.FC<propertyProps> = (props)=>{
 }
 
 interface prItemProps{
-    id: number,
-    comment:string,
-    link:string,
-    se:string,
-    platform:string,
-    size:string,
-    difficulty:string,
-    status:string,
-    version:string,
-    byStatus:string, 
-    ahStatus:string,
-    htStatus:string,
-    dateS:string,
-    reviewByBY:boolean,
-    reviewByAH:boolean,
-    reviewByHT:boolean
+    id: number, comment:string, link:string, se:string, platform:string, size:string,
+    difficulty:string, status:string, version:string, byStatus:string, ahStatus:string,  
+    htStatus:string, dateS:string, reviewByBY:boolean, reviewByAH:boolean, reviewByHT:boolean
 }
 
 const PrItem: React.FC<prItemProps> = observer((props) => {
     
-    const [testValue,setTestValue] = useState<string | null>()
     const deleteHandler = () =>{
         PrsStore.deletePr(props.id);
 
-    }
+    }  
 
     const openUpdateModal = ()=>{
         runInAction(
