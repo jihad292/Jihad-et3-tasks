@@ -7,7 +7,8 @@ import { runInAction } from "mobx";
 import HeadPage from "../components/headPage";
 import UpdateModal from '../components/updateModal';
 import {ButtonHandler} from '../languageHandler/buttonHandler';
-import { languangeManagmentAr,languangeManagmentEng} from '../languageHandler/languangeManagment'
+import { languangeManagmentAr,languangeManagmentEng} from '../languageHandler/languangeManagment';
+import sortBy from 'lodash.sortby';
 
 const PrsScreen = observer(() => {
     const handleSort = ()=>{

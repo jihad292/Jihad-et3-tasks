@@ -7,9 +7,9 @@ import {storeReset} from '../mobxStore/resetPrsStore';
 import {issueStyle} from '../style/issueStyle';
 import {updateStyle} from '../style/updateStyle'
 import { observer } from 'mobx-react';
-import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../static/prProperties'
-import IssueDropdownItem from '../components/issueDropdownItem'
-import IssueCheckBoxItem from '../components/issueCheckBoxItem'
+import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../../static/prProperties'
+import IssueDropdownItem from './issueDropdownItem'
+import IssueCheckBoxItem from './issueCheckBoxItem'
 
 interface modalProps{
     visible: boolean
