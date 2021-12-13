@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { View,Text,TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { PrsStore} from '../mobxStore/prsStore';
-import { runInAction } from "mobx";
+import { action, runInAction } from "mobx";
 import {prItemStyle} from '../style/prItemStyle';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { observer } from 'mobx-react';
@@ -38,9 +38,9 @@ const PrItem: React.FC<prItemProps> = observer((props) => {
             ()=>{
                 // AsyncStorage.setItem('commentAr','تعليق');
                 // AsyncStorage.setItem('linkAr','حلقة الوصل')
-                AsyncStorage.setItem('commentEng','Comment');
-               AsyncStorage.setItem('linkEng','Link') 
-                console.log(PrsStore.linkString)
+            //     AsyncStorage.setItem('commentEng','Comment');
+            //    AsyncStorage.setItem('linkEng','Link') 
+            //     console.log(PrsStore.linkString)
                 PrsStore.updateModalStatus = true;
                 PrsStore.setId(props.id);
                 PrsStore.setComment(props.comment);
@@ -54,8 +54,9 @@ const PrItem: React.FC<prItemProps> = observer((props) => {
                 PrsStore.setReviewByBY(props.reviewByBY);
                 PrsStore.setReviewByAH(props.reviewByAH);
                 PrsStore.setReviewByHT(props.reviewByHT);
+
             }
-        )
+        )  
     }
     
     return(

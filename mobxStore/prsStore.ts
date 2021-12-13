@@ -44,6 +44,9 @@ export class prsStoreImpl {
     linkString : string | null='Link :';
     languageState : boolean = false;
     languageStateText : string = 'English';
+    searchState : boolean = false;
+    searchStateText : string = '';
+    searchArray : prItem[] = [];
     setLink = (value : string) => {this.link = value};
     setComment = (value : string)=>{this.comment = value};
     setSE = (value : string)=>{this.se = value};
@@ -62,6 +65,9 @@ export class prsStoreImpl {
     setLinkString = (value : string | null)=>{this.linkString = value};
     setLanguageState = (value : boolean)=>{this.languageState = value};
     setLanguageStateText = (value : string)=>{this.languageStateText = value};
+    setSearchState = (value : boolean)=>{this.searchState = value};
+    setSearchStateString = (value : string)=>{this.searchStateText = value};
+    setSearchArray = (value : prItem[])=>{this.searchArray = value}
 
     constructor(){
         makeObservable(this,{  
@@ -73,11 +79,13 @@ export class prsStoreImpl {
             reviewByHT : observable, byStatus : observable, ahStatus : observable,
             htStatus : observable, date:observable, dateS:observable, updateModalStatus : observable,
             id:observable, languageState:observable, languageStateText:observable,
+            searchState:observable,searchStateText:observable,
             setLink : action, setComment : action, setSE : action,
             setPlatform : action, setSize : action, setDifficulty : action, setStatus : action,
             setVersion : action, setReviewByBY : action, setReviewByAH : action,
             setReviewByHT : action, setDate:action, setDateS:action, setId:action,
-            setCommentString: action , setLinkString : action ,setLanguageState:action,setLanguageStateText:action
+            setCommentString: action , setLinkString : action ,setLanguageState:action,setLanguageStateText:action,
+            setSearchState:action,setSearchStateString:action,
 
         })
     }

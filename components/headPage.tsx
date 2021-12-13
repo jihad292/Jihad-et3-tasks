@@ -5,12 +5,15 @@ import { StyleSheet} from 'react-native';
 interface props{
     handleSort : () => void,
     name : string,
+    value:string,
+    handleChange : (value:string)=>void
 }
 
- const HeadPage : React.FC<props> = (props) => {
+ const HeadPage : React.FC<props> = ((props) => {
 
 
     return(
+      <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.headContainer}>
           <View style={styles.button}>
@@ -18,13 +21,14 @@ interface props{
           </View>
           
           <View style={styles.search}>
-            <TextInput style={styles.textInput} placeholder="Search" />
+            <TextInput style={styles.textInput} value={props.value} onChangeText={props.handleChange} placeholder="Search" />
           </View>
         
           </View>
           </TouchableWithoutFeedback>
+      </>
     )
-}
+})
 
   export default HeadPage
 const styles = StyleSheet.create({
