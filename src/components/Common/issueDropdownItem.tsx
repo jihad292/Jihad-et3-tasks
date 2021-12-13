@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import {Text, View} from 'react-native';
 import {issueStyle} from '../AddPrs/Parts/issueStyle';
