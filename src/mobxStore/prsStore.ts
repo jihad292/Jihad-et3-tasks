@@ -27,68 +27,80 @@ export class prsStoreImpl {
   searchState: boolean = false;
   searchStateText: string = '';
   searchArray: prItem[] = [];
-  setLink = (value: string) => {
+  sortState: boolean = false;
+  sortStateText: string = 'ASC';
+
+  setPrs: prItemFunction = value => {
+    this.prs = value;
+  };
+  setLink: stringFunction = value => {
     this.link = value;
   };
-  setComment = (value: string) => {
+  setComment: stringFunction = value => {
     this.comment = value;
   };
-  setSE = (value: string) => {
+  setSE: stringFunction = value => {
     this.se = value;
   };
-  setPlatform = (value: string) => {
+  setPlatform: stringFunction = value => {
     this.platform = value;
   };
-  setSize = (value: string) => {
+  setSize: stringFunction = value => {
     this.size = value;
   };
-  setDifficulty = (value: string) => {
+  setDifficulty: stringFunction = value => {
     this.difficulty = value;
   };
-  setStatus = (value: string) => {
+  setStatus: stringFunction = value => {
     this.status = value;
   };
-  setVersion = (value: string) => {
+  setVersion: stringFunction = value => {
     this.version = value;
   };
-  setReviewByBY = (value: boolean) => {
+  setReviewByBY: booleanFunction = value => {
     this.reviewByBY = value;
   };
-  setReviewByAH = (value: boolean) => {
+  setReviewByAH: booleanFunction = value => {
     this.reviewByAH = value;
   };
-  setReviewByHT = (value: boolean) => {
+  setReviewByHT: booleanFunction = value => {
     this.reviewByHT = value;
   };
-  setDate = (value: Date) => {
+  setDate: dateFunction = value => {
     this.date = value;
   };
-  setDateS = (value: Date) => {
+  setDateS: dateFunction = value => {
     this.dateS = '' + value;
   };
   setId = (value: number) => {
     this.id = value;
   };
-  setCommentString = (value: string | null) => {
+  setCommentString: stringNullFunction = value => {
     this.commentString = value;
   };
-  setLinkString = (value: string | null) => {
+  setLinkString: stringNullFunction = value => {
     this.linkString = value;
   };
-  setLanguageState = (value: boolean) => {
+  setLanguageState: booleanFunction = value => {
     this.languageState = value;
   };
-  setLanguageStateText = (value: string) => {
+  setLanguageStateText: stringFunction = value => {
     this.languageStateText = value;
   };
-  setSearchState = (value: boolean) => {
+  setSearchState: booleanFunction = value => {
     this.searchState = value;
   };
-  setSearchStateString = (value: string) => {
+  setSearchStateString: stringFunction = value => {
     this.searchStateText = value;
   };
-  setSearchArray = (value: prItem[]) => {
+  setSearchArray: prItemFunction = value => {
     this.searchArray = value;
+  };
+  setSortState: booleanFunction = value => {
+    this.sortState = value;
+  };
+  setSortStateText: stringFunction = value => {
+    this.sortStateText = value;
   };
 
   constructor() {
@@ -118,6 +130,8 @@ export class prsStoreImpl {
       languageStateText: observable,
       searchState: observable,
       searchStateText: observable,
+      sortState: observable,
+      sortStateText: observable,
       setLink: action,
       setComment: action,
       setSE: action,
@@ -138,6 +152,8 @@ export class prsStoreImpl {
       setLanguageStateText: action,
       setSearchState: action,
       setSearchStateString: action,
+      setSortState: action,
+      setSortStateText: action,
     });
   }
 

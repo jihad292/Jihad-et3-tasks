@@ -11,9 +11,26 @@ import {
   languangeManagmentAr,
   languangeManagmentEng,
 } from '../../languageHandler/languangeManagment';
+import sortBy from 'lodash.sortby';
 
 const PrsScreen = observer(() => {
-  const handleSort = () => {};
+  const handleSort = () => {
+    if (PrsStore.sortState === false) {
+      runInAction(() => {
+        PrsStore.setSortState(true);
+        PrsStore.setSortStateText('DESC');
+        let prsDesc = sortBy(PrsStore.prs, ['type', 'date']).reverse();
+        PrsStore.setPrs(prsDesc);
+      });
+    } else {
+      runInAction(() => {
+        PrsStore.setSortState(false);
+        PrsStore.setSortStateText('ASC');
+        let prsASC = sortBy(PrsStore.prs, ['type', 'date']);
+        PrsStore.setPrs(prsASC);
+      });
+    }
+  };
 
   const handleChangeText = (value: string) => {
     PrsStore.setSearchStateString(value);
@@ -62,7 +79,7 @@ const PrsScreen = observer(() => {
       />
       <HeadPage
         handleSort={handleSort}
-        name="Sort"
+        name={PrsStore.sortStateText}
         value={PrsStore.searchStateText}
         handleChange={handleChangeText}
       />
