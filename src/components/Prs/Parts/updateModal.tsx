@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text,Modal,TouchableOpacity,StyleSheet, TextInput  } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {PrsStore} from '../mobxStore/prsStore' ;
+import {PrsStore} from '../../../mobxStore/prsStore' ;
 import { runInAction } from "mobx";
-import {storeReset} from '../mobxStore/resetPrsStore';
-import {issueStyle} from '../style/issueStyle';
-import {updateStyle} from '../style/updateStyle'
+import {storeReset} from '../../../mobxStore/resetPrsStore';
+import {issueStyle} from '../../AddPrs/Parts/issueStyle';
+import {updateStyle} from './updateStyle'
 import { observer } from 'mobx-react';
-import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../static/prProperties'
-import IssueDropdownItem from './issueDropdownItem'
-import IssueCheckBoxItem from './issueCheckBoxItem'
+import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../../Common/prProperties'
+import IssueDropdownItem from '../../Common/issueDropdownItem'
+import IssueCheckBoxItem from '../../Common/issueCheckBoxItem'
 
 interface modalProps{
     visible: boolean

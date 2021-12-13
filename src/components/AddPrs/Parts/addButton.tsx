@@ -1,6 +1,6 @@
 import React from "react"
 import { TouchableOpacity,View,Text } from 'react-native';
-import {issueStyle} from '../style/issueStyle';
+import {issueStyle} from './issueStyle';
 
 interface props{
     text : string,

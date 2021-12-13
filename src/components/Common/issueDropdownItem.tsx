@@ -1,7 +1,7 @@
 import React,{useRef} from 'react'
 import SelectDropdown from 'react-native-select-dropdown';
 import { Text,View } from 'react-native'
-import {issueStyle} from '../style/issueStyle'
+import {issueStyle} from '../AddPrs/Parts/issueStyle'
 
 interface props{
     data: string[],

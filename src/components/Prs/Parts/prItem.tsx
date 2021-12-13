@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
 import { View,Text,TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { PrsStore} from '../mobxStore/prsStore';
+import { PrsStore} from '../../../mobxStore/prsStore';
 import { action, runInAction } from "mobx";
-import {prItemStyle} from '../style/prItemStyle';
+import {prItemStyle} from './prItemStyle';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { observer } from 'mobx-react';
 

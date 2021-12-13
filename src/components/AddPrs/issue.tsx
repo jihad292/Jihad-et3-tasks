@@ -1,16 +1,16 @@
 import React,{ useState } from "react";
 import { View, Text,  TextInput, Alert } from 'react-native';
-import { prsStoreImpl,PrsStore} from '../mobxStore/prsStore';
+import { prsStoreImpl,PrsStore} from '../../mobxStore/prsStore';
 import { runInAction } from "mobx";
 import { observer } from 'mobx-react';
-import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../static/prProperties'
-import {issueStyle} from '../style/issueStyle';
-import IssueDropdownItem from '../components/issueDropdownItem'
-import IssueCheckBoxItem from '../components/issueCheckBoxItem'
-import Calender from '../components/calender';
-import AddButton from '../components/addButton';
-import {storeReset} from '../mobxStore/resetPrsStore';
-import {addIssueChecker} from '../components/addIssueChecker'
+import { SE_Array,Platform_Array,Size_Array,Difficulty_Array,Status_Array,Release_Version_Array } from '../Common/prProperties'
+import {issueStyle} from './Parts/issueStyle';
+import IssueDropdownItem from '../Common/issueDropdownItem'
+import IssueCheckBoxItem from '../Common/issueCheckBoxItem'
+import Calender from './Parts/calender';
+import AddButton from './Parts/addButton';
+import {storeReset} from '../../mobxStore/resetPrsStore';
+import {addIssueChecker} from './Parts/addIssueChecker'
   
  
 interface issueProps{    

@@ -1,7 +1,7 @@
 import React from "react"
 import { Text,View } from "react-native"
 import CheckBox from '@react-native-community/checkbox';
-import {issueStyle} from '../style/issueStyle'
+import {issueStyle} from '../AddPrs/Parts/issueStyle'
 
 interface props{
     propertyText : string,

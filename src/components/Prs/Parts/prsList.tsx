@@ -1,6 +1,6 @@
 import React from "react"
 import { FlatList,  View } from "react-native";
-import { PrsStore, prsStoreImpl} from '../mobxStore/prsStore';
+import { PrsStore, prsStoreImpl} from '../../../mobxStore/prsStore';
 import { observer } from 'mobx-react';
 import  PrItem  from './prItem'
 

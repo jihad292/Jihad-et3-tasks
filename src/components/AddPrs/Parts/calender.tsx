@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import { View,TouchableOpacity  } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import {PrsStore} from '../mobxStore/prsStore'
+import {PrsStore} from '../../../mobxStore/prsStore'
 
 const Calender = () => {
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);

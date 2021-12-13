@@ -1,4 +1,4 @@
-import { PrsStore } from "../mobxStore/prsStore";
+import { PrsStore } from "../../../mobxStore/prsStore";
 import {Alert} from 'react-native'
 
 export const addIssueChecker = () => {
