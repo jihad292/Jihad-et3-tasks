@@ -28,9 +28,10 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
                 difficulty={item.difficulty}
                 status={item.status}
                 version={item.version}
-                byStatus={item.ByStatus}
-                ahStatus={item.AhStatus}
-                htStatus={item.HtStatus}
+                ByStatus={item.ByStatus}
+                AhStatus={item.AhStatus}
+                HtStatus={item.HtStatus}
+                date={item.date}
                 dateS={item.dateS}
                 reviewByBY={item.reviewByBY}
                 reviewByAH={item.reviewByAH}
@@ -56,9 +57,10 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
                 difficulty={item.difficulty}
                 status={item.status}
                 version={item.version}
-                byStatus={item.ByStatus}
-                ahStatus={item.AhStatus}
-                htStatus={item.HtStatus}
+                ByStatus={item.ByStatus}
+                AhStatus={item.AhStatus}
+                HtStatus={item.HtStatus}
+                date={item.date}
                 dateS={item.dateS}
                 reviewByBY={item.reviewByBY}
                 reviewByAH={item.reviewByAH}

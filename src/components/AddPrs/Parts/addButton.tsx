@@ -4,7 +4,7 @@ import {issueStyle} from './issueStyle';
 
 interface props {
   text: string;
-  pressHandler: () => void;
+  pressHandler: voidFunction;
 }
 
 const AddButton: React.FC<props> = props => {

@@ -3,7 +3,7 @@ import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 
 interface props {
   text: string;
-  handleLanguage: () => void;
+  handleLanguage: voidFunction;
 }
 
 export const ButtonHandler: React.FC<props> = props => {

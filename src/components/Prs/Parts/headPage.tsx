@@ -9,10 +9,10 @@ import {
 import {StyleSheet} from 'react-native';
 
 interface props {
-  handleSort: () => void;
+  handleSort: voidFunction;
   name: string;
   value: string;
-  handleChange: (value: string) => void;
+  handleChange: stringFunction,
 }
 
 const HeadPage: React.FC<props> = props => {

@@ -8,7 +8,7 @@ import {observer} from 'mobx-react';
 
 interface propertyProps {
   text: string;
-  property: string | number;
+  property: StringNumber;
 }
 const Property: React.FC<propertyProps> = props => {
   return (
@@ -19,37 +19,13 @@ const Property: React.FC<propertyProps> = props => {
   );
 };
 
-interface prItemProps {
-  id: number;
-  comment: string;
-  link: string;
-  se: string;
-  platform: string;
-  size: string;
-  difficulty: string;
-  status: string;
-  version: string;
-  byStatus: string;
-  ahStatus: string;
-  htStatus: string;
-  dateS: string;
-  reviewByBY: boolean;
-  reviewByAH: boolean;
-  reviewByHT: boolean;
-}
-
-const PrItem: React.FC<prItemProps> = observer(props => {
+const PrItem = observer((props: prItem) => {
   const deleteHandler = () => {
     PrsStore.deletePr(props.id);
   };
 
   const openUpdateModal = () => {
     runInAction(() => {
-      // AsyncStorage.setItem('commentAr','تعليق');
-      // AsyncStorage.setItem('linkAr','حلقة الوصل')
-      //     AsyncStorage.setItem('commentEng','Comment');
-      //    AsyncStorage.setItem('linkEng','Link')
-      //     console.log(PrsStore.linkString)
       PrsStore.updateModalStatus = true;
       PrsStore.setId(props.id);
       PrsStore.setComment(props.comment);
@@ -104,9 +80,9 @@ const PrItem: React.FC<prItemProps> = observer(props => {
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text="Reaview by BY" property={props.byStatus} />
-          <Property text="Reaview by AH" property={props.ahStatus} />
-          <Property text="Reaview by HT" property={props.htStatus} />
+          <Property text="Reaview by BY" property={props.ByStatus} />
+          <Property text="Reaview by AH" property={props.AhStatus} />
+          <Property text="Reaview by HT" property={props.HtStatus} />
         </View>
 
         <View style={prItemStyle.dateContainer}>

@@ -5,7 +5,7 @@ import {issueStyle} from '../AddPrs/Parts/issueStyle';
 
 interface props {
   propertyText: string;
-  setReview: (value: boolean) => void;
+  setReview: booleanFunction;
   reviewBy: boolean;
 }
 

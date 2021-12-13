@@ -5,7 +5,7 @@ import {issueStyle} from '../AddPrs/Parts/issueStyle';
 
 interface props {
   data: string[];
-  setItem: (value: string) => void;
+  setItem: stringFunction;
   propertyDefinition: string;
   defaultValue: string;
 }
@@ -18,10 +18,7 @@ const IssueDropdownItem: React.FC<props> = ({
 }) => {
   return (
     <View>
-      <Text style={issueStyle.dropdownPropertyText}>
-        {' '}
-        {propertyDefinition}{' '}
-      </Text>
+      <Text style={issueStyle.dropdownPropertyText}>{propertyDefinition}</Text>
       <SelectDropdown
         data={data}
         defaultButtonText={'Choose an option'}

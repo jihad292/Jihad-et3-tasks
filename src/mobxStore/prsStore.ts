@@ -1,24 +1,5 @@
 import {action, makeObservable, observable} from 'mobx';
 
-interface prItem {
-  id: number;
-  comment: string;
-  link: string;
-  se: string;
-  platform: string;
-  size: string;
-  difficulty: string;
-  status: string;
-  version: string;
-  ByStatus: string;
-  AhStatus: string;
-  HtStatus: string;
-  date: Date;
-  dateS: string;
-  reviewByBY: boolean;
-  reviewByAH: boolean;
-  reviewByHT: boolean;
-}
 export class prsStoreImpl {
   prs: prItem[] = [];
   id: number = 0;
