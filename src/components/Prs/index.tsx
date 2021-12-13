@@ -11,7 +11,6 @@ import {
   languangeManagmentAr,
   languangeManagmentEng,
 } from '../../languageHandler/languangeManagment';
-import sortBy from 'lodash.sortby';
 
 const PrsScreen = observer(() => {
   const handleSort = () => {};
