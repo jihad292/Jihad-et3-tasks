@@ -1,11 +1,11 @@
-import React,{useState} from "react"
-import { View,TouchableOpacity  } from 'react-native';
+import React, {useState} from 'react';
+import {View, TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import DateTimePickerModal from "react-native-modal-datetime-picker";
-import {PrsStore} from '../../../mobxStore/prsStore'
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import {PrsStore} from '../../../mobxStore/prsStore';
 
 const Calender = () => {
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -15,7 +15,7 @@ const Calender = () => {
     setDatePickerVisibility(false);
   };
 
-  const handleConfirm = (date : Date) => {
+  const handleConfirm = (date: Date) => {
     // console.warn("A date has been picked: ", date);
     PrsStore.setDate(date);
     PrsStore.setDateS(date);
@@ -24,11 +24,9 @@ const Calender = () => {
 
   return (
     <View>
-
-        
-    <TouchableOpacity onPress={showDatePicker}>
-                <FontAwesome5 name={'calendar-alt'} size={27} color={'olivedrab'} />
-    </TouchableOpacity>
+      <TouchableOpacity onPress={showDatePicker}>
+        <FontAwesome5 name={'calendar-alt'} size={27} color={'olivedrab'} />
+      </TouchableOpacity>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
@@ -39,4 +37,4 @@ const Calender = () => {
   );
 };
 
-export default Calender
+export default Calender;
