@@ -1,6 +1,6 @@
 import {PrsStore} from './prsStore';
 
-export const storeReset = () => {
+export async function storeReset() {
   let prsStore = PrsStore;
   prsStore.setComment('');
   prsStore.setLink('');
@@ -13,5 +13,4 @@ export const storeReset = () => {
   prsStore.setReviewByBY(false);
   prsStore.setReviewByAH(false);
   prsStore.setReviewByHT(false);
-  prsStore.dateS = '';
-};
+}

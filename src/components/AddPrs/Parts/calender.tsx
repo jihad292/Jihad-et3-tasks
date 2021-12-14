@@ -7,19 +7,19 @@ import {PrsStore} from '../../../mobxStore/prsStore';
 const Calender = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-  const showDatePicker = () => {
+  async function showDatePicker() {
     setDatePickerVisibility(true);
-  };
+  }
 
-  const hideDatePicker = () => {
+  async function hideDatePicker() {
     setDatePickerVisibility(false);
-  };
+  }
 
-  const handleConfirm = (date: Date) => {
+  async function handleConfirm(date: Date) {
     PrsStore.setDate(date);
     PrsStore.setDateS(date);
-    hideDatePicker();
-  };
+    await hideDatePicker();
+  }
 
   return (
     <View>

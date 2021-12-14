@@ -39,6 +39,7 @@ const PrItem = observer((props: prItem) => {
       PrsStore.setReviewByBY(props.reviewByBY);
       PrsStore.setReviewByAH(props.reviewByAH);
       PrsStore.setReviewByHT(props.reviewByHT);
+      // props.comment = 'test'
     });
   };
 

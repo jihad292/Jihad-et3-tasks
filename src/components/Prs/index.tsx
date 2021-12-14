@@ -14,7 +14,7 @@ import {
 import sortBy from 'lodash.sortby';
 
 const PrsScreen = observer(() => {
-  const handleSort = () => {
+  async function handleSort() {
     if (PrsStore.sortState === false) {
       runInAction(() => {
         PrsStore.setSortState(true);
@@ -30,9 +30,9 @@ const PrsScreen = observer(() => {
         PrsStore.setPrs(prsASC);
       });
     }
-  };
+  }
 
-  const handleChangeText = (value: string) => {
+  async function handleChangeText(value: string) {
     PrsStore.setSearchStateString(value);
     if (PrsStore.searchStateText === '') {
       runInAction(() => {
@@ -50,13 +50,13 @@ const PrsScreen = observer(() => {
         PrsStore.setSearchArray(test);
       });
     }
-  };
+  }
 
-  const handleLanguage = () => {
+  async function handleLanguage() {
     if (PrsStore.languageState === false) {
       PrsStore.setLanguageState(true);
       PrsStore.setLanguageStateText('Arabic');
-      languangeManagmentAr();
+      await languangeManagmentAr();
       let test = PrsStore.prs.filter(pr => {
         return pr.id !== null;
       });
@@ -64,13 +64,13 @@ const PrsScreen = observer(() => {
     } else {
       PrsStore.setLanguageState(false);
       PrsStore.setLanguageStateText('English');
-      languangeManagmentEng();
+      await languangeManagmentEng();
       let test = PrsStore.prs.filter(pr => {
         return pr.id !== null;
       });
       PrsStore.prs = test;
     }
-  };
+  }
   return (
     <>
       <ButtonHandler
