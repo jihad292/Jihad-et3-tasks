@@ -214,8 +214,6 @@ export class prsStoreImpl {
     });
     this.prs = test;
   }
-
-  languageHandler() {}
 }
 
 export const PrsStore = new prsStoreImpl();

@@ -7,10 +7,6 @@ import {runInAction} from 'mobx';
 import HeadPage from './Parts/headPage';
 import UpdateModal from './Parts/updateModal';
 import {ButtonHandler} from '../../languageHandler/buttonHandler';
-import {
-  languangeManagmentAr,
-  languangeManagmentEng,
-} from '../../languageHandler/languangeManagment';
 import sortBy from 'lodash.sortby';
 
 const PrsScreen = observer(() => {
@@ -56,19 +52,9 @@ const PrsScreen = observer(() => {
     if (PrsStore.languageState === false) {
       PrsStore.setLanguageState(true);
       PrsStore.setLanguageStateText('Arabic');
-      await languangeManagmentAr();
-      let test = PrsStore.prs.filter(pr => {
-        return pr.id !== null;
-      });
-      PrsStore.prs = test;
     } else {
       PrsStore.setLanguageState(false);
       PrsStore.setLanguageStateText('English');
-      await languangeManagmentEng();
-      let test = PrsStore.prs.filter(pr => {
-        return pr.id !== null;
-      });
-      PrsStore.prs = test;
     }
   }
   return (

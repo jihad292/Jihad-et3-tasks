@@ -5,9 +5,10 @@ import {PrsStore} from '../../../mobxStore/prsStore';
 import {runInAction} from 'mobx';
 import {prItemStyle} from './prItemStyle';
 import {observer} from 'mobx-react';
+import {retrieveEngLanguage} from '../../../languageHandler/languangeManagment'
 
-interface propertyProps {
-  text: string;
+interface propertyProps { 
+  text: string;    
   property: StringNumber;
 }
 const Property: React.FC<propertyProps> = props => {
@@ -30,7 +31,7 @@ const PrItem = observer((props: prItem) => {
       PrsStore.setId(props.id);
       PrsStore.setComment(props.comment);
       PrsStore.setLink(props.link);
-      PrsStore.setSE(props.se);
+      PrsStore.setSE(props.se);  
       PrsStore.setDifficulty(props.difficulty);
       PrsStore.setPlatform(props.platform);
       PrsStore.setSize(props.size);
@@ -39,7 +40,7 @@ const PrItem = observer((props: prItem) => {
       PrsStore.setReviewByBY(props.reviewByBY);
       PrsStore.setReviewByAH(props.reviewByAH);
       PrsStore.setReviewByHT(props.reviewByHT);
-      // props.comment = 'test'
+      console.log(retrieveEngLanguage())
     });
   };
 
