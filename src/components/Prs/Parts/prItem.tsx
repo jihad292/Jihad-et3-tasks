@@ -5,7 +5,6 @@ import {PrsStore} from '../../../mobxStore/prsStore';
 import {runInAction} from 'mobx';
 import {prItemStyle} from './prItemStyle';
 import {observer} from 'mobx-react';
-import {retrieveEngLanguage} from '../../../languageHandler/languangeManagment'
 
 interface propertyProps { 
   text: string;    
@@ -27,7 +26,7 @@ const PrItem = observer((props: prItem) => {
 
   const openUpdateModal = () => {
     runInAction(() => {
-      PrsStore.updateModalStatus = true;
+      PrsStore.updateModalStatus.set(true) ;
       PrsStore.setId(props.id);
       PrsStore.setComment(props.comment);
       PrsStore.setLink(props.link);
@@ -40,7 +39,6 @@ const PrItem = observer((props: prItem) => {
       PrsStore.setReviewByBY(props.reviewByBY);
       PrsStore.setReviewByAH(props.reviewByAH);
       PrsStore.setReviewByHT(props.reviewByHT);
-      console.log(retrieveEngLanguage())
     });
   };
 
@@ -63,8 +61,8 @@ const PrItem = observer((props: prItem) => {
           </View>
         </View>
 
-        <Property text={'' + PrsStore.commentString} property={props.comment} />
-        <Property text={'' + PrsStore.linkString} property={props.link} />
+        <Property text={PrsStore.commentTitle.get()} property={props.comment} />
+        <Property text={PrsStore.linkTitle.get()} property={props.link} />
 
         <View style={prItemStyle.smallPropertiesDiv}>
           <Property text="SE" property={props.se} />

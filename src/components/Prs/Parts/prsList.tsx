@@ -12,7 +12,7 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
   return (
     <>
       <View>
-        {PrsStore.searchState === false && (
+        {PrsStore.searchState.get() && (
           <FlatList
             data={prsStore.prs}
             extraData={prsStore.prs}
@@ -41,9 +41,9 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
           />
         )}
 
-        {PrsStore.searchState === true && (
+        {PrsStore.searchState.get() && (
           <FlatList
-            data={prsStore.searchArray}
+            data={prsStore.searchArray.get()}
             extraData={prsStore.searchArray}
             keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (

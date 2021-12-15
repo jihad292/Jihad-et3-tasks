@@ -23,7 +23,7 @@ const IssueCheckBoxItem: React.FC<props> = ({
           value={reviewBy}
           onValueChange={newValue => setReview(newValue)}
         />
-      </View>
+      </View> 
     </View>
   );
 };

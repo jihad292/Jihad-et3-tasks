@@ -1,186 +1,285 @@
-import {action, makeObservable, observable} from 'mobx';
+import {observable, runInAction} from 'mobx';
 
 export class prsStoreImpl {
-  prs: prItem[] = [];
-  id: number = 0;
-  comment: string = '';
-  link: string = '';
-  se: string = '';
-  platform: string = '';
-  size: string = '';
-  difficulty: string = '';
-  status: string = '';
-  version: string = '';
-  reviewByBY: boolean = false;
-  reviewByAH: boolean = false;
-  reviewByHT: boolean = false;
-  byStatus: string = 'No';
-  ahStatus: string = 'No';
-  htStatus: string = 'No';
-  date: Date = new Date();
-  dateS: string = '';
-  updateModalStatus: boolean = false;
-  commentString: string | null = 'Comment :';
-  linkString: string | null = 'Link :';
-  languageState: boolean = false;
-  languageStateText: string = 'English';
-  searchState: boolean = false;
-  searchStateText: string = '';
-  searchArray: prItem[] = [];
-  sortState: boolean = false;
-  sortStateText: string = 'ASC';
+  //Prs properties
+  prs = observable([]);
+  id = observable.box<number>(0);
+  comment = observable.box<string>('');
+  link = observable.box<string>('');
+  se = observable.box<string>('');
+  platform = observable.box<string>('');
+  size = observable.box<string>('');
+  difficulty = observable.box<string>('');
+  status = observable.box<string>('');
+  version = observable.box<string>('');
+  reviewByBY = observable.box<boolean>(false);
+  reviewByAH = observable.box<boolean>(false);
+  reviewByHT = observable.box<boolean>(false);
+  byStatus = observable.box<string>('');
+  ahStatus = observable.box<string>('');
+  htStatus = observable.box<string>('');
+  date = observable.box<Date>(new Date());
+  dateS = observable.box<string>('');
 
-  setPrs: prItemFunction = value => {
-    this.prs = value;
-  };
-  setLink: stringFunction = value => {
-    this.link = value;
-  };
-  setComment: stringFunction = value => {
-    this.comment = value;
-  };
-  setSE: stringFunction = value => {
-    this.se = value;
-  };
-  setPlatform: stringFunction = value => {
-    this.platform = value;
-  };
-  setSize: stringFunction = value => {
-    this.size = value;
-  };
-  setDifficulty: stringFunction = value => {
-    this.difficulty = value;
-  };
-  setStatus: stringFunction = value => {
-    this.status = value;
-  };
-  setVersion: stringFunction = value => {
-    this.version = value;
-  };
-  setReviewByBY: booleanFunction = value => {
-    this.reviewByBY = value;
-  };
-  setReviewByAH: booleanFunction = value => {
-    this.reviewByAH = value;
-  };
-  setReviewByHT: booleanFunction = value => {
-    this.reviewByHT = value;
-  };
-  setDate: dateFunction = value => {
-    this.date = value;
-  };
-  setDateS: dateFunction = value => {
-    this.dateS = '' + value;
-  };
-  setId = (value: number) => {
-    this.id = value;
-  };
-  setCommentString: stringNullFunction = value => {
-    this.commentString = value;
-  };
-  setLinkString: stringNullFunction = value => {
-    this.linkString = value;
-  };
-  setLanguageState: booleanFunction = value => {
-    this.languageState = value;
-  };
-  setLanguageStateText: stringFunction = value => {
-    this.languageStateText = value;
-  };
-  setSearchState: booleanFunction = value => {
-    this.searchState = value;
-  };
-  setSearchStateString: stringFunction = value => {
-    this.searchStateText = value;
-  };
-  setSearchArray: prItemFunction = value => {
-    this.searchArray = value;
-  };
-  setSortState: booleanFunction = value => {
-    this.sortState = value;
-  };
-  setSortStateText: stringFunction = value => {
-    this.sortStateText = value;
-  };
-
-  constructor() {
-    makeObservable(this, {
-      prs: observable,
-      addPr: action,
-      deletePr: action,
-      comment: observable,
-      link: observable,
-      se: observable,
-      platform: observable,
-      size: observable,
-      difficulty: observable,
-      status: observable,
-      version: observable,
-      reviewByBY: observable,
-      reviewByAH: observable,
-      reviewByHT: observable,
-      byStatus: observable,
-      ahStatus: observable,
-      htStatus: observable,
-      date: observable,
-      dateS: observable,
-      updateModalStatus: observable,
-      id: observable,
-      languageState: observable,
-      languageStateText: observable,
-      searchState: observable,
-      searchStateText: observable,
-      sortState: observable,
-      sortStateText: observable,
-      setLink: action,
-      setComment: action,
-      setSE: action,
-      setPlatform: action,
-      setSize: action,
-      setDifficulty: action,
-      setStatus: action,
-      setVersion: action,
-      setReviewByBY: action,
-      setReviewByAH: action,
-      setReviewByHT: action,
-      setDate: action,
-      setDateS: action,
-      setId: action,
-      setCommentString: action,
-      setLinkString: action,
-      setLanguageState: action,
-      setLanguageStateText: action,
-      setSearchState: action,
-      setSearchStateString: action,
-      setSortState: action,
-      setSortStateText: action,
+  setPrs = (array: any) => {
+    runInAction(() => {
+      this.prs = array;
     });
-  }
+  };
+
+  setId = (id: number) => {
+    runInAction(() => {
+      this.id.set(id);
+    });
+  };
+
+  setComment = (comment: string) => {
+    runInAction(() => {
+      this.comment.set(comment);
+    });
+  };
+
+  setLink = (link: string) => {
+    runInAction(() => {
+      this.link.set(link);
+    });
+  };
+
+  setSE = (se: string) => {
+    runInAction(() => {
+      this.se.set(se);
+    });
+  };
+
+  setPlatform = (platform: string) => {
+    runInAction(() => {
+      this.platform.set(platform);
+    });
+  };
+
+  setSize = (size: string) => {
+    runInAction(() => {
+      this.size.set(size);
+    });
+  };
+
+  setDifficulty = (difficulty: string) => {
+    runInAction(() => {
+      this.difficulty.set(difficulty);
+    });
+  };
+
+  setStatus = (status: string) => {
+    runInAction(() => {
+      this.status.set(status);
+    });
+  };
+
+  setVersion = (version: string) => {
+    runInAction(() => {
+      this.version.set(version);
+    });
+  };
+
+  setReviewByBY = (status: boolean) => {
+    runInAction(() => {
+      this.reviewByBY.set(status);
+    });
+  };
+
+  setReviewByAH = (status: boolean) => {
+    runInAction(() => {
+      this.reviewByAH.set(status);
+    });
+  };
+
+  setReviewByHT = (status: boolean) => {
+    runInAction(() => {
+      this.reviewByHT.set(status);
+    });
+  };
+
+  setByStatus = (value: string) => {
+    runInAction(() => {
+      this.byStatus.set(value);
+    });
+  };
+
+  setAhStatus = (value: string) => {
+    runInAction(() => {
+      this.ahStatus.set(value);
+    });
+  };
+
+  setHtStatus = (value: string) => {
+    runInAction(() => {
+      this.htStatus.set(value);
+    });
+  };
+
+  setDate = (date: Date) => {
+    runInAction(() => {
+      this.date.set(date);
+    });
+  };
+
+  setDateS = (value: string) => {
+    runInAction(() => {
+      this.dateS.set(value);
+    });
+  };
+
+  //update Modal
+  updateModalStatus = observable.box<boolean>(false);
+  setUpdateModalstatus = (value: boolean) => {
+    runInAction(() => {
+      this.updateModalStatus.set(value);
+    });
+  };
+
+  //language Titles properties
+  commentTitle = observable.box<string>('Comment');
+  linkTitle = observable.box<string>('Link');
+  seTitle = observable.box<string>('SE');
+  difficultyTitle = observable.box<string>('Difficulty');
+  platformTitle = observable.box<string>('Platform');
+  sizeTitle = observable.box<string>('Size');
+  statusTitle = observable.box<string>('Status');
+  versionTitle = observable.box<string>('Version');
+  ByReviewTitle = observable.box<string>('Review by BY');
+  AhReviewTitle = observable.box<string>('Review by AH');
+  HtReviewTitle = observable.box<string>('Review by HT');
+  dateTitle = observable.box<string>('Date');
+  languageState = observable.box<boolean>(false);
+  languageStateText = observable.box<string>('English');
+
+  setCommentTitle = (value: string) => {
+    runInAction(() => {
+      this.commentTitle.set(value);
+    });
+  };
+
+  setLinkTitle = (value: string) => {
+    runInAction(() => {
+      this.linkTitle.set(value);
+    });
+  };
+
+  setSeTitle = (value: string) => {
+    runInAction(() => {
+      this.seTitle.set(value);
+    });
+  };
+
+  setDifficultyTitle = (value: string) => {
+    runInAction(() => {
+      this.difficultyTitle.set(value);
+    });
+  };
+
+  setPlatformTitle = (value: string) => {
+    runInAction(() => {
+      this.platformTitle.set(value);
+    });
+  };
+
+  setSizeTitle = (value: string) => {
+    runInAction(() => {
+      this.sizeTitle.set(value);
+    });
+  };
+
+  setStatusTitle = (value: string) => {
+    runInAction(() => {
+      this.statusTitle.set(value);
+    });
+  };
+
+  setVersionTitle = (value: string) => {
+    runInAction(() => {
+      this.versionTitle.set(value);
+    });
+  };
+
+  setByReviewTitle = (value: string) => {
+    runInAction(() => {
+      this.ByReviewTitle.set(value);
+    });
+  };
+
+  setAhReviewTitle = (value: string) => {
+    runInAction(() => {
+      this.AhReviewTitle.set(value);
+    });
+  };
+
+  setHtReviewTitle = (value: string) => {
+    runInAction(() => {
+      this.HtReviewTitle.set(value);
+    });
+  };
+
+  setDateTitle = (value: string) => {
+    runInAction(() => {
+      this.dateTitle.set(value);
+    });
+  };
+
+  setLanguageState = (value: boolean) => {
+    runInAction(() => {
+      this.languageState.set(value);
+    });
+  };
+
+  setLanguageStateText = (value: string) => {
+    runInAction(() => {
+      this.languageStateText.set(value);
+    });
+  };
+  //search properties
+  searchState = observable.box<boolean>(false);
+  searchStateText = observable.box<string>('');
+  searchArray = observable.box([]);
+  setSearchState = (value: boolean) => {
+    runInAction(() => {
+      this.searchState.set(value);
+    });
+  };
+
+  setSearchStateText = (value: string) => {
+    runInAction(() => {
+      this.searchStateText.set(value);
+    });
+  };
+
+  setSearchArray = (value: []) => {
+    runInAction(() => {
+      this.searchArray.set(value);
+    });
+  };
+
+  //sort properties
+  sortState = observable.box<boolean>(false);
+  sortStateText = observable.box<string>('');
+
+  setSortState = (value: boolean) => {
+    runInAction(() => {
+      this.sortState.set(value);
+    });
+  };
+
+  setSortStateText = (value: string) => {
+    runInAction(() => {
+      this.sortStateText.set(value);
+    });
+  };
 
   float2int(value: number) {
     return value | 0;
   }
 
   addPr() {
-    if (this.reviewByBY === true) {
-      this.byStatus = 'Yes';
-    }
-    if (this.reviewByAH === true) {
-      this.ahStatus = 'Yes';
-    }
-    if (this.reviewByHT === true) {
-      this.htStatus = 'Yes';
-    }
-    if (this.reviewByBY === false) {
-      this.byStatus = 'No';
-    }
-    if (this.reviewByAH === false) {
-      this.ahStatus = 'No';
-    }
-    if (this.reviewByHT === false) {
-      this.htStatus = 'No';
-    }
-    const pr: prItem = {
+    const pr = {
       id: this.float2int(Number(+Math.random().toFixed(4) * 10000)),
       comment: this.comment,
       link: this.link,
@@ -205,14 +304,14 @@ export class prsStoreImpl {
     let test = this.prs.filter(pr => {
       return pr.id !== null;
     });
-    this.prs = test;
+    this.setPrs(test);
   }
 
   deletePr(value: number) {
     let test = this.prs.filter(pr => {
       return pr.id != value;
     });
-    this.prs = test;
+    this.setPrs(test);
   }
 }
 

@@ -10,38 +10,39 @@ import {ButtonHandler} from '../../languageHandler/buttonHandler';
 import sortBy from 'lodash.sortby';
 
 const PrsScreen = observer(() => {
+
   async function handleSort() {
-    if (PrsStore.sortState === false) {
-      runInAction(() => {
-        PrsStore.setSortState(true);
-        PrsStore.setSortStateText('DESC');
-        let prsDesc = sortBy(PrsStore.prs, ['type', 'date']).reverse();
-        PrsStore.setPrs(prsDesc);
-      });
-    } else {
+    if (PrsStore.sortState.get()) {
       runInAction(() => {
         PrsStore.setSortState(false);
         PrsStore.setSortStateText('ASC');
         let prsASC = sortBy(PrsStore.prs, ['type', 'date']);
         PrsStore.setPrs(prsASC);
       });
+    } else {
+      runInAction(() => {
+        PrsStore.setSortState(true);
+        PrsStore.setSortStateText('DESC');
+        let prsDesc = sortBy(PrsStore.prs, ['type', 'date']).reverse();
+        PrsStore.setPrs(prsDesc);
+      });
     }
   }
 
   async function handleChangeText(value: string) {
-    PrsStore.setSearchStateString(value);
-    if (PrsStore.searchStateText === '') {
+    PrsStore.setSearchStateText(value);
+    if (PrsStore.searchStateText.get() === '') {
       runInAction(() => {
-        PrsStore.searchState = false;
+        PrsStore.setSearchState(false);
       });
     }
-    if (PrsStore.searchStateText !== '') {
+    if (PrsStore.searchStateText.get() !== '') {
       runInAction(() => {
-        PrsStore.searchState = true;
-        let test = PrsStore.prs.filter(pr => {
+        PrsStore.setSearchState(true);
+        let test : any = PrsStore.prs.filter(pr => {
           return pr.comment
             .toLowerCase()
-            .includes(PrsStore.searchStateText.toLowerCase());
+            .includes(PrsStore.searchStateText.get().toLowerCase());
         });
         PrsStore.setSearchArray(test);
       });
@@ -49,29 +50,30 @@ const PrsScreen = observer(() => {
   }
 
   async function handleLanguage() {
-    if (PrsStore.languageState === false) {
-      PrsStore.setLanguageState(true);
-      PrsStore.setLanguageStateText('Arabic');
-    } else {
+    if (PrsStore.languageState.get()) {
       PrsStore.setLanguageState(false);
       PrsStore.setLanguageStateText('English');
+    } else {
+      PrsStore.setLanguageState(true);
+      PrsStore.setLanguageStateText('Arabic');
+      
     }
   }
   return (
     <>
       <ButtonHandler
-        text={PrsStore.languageStateText}
+        text={PrsStore.languageStateText.get()}
         handleLanguage={handleLanguage}
       />
       <HeadPage
         handleSort={handleSort}
-        name={PrsStore.sortStateText}
-        value={PrsStore.searchStateText}
+        name={PrsStore.sortStateText.get()}
+        value={PrsStore.searchStateText.get()}
         handleChange={handleChangeText}
       />
 
       <View style={styles.container}>
-        <UpdateModal handleModal={PrsStore.updateModalStatus} />
+        <UpdateModal handleModal={PrsStore.updateModalStatus.get()} />
         <PrsList prsStore={PrsStore} />
       </View>
     </>

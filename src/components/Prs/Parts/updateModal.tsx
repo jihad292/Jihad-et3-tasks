@@ -26,7 +26,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
   async function closeModal() {
     await storeReset();
     runInAction(() => {
-      PrsStore.updateModalStatus = false;
+      PrsStore.updateModalStatus.set(false);
     });
   }
   return (
@@ -52,7 +52,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
             <View style={issueStyle.inputTextContainer}>
               <Text style={issueStyle.itemProperty}>Update Comment</Text>
               <TextInput
-                value={PrsStore.comment}
+                value={PrsStore.comment.get()}
                 style={issueStyle.textInput}
                 placeholder="Update Comment"
                 onChangeText={PrsStore.setComment}
@@ -62,7 +62,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
             <View style={issueStyle.inputTextContainer}>
               <Text style={issueStyle.itemProperty}>Update Link</Text>
               <TextInput
-                value={PrsStore.link}
+                value={PrsStore.link.get()}
                 style={issueStyle.textInput}
                 placeholder="Update Link"
                 onChangeText={PrsStore.setLink}
@@ -72,37 +72,37 @@ const ModalForm: React.FC<modalProps> = observer(props => {
             <View style={updateStyle.secondaryDiv}>
               <View style={updateStyle.secondaryDivFirst}>
                 <IssueDropdownItem
-                  defaultValue={PrsStore.se}
+                  defaultValue={PrsStore.se.get()}
                   data={SE_Array}
                   setItem={PrsStore.setSE}
                   propertyDefinition="SE"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.platform}
+                  defaultValue={PrsStore.platform.get()}
                   data={Platform_Array}
                   setItem={PrsStore.setPlatform}
                   propertyDefinition="Platform"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.size}
+                  defaultValue={PrsStore.size.get()}
                   data={Size_Array}
                   setItem={PrsStore.setSize}
                   propertyDefinition="Size"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.difficulty}
+                  defaultValue={PrsStore.difficulty.get()}
                   data={Difficulty_Array}
                   setItem={PrsStore.setDifficulty}
                   propertyDefinition="Difficulty"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.status}
+                  defaultValue={PrsStore.status.get()}
                   data={Status_Array}
                   setItem={PrsStore.setStatus}
                   propertyDefinition="Status"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.version}
+                  defaultValue={PrsStore.version.get()}
                   data={Release_Version_Array}
                   setItem={PrsStore.setVersion}
                   propertyDefinition="Version"
@@ -112,17 +112,17 @@ const ModalForm: React.FC<modalProps> = observer(props => {
               <View style={updateStyle.secondaryDivSecond}>
                 <IssueCheckBoxItem
                   propertyText="Review by By"
-                  reviewBy={PrsStore.reviewByBY}
+                  reviewBy={PrsStore.reviewByBY.get()}
                   setReview={PrsStore.setReviewByBY}
                 />
                 <IssueCheckBoxItem
                   propertyText="Review by AH"
-                  reviewBy={PrsStore.reviewByAH}
+                  reviewBy={PrsStore.reviewByAH.get()}
                   setReview={PrsStore.setReviewByAH}
                 />
                 <IssueCheckBoxItem
                   propertyText="Review by HT"
-                  reviewBy={PrsStore.reviewByHT}
+                  reviewBy={PrsStore.reviewByHT.get()}
                   setReview={PrsStore.setReviewByHT}
                 />
               </View>

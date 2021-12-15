@@ -17,7 +17,7 @@ const Calender = () => {
 
   async function handleConfirm(date: Date) {
     PrsStore.setDate(date);
-    PrsStore.setDateS(date);
+    PrsStore.setDateS(''+date);
     await hideDatePicker();
   }
 

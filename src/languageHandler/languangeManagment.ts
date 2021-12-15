@@ -130,7 +130,8 @@ export const retrieveEngLanguage = async () => {
       HtEng,
       dateEng,
     ]);
-    return results;
+    return results
   };
   retrieveAll();
+  
 };

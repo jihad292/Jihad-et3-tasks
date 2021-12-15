@@ -32,14 +32,14 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
       () => {
         addIssueChecker();
         if (
-          prsStore.comment !== '' &&
-          prsStore.link !== '' &&
-          prsStore.se !== '' &&
-          prsStore.platform !== '' &&
-          prsStore.difficulty !== '' &&
-          prsStore.status !== '' &&
-          prsStore.version !== '' &&
-          prsStore.dateS !== ''
+          prsStore.comment.get() !== '' &&
+          prsStore.link.get() !== '' &&
+          prsStore.se.get() !== '' &&
+          prsStore.platform.get() !== '' &&
+          prsStore.difficulty.get() !== '' &&
+          prsStore.status.get() !== '' &&
+          prsStore.version.get() !== '' &&
+          prsStore.dateS.get() !== ''
         ) {
           prsStore.addPr();
           storeReset();
@@ -58,7 +58,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         <View style={issueStyle.inputTextContainer}>
           <Text style={issueStyle.itemProperty}>Add Comment</Text>
           <TextInput
-            value={prsStore.comment}
+            value={prsStore.comment.get()}
             style={issueStyle.textInput}
             placeholder="add Comment"
             onChangeText={prsStore.setComment}
@@ -68,7 +68,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         <View style={issueStyle.inputTextContainer}>
           <Text style={issueStyle.itemProperty}>Add Link</Text>
           <TextInput
-            value={prsStore.link}
+            value={prsStore.link.get()}
             style={issueStyle.textInput}
             placeholder="add Link"
             onChangeText={prsStore.setLink}
@@ -78,7 +78,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         <View style={issueStyle.dropdownDiv}>
           <View style={issueStyle.dropdownProperty}>
             <IssueDropdownItem
-              defaultValue={prsStore.se}
+              defaultValue={prsStore.se.get()}
               data={SE_Array}
               setItem={prsStore.setSE}
               propertyDefinition="SE"
@@ -87,7 +87,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
           <View style={issueStyle.dropdownProperty}>
             <IssueDropdownItem
-              defaultValue={prsStore.platform}
+              defaultValue={prsStore.platform.get()}
               data={Platform_Array}
               setItem={prsStore.setPlatform}
               propertyDefinition="Platform"
@@ -98,7 +98,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         <View style={issueStyle.dropdownDiv}>
           <View style={issueStyle.dropdownProperty}>
             <IssueDropdownItem
-              defaultValue={prsStore.size}
+              defaultValue={prsStore.size.get()}
               data={Size_Array}
               setItem={prsStore.setSize}
               propertyDefinition="Size"
@@ -107,7 +107,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
           <View style={issueStyle.dropdownProperty}>
             <IssueDropdownItem
-              defaultValue={prsStore.difficulty}
+              defaultValue={prsStore.difficulty.get()}
               data={Difficulty_Array}
               setItem={prsStore.setDifficulty}
               propertyDefinition="Difficulty"
@@ -118,7 +118,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         <View style={issueStyle.dropdownDiv}>
           <View style={issueStyle.dropdownProperty}>
             <IssueDropdownItem
-              defaultValue={prsStore.status}
+              defaultValue={prsStore.status.get()}
               data={Status_Array}
               setItem={prsStore.setStatus}
               propertyDefinition="Status"
@@ -127,7 +127,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
           <View style={issueStyle.dropdownProperty}>
             <IssueDropdownItem
-              defaultValue={prsStore.version}
+              defaultValue={prsStore.version.get()}
               data={Release_Version_Array}
               setItem={prsStore.setVersion}
               propertyDefinition="Version"
@@ -139,7 +139,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
           <View style={issueStyle.checkboxProperty}>
             <IssueCheckBoxItem
               propertyText="Review by By"
-              reviewBy={prsStore.reviewByBY}
+              reviewBy={prsStore.reviewByBY.get()}
               setReview={prsStore.setReviewByBY}
             />
           </View>
@@ -147,7 +147,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
           <View style={issueStyle.checkboxProperty}>
             <IssueCheckBoxItem
               propertyText="Review by AH"
-              reviewBy={prsStore.reviewByAH}
+              reviewBy={prsStore.reviewByAH.get()}
               setReview={prsStore.setReviewByAH}
             />
           </View>
@@ -155,7 +155,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
           <View style={issueStyle.checkboxProperty}>
             <IssueCheckBoxItem
               propertyText="Review by HT"
-              reviewBy={prsStore.reviewByHT}
+              reviewBy={prsStore.reviewByHT.get()}
               setReview={prsStore.setReviewByHT}
             />
           </View>
