@@ -3,7 +3,6 @@ import {View, Text, Modal, TouchableOpacity, TextInput} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {PrsStore} from '../../../mobxStore/prsStore';
 import {runInAction} from 'mobx';
-import {storeReset} from '../../../mobxStore/resetPrsStore';
 import {issueStyle} from '../../AddPrs/Parts/issueStyle';
 import {updateStyle} from './updateStyle';
 import {observer} from 'mobx-react';
@@ -25,7 +24,7 @@ interface modalProps {
 
 const ModalForm: React.FC<modalProps> = observer(props => {
   async function closeModal() {
-    await storeReset();
+    PrsStore().resetStore();
     runInAction(() => {
       UpdateStore().updateModalStatus.set(false);
     });

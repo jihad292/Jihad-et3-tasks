@@ -16,8 +16,6 @@ import IssueDropdownItem from '../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../Common/issueCheckBoxItem';  
 import Calender from './Parts/calender';
 import AddButton from './Parts/addButton';
-import {storeReset} from '../../mobxStore/resetPrsStore';
-import {addIssueChecker} from './Parts/addIssueChecker';
 
 interface issueProps {
   prsStore: prsStoreImpl;
@@ -29,7 +27,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
   const pressHandler = () => {
     runInAction(
       () => {
-        addIssueChecker();
+        PrsStore().addChecker();
         if (
           prsStore.comment.get() !== '' &&
           prsStore.link.get() !== '' &&
@@ -41,7 +39,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
           prsStore.dateS.get() !== ''
         ) {
           prsStore.addPr();
-          storeReset();
+          PrsStore().resetStore();
         }
         console.log(prsStore.prs);
       },

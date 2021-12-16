@@ -1,5 +1,6 @@
 import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
+import { Alert } from 'react-native';
 
 export class prsStoreImpl {
   //Prs properties
@@ -134,6 +135,53 @@ export class prsStoreImpl {
     return value | 0;
   }
 
+  resetStore() {
+    this.setComment('');
+    this.setLink('');
+    this.setSE('AH');
+    this.setPlatform('mobile-client');
+    this.setSize('Easy');
+    this.setDifficulty('Easy');
+    this.setStatus('Merged');
+    this.setVersion('8.1.0');
+    this.setReviewByBY(false);
+    this.setReviewByAH(false);
+    this.setReviewByHT(false);
+    this.setByStatus('');
+    this.setAhStatus('');
+    this.setHtStatus('');
+  }
+  
+  addChecker(){
+    if (this.comment.get() === '') {
+      Alert.alert('Please enter a Comment');
+    }
+    if (this.link.get() === '') {
+      Alert.alert('Please choose a Link');
+    }
+    if (this.se.get() === '') {
+      Alert.alert('Please choose a SE');
+    }
+    if (this.platform.get() === '') {
+      Alert.alert('Please choose a Platform');
+    }
+    if (this.size.get() === '') {
+      Alert.alert('Please choose a Size');
+    }
+    if (this.difficulty.get() === '') {
+      Alert.alert('Please choose a Difficulty');
+    }
+    if (this.status.get() === '') {
+      Alert.alert('Please choose a status');
+    }
+    if (this.version.get() === '') {
+      Alert.alert('Please choose a Version');
+    }
+    if (this.dateS.get() === '') {
+      Alert.alert('Please choose a Date');
+    }
+  }
+
   addPr() {
     if (this.reviewByBY.get() === true) {
       this.setByStatus('Yes');
@@ -187,7 +235,10 @@ export class prsStoreImpl {
     this.setPrs(test);
   }
 }
-export const PrsStore = memoize(() => {
-  return new prsStoreImpl();
-});
+export const PrsStore = memoize(
+  () => {
+    return new prsStoreImpl();
+  },
+  () => 1,
+);
 export default {PrsStore};
