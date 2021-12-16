@@ -5,9 +5,11 @@ import {PrsStore} from '../../../mobxStore/prsStore';
 import {runInAction} from 'mobx';
 import {prItemStyle} from './prItemStyle';
 import {observer} from 'mobx-react';
+import {LanguageStore} from '../../../mobxStore/languageStore';
+import {UpdateStore} from '../../../mobxStore/updateStore';
 
-interface propertyProps { 
-  text: string;    
+interface propertyProps {
+  text: string;
   property: StringNumber;
 }
 const Property: React.FC<propertyProps> = props => {
@@ -21,24 +23,24 @@ const Property: React.FC<propertyProps> = props => {
 
 const PrItem = observer((props: prItem) => {
   const deleteHandler = () => {
-    PrsStore.deletePr(props.id);
+    PrsStore().deletePr(props.id);
   };
 
   const openUpdateModal = () => {
     runInAction(() => {
-      PrsStore.updateModalStatus.set(true) ;
-      PrsStore.setId(props.id);
-      PrsStore.setComment(props.comment);
-      PrsStore.setLink(props.link);
-      PrsStore.setSE(props.se);  
-      PrsStore.setDifficulty(props.difficulty);
-      PrsStore.setPlatform(props.platform);
-      PrsStore.setSize(props.size);
-      PrsStore.setStatus(props.status);
-      PrsStore.setVersion(props.version);
-      PrsStore.setReviewByBY(props.reviewByBY);
-      PrsStore.setReviewByAH(props.reviewByAH);
-      PrsStore.setReviewByHT(props.reviewByHT);
+      UpdateStore().updateModalStatus.set(true);
+      PrsStore().setId(props.id);
+      PrsStore().setComment(props.comment);
+      PrsStore().setLink(props.link);
+      PrsStore().setSE(props.se);
+      PrsStore().setDifficulty(props.difficulty);
+      PrsStore().setPlatform(props.platform);
+      PrsStore().setSize(props.size);
+      PrsStore().setStatus(props.status);
+      PrsStore().setVersion(props.version);
+      PrsStore().setReviewByBY(props.reviewByBY);
+      PrsStore().setReviewByAH(props.reviewByAH);
+      PrsStore().setReviewByHT(props.reviewByHT);
     });
   };
 
@@ -61,8 +63,14 @@ const PrItem = observer((props: prItem) => {
           </View>
         </View>
 
-        <Property text={PrsStore.commentTitle.get()} property={props.comment} />
-        <Property text={PrsStore.linkTitle.get()} property={props.link} />
+        <Property
+          text={LanguageStore().commentTitle.get()}
+          property={props.comment}
+        />
+        <Property
+          text={LanguageStore().linkTitle.get()}
+          property={props.link}
+        />
 
         <View style={prItemStyle.smallPropertiesDiv}>
           <Property text="SE" property={props.se} />

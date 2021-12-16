@@ -1,8 +1,9 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
-import {PrsStore, prsStoreImpl} from '../../../mobxStore/prsStore';
+import {prsStoreImpl} from '../../../mobxStore/prsStore';
 import {observer} from 'mobx-react';
 import PrItem from './prItem';
+import {SearchStore} from '../../../mobxStore/prsSearchStore';
 
 interface prsListprops {
   prsStore: prsStoreImpl;
@@ -12,10 +13,9 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
   return (
     <>
       <View>
-        {PrsStore.searchState.get() && (
+        {SearchStore().searchState.get() !== true && (
           <FlatList
             data={prsStore.prs}
-            extraData={prsStore.prs}
             keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (
               <PrItem
@@ -41,10 +41,10 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
           />
         )}
 
-        {PrsStore.searchState.get() && (
+        {SearchStore().searchState.get() && (
           <FlatList
-            data={prsStore.searchArray.get()}
-            extraData={prsStore.searchArray}
+            data={SearchStore().searchArray.get()}
+            extraData={SearchStore().searchArray}
             keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (
               <PrItem

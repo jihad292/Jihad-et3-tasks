@@ -8,73 +8,75 @@ import HeadPage from './Parts/headPage';
 import UpdateModal from './Parts/updateModal';
 import {ButtonHandler} from '../../languageHandler/buttonHandler';
 import sortBy from 'lodash.sortby';
+import {LanguageStore} from '../../mobxStore/languageStore';
+import {UpdateStore} from '../../mobxStore/updateStore';
+import {SearchStore} from '../../mobxStore/prsSearchStore';
+import {SortStore} from '../../mobxStore/prsSortStore';
 
 const PrsScreen = observer(() => {
-
   async function handleSort() {
-    if (PrsStore.sortState.get()) {
+    if (SortStore().sortState.get()) {
       runInAction(() => {
-        PrsStore.setSortState(false);
-        PrsStore.setSortStateText('ASC');
-        let prsASC = sortBy(PrsStore.prs, ['type', 'date']);
-        PrsStore.setPrs(prsASC);
+        SortStore().setSortState(false);
+        SortStore().setSortStateText('ASC');
+        let prsASC = sortBy(PrsStore().prs, ['type', 'date']);
+        PrsStore().setPrs(prsASC);
       });
     } else {
       runInAction(() => {
-        PrsStore.setSortState(true);
-        PrsStore.setSortStateText('DESC');
-        let prsDesc = sortBy(PrsStore.prs, ['type', 'date']).reverse();
-        PrsStore.setPrs(prsDesc);
+        SortStore().setSortState(true);
+        SortStore().setSortStateText('DESC');
+        let prsDesc = sortBy(PrsStore().prs, ['type', 'date']).reverse();
+        PrsStore().setPrs(prsDesc);
       });
     }
   }
 
   async function handleChangeText(value: string) {
-    PrsStore.setSearchStateText(value);
-    if (PrsStore.searchStateText.get() === '') {
+    SearchStore().setSearchStateText(value);
+    if (SearchStore().searchStateText.get() === '') {
       runInAction(() => {
-        PrsStore.setSearchState(false);
+        SearchStore().setSearchState(false);
       });
     }
-    if (PrsStore.searchStateText.get() !== '') {
+    if (SearchStore().searchStateText.get() !== '') {
       runInAction(() => {
-        PrsStore.setSearchState(true);
-        let test : any = PrsStore.prs.filter(pr => {
+        SearchStore().setSearchState(true);
+        let test: any = PrsStore().prs.filter(pr => {
           return pr.comment
             .toLowerCase()
-            .includes(PrsStore.searchStateText.get().toLowerCase());
+            .includes(SearchStore().searchStateText.get().toLowerCase());
         });
-        PrsStore.setSearchArray(test);
+        SearchStore().setSearchArray(test);
       });
     }
   }
 
   async function handleLanguage() {
-    if (PrsStore.languageState.get()) {
-      PrsStore.setLanguageState(false);
-      PrsStore.setLanguageStateText('English');
+    if (LanguageStore().languageState.get()) {
+      LanguageStore().setLanguageState(false);
+      LanguageStore().setLanguageStateText('English');
     } else {
-      PrsStore.setLanguageState(true);
-      PrsStore.setLanguageStateText('Arabic');
-      
+      LanguageStore().setLanguageState(true);
+      LanguageStore().setLanguageStateText('Arabic');
     }
   }
   return (
     <>
       <ButtonHandler
-        text={PrsStore.languageStateText.get()}
+        text={LanguageStore().languageStateText.get()}
         handleLanguage={handleLanguage}
       />
       <HeadPage
         handleSort={handleSort}
-        name={PrsStore.sortStateText.get()}
-        value={PrsStore.searchStateText.get()}
+        name={SortStore().sortStateText.get()}
+        value={SearchStore().searchStateText.get()}
         handleChange={handleChangeText}
       />
 
       <View style={styles.container}>
-        <UpdateModal handleModal={PrsStore.updateModalStatus.get()} />
-        <PrsList prsStore={PrsStore} />
+        <UpdateModal handleModal={UpdateStore().updateModalStatus.get()} />
+        <PrsList prsStore={PrsStore()} />
       </View>
     </>
   );

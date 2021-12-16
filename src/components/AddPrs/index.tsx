@@ -24,11 +24,10 @@ interface issueProps {
 }
 
 const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
-  prsStore = PrsStore;
+  prsStore = PrsStore();
 
   const pressHandler = () => {
     runInAction(
-      //for strict mode in mobX
       () => {
         addIssueChecker();
         if (
@@ -44,6 +43,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
           prsStore.addPr();
           storeReset();
         }
+        console.log(prsStore.prs);
       },
     );
   };

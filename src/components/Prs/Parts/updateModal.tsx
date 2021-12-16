@@ -17,6 +17,7 @@ import {
 } from '../../Common/prProperties';
 import IssueDropdownItem from '../../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
+import {UpdateStore} from '../../../mobxStore/updateStore';
 
 interface modalProps {
   visible: boolean;
@@ -26,7 +27,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
   async function closeModal() {
     await storeReset();
     runInAction(() => {
-      PrsStore.updateModalStatus.set(false);
+      UpdateStore().updateModalStatus.set(false);
     });
   }
   return (
@@ -35,7 +36,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
         <View style={updateStyle.modalContainer}>
           <View style={updateStyle.closeModalDiv}>
             <Text style={updateStyle.issueIdText}>
-              Update issue with id : {PrsStore.id}
+              Update issue with id : {PrsStore().id.get()}
             </Text>
             <View style={updateStyle.closeIcon}>
               <TouchableOpacity onPress={closeModal}>
@@ -52,59 +53,59 @@ const ModalForm: React.FC<modalProps> = observer(props => {
             <View style={issueStyle.inputTextContainer}>
               <Text style={issueStyle.itemProperty}>Update Comment</Text>
               <TextInput
-                value={PrsStore.comment.get()}
+                value={PrsStore().comment.get()}
                 style={issueStyle.textInput}
                 placeholder="Update Comment"
-                onChangeText={PrsStore.setComment}
+                onChangeText={PrsStore().setComment}
               />
             </View>
 
             <View style={issueStyle.inputTextContainer}>
               <Text style={issueStyle.itemProperty}>Update Link</Text>
               <TextInput
-                value={PrsStore.link.get()}
+                value={PrsStore().link.get()}
                 style={issueStyle.textInput}
                 placeholder="Update Link"
-                onChangeText={PrsStore.setLink}
+                onChangeText={PrsStore().setLink}
               />
             </View>
 
             <View style={updateStyle.secondaryDiv}>
               <View style={updateStyle.secondaryDivFirst}>
                 <IssueDropdownItem
-                  defaultValue={PrsStore.se.get()}
+                  defaultValue={PrsStore().se.get()}
                   data={SE_Array}
-                  setItem={PrsStore.setSE}
+                  setItem={PrsStore().setSE}
                   propertyDefinition="SE"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.platform.get()}
+                  defaultValue={PrsStore().platform.get()}
                   data={Platform_Array}
-                  setItem={PrsStore.setPlatform}
+                  setItem={PrsStore().setPlatform}
                   propertyDefinition="Platform"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.size.get()}
+                  defaultValue={PrsStore().size.get()}
                   data={Size_Array}
-                  setItem={PrsStore.setSize}
+                  setItem={PrsStore().setSize}
                   propertyDefinition="Size"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.difficulty.get()}
+                  defaultValue={PrsStore().difficulty.get()}
                   data={Difficulty_Array}
-                  setItem={PrsStore.setDifficulty}
+                  setItem={PrsStore().setDifficulty}
                   propertyDefinition="Difficulty"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.status.get()}
+                  defaultValue={PrsStore().status.get()}
                   data={Status_Array}
-                  setItem={PrsStore.setStatus}
+                  setItem={PrsStore().setStatus}
                   propertyDefinition="Status"
                 />
                 <IssueDropdownItem
-                  defaultValue={PrsStore.version.get()}
+                  defaultValue={PrsStore().version.get()}
                   data={Release_Version_Array}
-                  setItem={PrsStore.setVersion}
+                  setItem={PrsStore().setVersion}
                   propertyDefinition="Version"
                 />
               </View>
@@ -112,18 +113,18 @@ const ModalForm: React.FC<modalProps> = observer(props => {
               <View style={updateStyle.secondaryDivSecond}>
                 <IssueCheckBoxItem
                   propertyText="Review by By"
-                  reviewBy={PrsStore.reviewByBY.get()}
-                  setReview={PrsStore.setReviewByBY}
+                  reviewBy={PrsStore().reviewByBY.get()}
+                  setReview={PrsStore().setReviewByBY}
                 />
                 <IssueCheckBoxItem
                   propertyText="Review by AH"
-                  reviewBy={PrsStore.reviewByAH.get()}
-                  setReview={PrsStore.setReviewByAH}
+                  reviewBy={PrsStore().reviewByAH.get()}
+                  setReview={PrsStore().setReviewByAH}
                 />
                 <IssueCheckBoxItem
                   propertyText="Review by HT"
-                  reviewBy={PrsStore.reviewByHT.get()}
-                  setReview={PrsStore.setReviewByHT}
+                  reviewBy={PrsStore().reviewByHT.get()}
+                  setReview={PrsStore().setReviewByHT}
                 />
               </View>
             </View>

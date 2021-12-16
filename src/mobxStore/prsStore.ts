@@ -1,4 +1,5 @@
 import {observable, runInAction} from 'mobx';
+import memoize from 'lodash/memoize';
 
 export class prsStoreImpl {
   //Prs properties
@@ -129,176 +130,48 @@ export class prsStoreImpl {
     });
   };
 
-  //update Modal
-  updateModalStatus = observable.box<boolean>(false);
-  setUpdateModalstatus = (value: boolean) => {
-    runInAction(() => {
-      this.updateModalStatus.set(value);
-    });
-  };
-
-  //language Titles properties
-  commentTitle = observable.box<string>('Comment');
-  linkTitle = observable.box<string>('Link');
-  seTitle = observable.box<string>('SE');
-  difficultyTitle = observable.box<string>('Difficulty');
-  platformTitle = observable.box<string>('Platform');
-  sizeTitle = observable.box<string>('Size');
-  statusTitle = observable.box<string>('Status');
-  versionTitle = observable.box<string>('Version');
-  ByReviewTitle = observable.box<string>('Review by BY');
-  AhReviewTitle = observable.box<string>('Review by AH');
-  HtReviewTitle = observable.box<string>('Review by HT');
-  dateTitle = observable.box<string>('Date');
-  languageState = observable.box<boolean>(false);
-  languageStateText = observable.box<string>('English');
-
-  setCommentTitle = (value: string) => {
-    runInAction(() => {
-      this.commentTitle.set(value);
-    });
-  };
-
-  setLinkTitle = (value: string) => {
-    runInAction(() => {
-      this.linkTitle.set(value);
-    });
-  };
-
-  setSeTitle = (value: string) => {
-    runInAction(() => {
-      this.seTitle.set(value);
-    });
-  };
-
-  setDifficultyTitle = (value: string) => {
-    runInAction(() => {
-      this.difficultyTitle.set(value);
-    });
-  };
-
-  setPlatformTitle = (value: string) => {
-    runInAction(() => {
-      this.platformTitle.set(value);
-    });
-  };
-
-  setSizeTitle = (value: string) => {
-    runInAction(() => {
-      this.sizeTitle.set(value);
-    });
-  };
-
-  setStatusTitle = (value: string) => {
-    runInAction(() => {
-      this.statusTitle.set(value);
-    });
-  };
-
-  setVersionTitle = (value: string) => {
-    runInAction(() => {
-      this.versionTitle.set(value);
-    });
-  };
-
-  setByReviewTitle = (value: string) => {
-    runInAction(() => {
-      this.ByReviewTitle.set(value);
-    });
-  };
-
-  setAhReviewTitle = (value: string) => {
-    runInAction(() => {
-      this.AhReviewTitle.set(value);
-    });
-  };
-
-  setHtReviewTitle = (value: string) => {
-    runInAction(() => {
-      this.HtReviewTitle.set(value);
-    });
-  };
-
-  setDateTitle = (value: string) => {
-    runInAction(() => {
-      this.dateTitle.set(value);
-    });
-  };
-
-  setLanguageState = (value: boolean) => {
-    runInAction(() => {
-      this.languageState.set(value);
-    });
-  };
-
-  setLanguageStateText = (value: string) => {
-    runInAction(() => {
-      this.languageStateText.set(value);
-    });
-  };
-  //search properties
-  searchState = observable.box<boolean>(false);
-  searchStateText = observable.box<string>('');
-  searchArray = observable.box([]);
-  setSearchState = (value: boolean) => {
-    runInAction(() => {
-      this.searchState.set(value);
-    });
-  };
-
-  setSearchStateText = (value: string) => {
-    runInAction(() => {
-      this.searchStateText.set(value);
-    });
-  };
-
-  setSearchArray = (value: []) => {
-    runInAction(() => {
-      this.searchArray.set(value);
-    });
-  };
-
-  //sort properties
-  sortState = observable.box<boolean>(false);
-  sortStateText = observable.box<string>('');
-
-  setSortState = (value: boolean) => {
-    runInAction(() => {
-      this.sortState.set(value);
-    });
-  };
-
-  setSortStateText = (value: string) => {
-    runInAction(() => {
-      this.sortStateText.set(value);
-    });
-  };
-
   float2int(value: number) {
     return value | 0;
   }
 
   addPr() {
+    if (this.reviewByBY.get() === true) {
+      this.setByStatus('Yes');
+    }
+    if (this.reviewByBY.get() === false) {
+      this.setByStatus('No');
+    }
+    if (this.reviewByAH.get() === true) {
+      this.setAhStatus('Yes');
+    }
+    if (this.reviewByAH.get() === false) {
+      this.setAhStatus('No');
+    }
+    if (this.reviewByHT.get() === true) {
+      this.setHtStatus('Yes');
+    }
+    if (this.reviewByHT.get() === false) {
+      this.setHtStatus('No');
+    }
     const pr = {
       id: this.float2int(Number(+Math.random().toFixed(4) * 10000)),
-      comment: this.comment,
-      link: this.link,
-      se: this.se,
-      platform: this.platform,
-      size: this.size,
-      difficulty: this.difficulty,
-      status: this.status,
-      version: this.version,
-      ByStatus: this.byStatus,
-      AhStatus: this.ahStatus,
-      HtStatus: this.htStatus,
-      date: this.date,
-      dateS: this.dateS,
-      reviewByBY: this.reviewByBY,
-      reviewByAH: this.reviewByAH,
-      reviewByHT: this.reviewByHT,
+      comment: this.comment.get(),
+      link: this.link.get(),
+      se: this.se.get(),
+      platform: this.platform.get(),
+      size: this.size.get(),
+      difficulty: this.difficulty.get(),
+      status: this.status.get(),
+      version: this.version.get(),
+      ByStatus: this.byStatus.get(),
+      AhStatus: this.ahStatus.get(),
+      HtStatus: this.htStatus.get(),
+      date: this.date.get(),
+      dateS: this.dateS.get(),
+      reviewByBY: this.reviewByBY.get(),
+      reviewByAH: this.reviewByAH.get(),
+      reviewByHT: this.reviewByHT.get(),
     };
-
     this.prs.push(pr);
     //the test array will help us to update prs array automatically after add a pr
     let test = this.prs.filter(pr => {
@@ -314,5 +187,7 @@ export class prsStoreImpl {
     this.setPrs(test);
   }
 }
-
-export const PrsStore = new prsStoreImpl();
+export const PrsStore = memoize(() => {
+  return new prsStoreImpl();
+});
+export default {PrsStore};
