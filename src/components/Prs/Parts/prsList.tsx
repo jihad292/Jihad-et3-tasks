@@ -1,21 +1,18 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
-import {prsStoreImpl} from '../../../mobxStore/prsStore';
+import {PrsStore} from '../../../mobxStore/prsStore';
 import {observer} from 'mobx-react';
 import PrItem from './prItem';
 import {SearchStore} from '../../../mobxStore/prsSearchStore';
 
-interface prsListprops {
-  prsStore: prsStoreImpl;
-}
 
-const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
+const PrsList = observer(() => {
   return (
-    <>
+    <>      
       <View>
         {SearchStore().searchState.get() !== true && (
           <FlatList
-            data={prsStore.prs}
+            data={PrsStore().prs}
             keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (
               <PrItem

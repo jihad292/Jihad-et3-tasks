@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import PrsList from './Parts/prsList';
-import {PrsStore} from '../../mobxStore/prsStore';
 import {observer} from 'mobx-react';
 import HeadPage from './Parts/headPage';
 import UpdateModal from './Parts/updateModal';
@@ -12,7 +11,7 @@ import {SearchStore} from '../../mobxStore/prsSearchStore';
 import {SortStore} from '../../mobxStore/prsSortStore';
 
 const PrsScreen = observer(() => {
-  return (
+  return ( 
     <>
       <ButtonHandler
         text={LanguageStore().languageStateText.get()}
@@ -27,7 +26,7 @@ const PrsScreen = observer(() => {
 
       <View style={styles.container}>
         <UpdateModal handleModal={UpdateStore().updateModalStatus.get()} />
-        <PrsList prsStore={PrsStore()} />
+        <PrsList />
       </View>
     </>
   );
