@@ -27,6 +27,7 @@ export class sortStoreImpl {
           this.setSortStateText('ASC');
           let prsASC = sortBy(PrsStore().prs, ['type', 'date']);
           PrsStore().setPrs(prsASC);
+          PrsStore().flatListRender.set(! PrsStore().flatListRender.get());
         });
       } else {
         runInAction(() => {
@@ -34,6 +35,7 @@ export class sortStoreImpl {
           this.setSortStateText('DESC');
           let prsDesc = sortBy(PrsStore().prs, ['type', 'date']).reverse();
           PrsStore().setPrs(prsDesc);
+          PrsStore().flatListRender.set(! PrsStore().flatListRender.get());
         });
       }
     });
