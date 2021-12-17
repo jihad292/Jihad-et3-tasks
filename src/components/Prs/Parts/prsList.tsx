@@ -8,7 +8,7 @@ import {SearchStore} from '../../../mobxStore/prsSearchStore';
 interface prsListprops {
   prsStore: prsStoreImpl;
 }
-  
+
 const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
   return (
     <>
@@ -39,7 +39,7 @@ const PrsList: React.FC<prsListprops> = observer(({prsStore}) => {
               />
             )}
           />
-        )}      
+        )}
 
         {SearchStore().searchState.get() && (
           <FlatList

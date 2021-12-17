@@ -1,6 +1,6 @@
 type prItem = {
   id: number;
-  public readonly comment: string;
+  comment: string;
   link: string;
   se: string;
   platform: string;

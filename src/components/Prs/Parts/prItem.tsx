@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {PrsStore} from '../../../mobxStore/prsStore';
-import {runInAction} from 'mobx';
 import {prItemStyle} from './prItemStyle';
 import {observer} from 'mobx-react';
 import {LanguageStore} from '../../../mobxStore/languageStore';
@@ -22,25 +21,6 @@ const Property: React.FC<propertyProps> = props => {
 };
 
 const PrItem = observer((props: prItem) => {
-
-  const openUpdateModal = () => {
-    runInAction(() => {
-      UpdateStore().updateModalStatus.set(true);
-      PrsStore().setId(props.id);
-      PrsStore().setComment(props.comment);
-      PrsStore().setLink(props.link);
-      PrsStore().setSE(props.se);
-      PrsStore().setDifficulty(props.difficulty);
-      PrsStore().setPlatform(props.platform);
-      PrsStore().setSize(props.size);
-      PrsStore().setStatus(props.status);
-      PrsStore().setVersion(props.version);
-      PrsStore().setReviewByBY(props.reviewByBY);
-      PrsStore().setReviewByAH(props.reviewByAH);
-      PrsStore().setReviewByHT(props.reviewByHT);
-    });
-  };
-
   return (
     <>
       <View style={prItemStyle.container}>
@@ -48,13 +28,14 @@ const PrItem = observer((props: prItem) => {
           <Property text="ID" property={props.id} />
 
           <View style={prItemStyle.actionSymbol}>
-            <TouchableOpacity onPress={openUpdateModal}>
+            <TouchableOpacity
+              onPress={() => UpdateStore().openUpdateModal(props)}>
               <FontAwesome5 name={'pen-alt'} size={25} color="white" />
             </TouchableOpacity>
           </View>
 
           <View style={prItemStyle.actionSymbol}>
-            <TouchableOpacity onPress={()=>PrsStore().deletePr(props.id)}>
+            <TouchableOpacity onPress={() => PrsStore().deletePr(props.id)}>
               <FontAwesome5 name={'trash-alt'} size={25} color="white" />
             </TouchableOpacity>
           </View>
