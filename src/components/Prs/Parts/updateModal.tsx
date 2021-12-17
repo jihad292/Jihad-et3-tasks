@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, Modal, TouchableOpacity, TextInput} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {PrsStore} from '../../../mobxStore/prsStore';
-import {runInAction} from 'mobx';
 import {issueStyle} from '../../AddPrs/Parts/issueStyle';
 import {updateStyle} from './updateStyle';
 import {observer} from 'mobx-react';
@@ -23,12 +22,6 @@ interface modalProps {
 }
 
 const ModalForm: React.FC<modalProps> = observer(props => {
-  async function closeModal() {
-    PrsStore().resetStore();
-    runInAction(() => {
-      UpdateStore().updateModalStatus.set(false);
-    });
-  }
   return (
     <Modal transparent visible={props.visible}>
       <View style={updateStyle.modal}>
@@ -38,7 +31,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
               Update issue with id : {PrsStore().id.get()}
             </Text>
             <View style={updateStyle.closeIcon}>
-              <TouchableOpacity onPress={closeModal}>
+              <TouchableOpacity onPress={UpdateStore().closeModal}>
                 <FontAwesome5
                   name={'window-close'}
                   size={23}

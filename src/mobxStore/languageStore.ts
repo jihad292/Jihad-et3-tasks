@@ -100,6 +100,19 @@ export class languageStoreImpl {
       this.languageStateText.set(value);
     });
   };
+
+  handleLanguage = () => {
+    runInAction(() => { 
+      if (this.languageState.get() === true) {
+        this.setLanguageState(false);
+        this.setLanguageStateText('English');
+      }
+      else {
+        this.setLanguageState(true);
+        this.setLanguageStateText('Arabic');
+      }
+    });
+  }
 }
 
 export const LanguageStore = memoize(() => {

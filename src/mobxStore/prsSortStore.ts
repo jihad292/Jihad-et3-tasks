@@ -1,7 +1,9 @@
-import memoize from "lodash/memoize";
-import { runInAction,observable } from "mobx";
+import memoize from 'lodash/memoize';
+import {runInAction, observable} from 'mobx';
+import sortBy from 'lodash.sortby';
+import {PrsStore} from './prsStore';
 
-export class sortStoreImpl{
+export class sortStoreImpl {
   sortState = observable.box<boolean>(false);
   sortStateText = observable.box<string>('ASC');
 
@@ -16,10 +18,30 @@ export class sortStoreImpl{
       this.sortStateText.set(value);
     });
   };
+
+  handleSort = () => {
+    runInAction(() => {
+      if (this.sortState.get()) {
+        runInAction(() => {
+          this.setSortState(false);
+          this.setSortStateText('ASC');
+          let prsASC = sortBy(PrsStore().prs, ['type', 'date']);
+          PrsStore().setPrs(prsASC);
+        });
+      } else {
+        runInAction(() => {
+          this.setSortState(true);
+          this.setSortStateText('DESC');
+          let prsDesc = sortBy(PrsStore().prs, ['type', 'date']).reverse();
+          PrsStore().setPrs(prsDesc);
+        });
+      }
+    });
+  };
 }
 
-export const SortStore = memoize(()=>{
-    return new sortStoreImpl;
+export const SortStore = memoize(() => {
+  return new sortStoreImpl();
 });
 
-export default { SortStore }
+export default {SortStore};

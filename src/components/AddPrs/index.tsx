@@ -1,19 +1,18 @@
 import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 import {prsStoreImpl, PrsStore} from '../../mobxStore/prsStore';
-import {runInAction} from 'mobx';
 import {observer} from 'mobx-react';
 import {
   SE_Array,
   Platform_Array,
   Size_Array,
-  Difficulty_Array,   
+  Difficulty_Array,
   Status_Array,
   Release_Version_Array,
 } from '../Common/prProperties';
 import {issueStyle} from './Parts/issueStyle';
 import IssueDropdownItem from '../Common/issueDropdownItem';
-import IssueCheckBoxItem from '../Common/issueCheckBoxItem';  
+import IssueCheckBoxItem from '../Common/issueCheckBoxItem';
 import Calender from './Parts/calender';
 import AddButton from './Parts/addButton';
 
@@ -23,28 +22,6 @@ interface issueProps {
 
 const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
   prsStore = PrsStore();
-
-  const pressHandler = () => {
-    runInAction(
-      () => {
-        PrsStore().addChecker();
-        if (
-          prsStore.comment.get() !== '' &&
-          prsStore.link.get() !== '' &&
-          prsStore.se.get() !== '' &&
-          prsStore.platform.get() !== '' &&
-          prsStore.difficulty.get() !== '' &&
-          prsStore.status.get() !== '' &&
-          prsStore.version.get() !== '' &&
-          prsStore.dateS.get() !== ''
-        ) {
-          prsStore.addPr();
-          PrsStore().resetStore();
-        }
-        console.log(prsStore.prs);
-      },
-    );
-  };
 
   return (
     <>
@@ -159,7 +136,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
           </View>
         </View>
         <View style={issueStyle.addButtonDiv}>
-          <AddButton text="Add" pressHandler={pressHandler} />
+          <AddButton text="Add" pressHandler={prsStore.pressHandler} />
         </View>
       </View>
     </>

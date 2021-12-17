@@ -1,5 +1,6 @@
 import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
+import {PrsStore} from './prsStore';
 
 export class searchStoreImpl {
   searchState = observable.box<boolean>(false);
@@ -20,6 +21,28 @@ export class searchStoreImpl {
   setSearchArray = (value: []) => {
     runInAction(() => {
       this.searchArray.set(value);
+    });
+  };
+
+  handleChangeText = (value: string) => {
+    runInAction(() => {
+      this.setSearchStateText(value);
+      if (this.searchStateText.get() === '') {
+        runInAction(() => {
+          this.setSearchState(false);
+        });
+      }
+      if (this.searchStateText.get() !== '') {
+        runInAction(() => {
+          this.setSearchState(true);
+          let test: any = PrsStore().prs.filter(pr => {
+            return pr.comment
+              .toLowerCase()
+              .includes(this.searchStateText.get().toLowerCase());
+          });
+          this.setSearchArray(test);
+        });
+      }
     });
   };
 }

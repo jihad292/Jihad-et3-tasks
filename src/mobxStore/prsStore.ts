@@ -228,6 +228,27 @@ export class prsStoreImpl {
     this.setPrs(test);
   }
 
+  pressHandler = () => {
+    runInAction(
+      () => {  
+        this.addChecker();
+        if (
+          this.comment.get() !== '' &&
+          this.link.get() !== '' &&
+          this.se.get() !== '' &&
+          this.platform.get() !== '' &&
+          this.difficulty.get() !== '' &&
+          this.status.get() !== '' &&
+          this.version.get() !== '' &&
+          this.dateS.get() !== ''
+        ) {
+          this.addPr();
+          this.resetStore();
+        }
+      },
+    );
+  };
+
   deletePr(value: number) {
     let test = this.prs.filter(pr => {
       return pr.id != value;

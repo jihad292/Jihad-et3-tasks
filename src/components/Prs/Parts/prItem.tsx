@@ -22,9 +22,6 @@ const Property: React.FC<propertyProps> = props => {
 };
 
 const PrItem = observer((props: prItem) => {
-  const deleteHandler = () => {
-    PrsStore().deletePr(props.id);
-  };
 
   const openUpdateModal = () => {
     runInAction(() => {
@@ -57,7 +54,7 @@ const PrItem = observer((props: prItem) => {
           </View>
 
           <View style={prItemStyle.actionSymbol}>
-            <TouchableOpacity onPress={deleteHandler}>
+            <TouchableOpacity onPress={()=>PrsStore().deletePr(props.id)}>
               <FontAwesome5 name={'trash-alt'} size={25} color="white" />
             </TouchableOpacity>
           </View>
