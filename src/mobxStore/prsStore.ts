@@ -1,11 +1,10 @@
 import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 
 export class prsStoreImpl {
   //Prs properties
   prs = observable([]);
-  test = observable([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
   link = observable.box<string>('');
@@ -23,6 +22,7 @@ export class prsStoreImpl {
   htStatus = observable.box<string>('');
   date = observable.box<Date>(new Date());
   dateS = observable.box<string>('');
+  flatListRender = observable.box<boolean>(false);
 
   setPrs = (array: any) => {
     runInAction(() => {
@@ -152,8 +152,8 @@ export class prsStoreImpl {
     this.setAhStatus('');
     this.setHtStatus('');
   }
-  
-  addChecker(){
+
+  addChecker() {
     if (this.comment.get() === '') {
       Alert.alert('Please enter a Comment');
     }
@@ -184,7 +184,6 @@ export class prsStoreImpl {
   }
 
   addPr() {
-    this.test = this.prs;
     if (this.reviewByBY.get() === true) {
       this.setByStatus('Yes');
     }
@@ -222,42 +221,37 @@ export class prsStoreImpl {
       reviewByAH: this.reviewByAH.get(),
       reviewByHT: this.reviewByHT.get(),
     };
-    this.test.push(pr);
-    //the test array will help us to update prs array automatically after add a pr
-    let test = this.prs.filter(pr => {
-      return pr.id !== null;
-    });
-    this.prs = this.test;
-    console.log(this.prs)
-    
+    this.prs.push(pr);
+    this.flatListRender.set(!this.flatListRender.get());
   }
 
   pressHandler = () => {
-    runInAction(
-      () => {  
-        this.addChecker();
-        if (
-          this.comment.get() !== '' &&
-          this.link.get() !== '' &&
-          this.se.get() !== '' &&
-          this.platform.get() !== '' &&
-          this.difficulty.get() !== '' &&
-          this.status.get() !== '' &&
-          this.version.get() !== '' &&
-          this.dateS.get() !== ''
-        ) {
-          this.addPr();
-          this.resetStore();
-        }
-      },
-    );
+    runInAction(() => {
+      this.addChecker();
+      if (
+        this.comment.get() !== '' &&
+        this.link.get() !== '' &&
+        this.se.get() !== '' &&
+        this.platform.get() !== '' &&
+        this.difficulty.get() !== '' &&
+        this.status.get() !== '' &&
+        this.version.get() !== '' &&
+        this.dateS.get() !== ''
+      ) {
+        this.addPr();
+        this.resetStore();
+      }
+    });
   };
 
   deletePr(value: number) {
-    let test = this.prs.filter(pr => {
-      return pr.id != value;
+    runInAction(() => {
+      let test = this.prs.filter(pr => {
+        return pr.id != value;
+      });
+      this.setPrs(test);
+      this.flatListRender.set(!this.flatListRender.get());
     });
-    this.setPrs(test);
   }
 }
 export const PrsStore = memoize(
