@@ -79,4 +79,14 @@ export const updateStyle = StyleSheet.create({
     width: '32%',
     backgroundColor: 'darkkhaki',
   },
+  updateButton: {
+    width:60,
+    borderWidth:2,
+    borderColor:'cadetblue',
+    height:40,
+    borderRadius: 20,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'darkgreen',
+  }
 });

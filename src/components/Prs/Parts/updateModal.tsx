@@ -118,6 +118,15 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   reviewBy={PrsStore().reviewByHT.get()}
                   setReview={PrsStore().setReviewByHT}
                 />
+                <TouchableOpacity onPress={()=>UpdateStore().handleUpdate(UpdateStore().updatableItem.get())}>
+                  <View style={updateStyle.updateButton}>
+                  <FontAwesome5
+                  name={'save'}
+                  size={23}
+                  color={'black'}
+                />
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
