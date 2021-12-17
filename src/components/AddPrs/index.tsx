@@ -15,6 +15,8 @@ import IssueDropdownItem from '../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../Common/issueCheckBoxItem';
 import Calender from './Parts/calender';
 import AddButton from './Parts/addButton';
+import {ButtonHandler} from '../../languageHandler/buttonHandler';
+import {LanguageStore} from '../../mobxStore/languageStore';
 
 interface issueProps {
   prsStore: prsStoreImpl;
@@ -25,27 +27,35 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
   return (
     <>
+      <ButtonHandler
+        text={LanguageStore().languageStateText.get()}
+        handleLanguage={LanguageStore().handleLanguage}
+      />
       <View style={issueStyle.container}>
         <View>
           <Calender />
         </View>
 
         <View style={issueStyle.inputTextContainer}>
-          <Text style={issueStyle.itemProperty}>Add Comment</Text>
+          <Text style={issueStyle.itemProperty}>
+            {LanguageStore().commentTitle.get()}
+          </Text>
           <TextInput
             value={prsStore.comment.get()}
             style={issueStyle.textInput}
-            placeholder="add Comment"
+            placeholder={LanguageStore().commentTitle.get()}
             onChangeText={prsStore.setComment}
           />
         </View>
 
         <View style={issueStyle.inputTextContainer}>
-          <Text style={issueStyle.itemProperty}>Add Link</Text>
+          <Text style={issueStyle.itemProperty}>
+            {LanguageStore().linkTitle.get()}
+          </Text>
           <TextInput
             value={prsStore.link.get()}
             style={issueStyle.textInput}
-            placeholder="add Link"
+            placeholder={LanguageStore().linkTitle.get()}
             onChangeText={prsStore.setLink}
           />
         </View>
@@ -56,7 +66,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               defaultValue={prsStore.se.get()}
               data={SE_Array}
               setItem={prsStore.setSE}
-              propertyDefinition="SE"
+              propertyDefinition={LanguageStore().seTitle.get()}
             />
           </View>
 
@@ -65,7 +75,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               defaultValue={prsStore.platform.get()}
               data={Platform_Array}
               setItem={prsStore.setPlatform}
-              propertyDefinition="Platform"
+              propertyDefinition={LanguageStore().platformTitle.get()}
             />
           </View>
         </View>
@@ -76,7 +86,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               defaultValue={prsStore.size.get()}
               data={Size_Array}
               setItem={prsStore.setSize}
-              propertyDefinition="Size"
+              propertyDefinition={LanguageStore().sizeTitle.get()}
             />
           </View>
 
@@ -85,7 +95,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               defaultValue={prsStore.difficulty.get()}
               data={Difficulty_Array}
               setItem={prsStore.setDifficulty}
-              propertyDefinition="Difficulty"
+              propertyDefinition={LanguageStore().difficultyTitle.get()}
             />
           </View>
         </View>
@@ -96,7 +106,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               defaultValue={prsStore.status.get()}
               data={Status_Array}
               setItem={prsStore.setStatus}
-              propertyDefinition="Status"
+              propertyDefinition={LanguageStore().statusTitle.get()}
             />
           </View>
 
@@ -105,7 +115,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               defaultValue={prsStore.version.get()}
               data={Release_Version_Array}
               setItem={prsStore.setVersion}
-              propertyDefinition="Version"
+              propertyDefinition={LanguageStore().versionTitle.get()}
             />
           </View>
         </View>
@@ -113,7 +123,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         <View style={issueStyle.checkBoxesDiv}>
           <View style={issueStyle.checkboxProperty}>
             <IssueCheckBoxItem
-              propertyText="Review by By"
+              propertyText={LanguageStore().ByReviewTitle.get()}
               reviewBy={prsStore.reviewByBY.get()}
               setReview={prsStore.setReviewByBY}
             />
@@ -121,7 +131,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
           <View style={issueStyle.checkboxProperty}>
             <IssueCheckBoxItem
-              propertyText="Review by AH"
+              propertyText={LanguageStore().AhReviewTitle.get()}
               reviewBy={prsStore.reviewByAH.get()}
               setReview={prsStore.setReviewByAH}
             />
@@ -129,14 +139,14 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
           <View style={issueStyle.checkboxProperty}>
             <IssueCheckBoxItem
-              propertyText="Review by HT"
+              propertyText={LanguageStore().HtReviewTitle.get()}
               reviewBy={prsStore.reviewByHT.get()}
               setReview={prsStore.setReviewByHT}
             />
           </View>
         </View>
         <View style={issueStyle.addButtonDiv}>
-          <AddButton text="Add" pressHandler={prsStore.pressHandler} />
+          <AddButton text="+" pressHandler={prsStore.pressHandler} />
         </View>
       </View>
     </>

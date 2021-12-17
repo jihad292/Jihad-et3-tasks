@@ -1,7 +1,15 @@
 import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
+import {
+  saveArLanguage,
+  retrieveArLanguage,
+  saveEngLanguage,
+  retrieveEngLanguage,
+} from '../languageHandler/languangeManagment';
+import {PrsStore} from './prsStore';
 
 export class languageStoreImpl {
+  idTitle = observable.box<string>('ID');
   commentTitle = observable.box<string>('Comment');
   linkTitle = observable.box<string>('Link');
   seTitle = observable.box<string>('SE');
@@ -16,6 +24,12 @@ export class languageStoreImpl {
   dateTitle = observable.box<string>('Date');
   languageState = observable.box<boolean>(false);
   languageStateText = observable.box<string>('English');
+
+  setIdTitle = (value: string) => {
+    runInAction(() => {
+      this.idTitle.set(value);
+    });
+  };
 
   setCommentTitle = (value: string) => {
     runInAction(() => {
@@ -102,17 +116,40 @@ export class languageStoreImpl {
   };
 
   handleLanguage = () => {
-    runInAction(() => { 
+    runInAction(() => {
       if (this.languageState.get() === true) {
         this.setLanguageState(false);
         this.setLanguageStateText('English');
-      }
-      else {
+        saveEngLanguage();
+        retrieveEngLanguage();
+        PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
+      } else {
         this.setLanguageState(true);
         this.setLanguageStateText('Arabic');
+        saveArLanguage();
+        retrieveArLanguage();
+        PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
       }
     });
-  }
+  };
+
+  retrieveLang = (array: string[]) => {
+    runInAction(() => {
+      this.setCommentTitle(array[0]);
+      this.setLinkTitle(array[1]);
+      this.setSeTitle(array[2]);
+      this.setDifficultyTitle(array[3]);
+      this.setPlatformTitle(array[4]);
+      this.setStatusTitle(array[5]);
+      this.setVersionTitle(array[6]);
+      this.setSizeTitle(array[7]);
+      this.setByReviewTitle(array[8]);
+      this.setAhReviewTitle(array[9]);
+      this.setHtReviewTitle(array[10]);
+      this.setDateTitle(array[11]);
+      this.setIdTitle(array[12]);
+    });
+  };
 }
 
 export const LanguageStore = memoize(() => {

@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LanguageStore} from '../mobxStore/languageStore';
 
 //Arabic Part
 export const saveArLanguage = async () => {
@@ -14,6 +15,8 @@ export const saveArLanguage = async () => {
   const saveAhBy = AsyncStorage.setItem('ahAr', 'مراجعة بواسطة AH');
   const saveHtBy = AsyncStorage.setItem('htAr', 'مراجعة بواسطة HT');
   const saveDateAr = AsyncStorage.setItem('dateAr', 'تاريخ');
+  const saveIdAr = AsyncStorage.setItem('idAr', 'بطاقة تعريف');
+
   const saveAll = async () => {
     await Promise.all([
       saveCommentAr,
@@ -28,6 +31,7 @@ export const saveArLanguage = async () => {
       saveAhBy,
       saveHtBy,
       saveDateAr,
+      saveIdAr,
     ]);
   };
   saveAll();
@@ -46,9 +50,9 @@ export const retrieveArLanguage = async () => {
   const AhAr = AsyncStorage.getItem('ahAr');
   const HtAr = AsyncStorage.getItem('htAr');
   const dateAr = AsyncStorage.getItem('dateAr');
-
+  const idAr = AsyncStorage.getItem('idAr');
   const retrieveAll = async () => {
-     let results = await Promise.all([
+    let results = await Promise.all([
       commentAr,
       linkAr,
       seAr,
@@ -61,8 +65,9 @@ export const retrieveArLanguage = async () => {
       AhAr,
       HtAr,
       dateAr,
+      idAr,
     ]);
-    return results;
+    return LanguageStore().retrieveLang(results);
   };
   retrieveAll();
 };
@@ -81,6 +86,7 @@ export const saveEngLanguage = async () => {
   const saveAhEng = AsyncStorage.setItem('ahEng', 'Review by AH');
   const saveHtEng = AsyncStorage.setItem('htEng', 'Review by HT');
   const saveDateEng = AsyncStorage.setItem('dateEng', 'Date');
+  const saveIdEng = AsyncStorage.setItem('idEng', 'ID');
 
   const saveAll = async () => {
     await Promise.all([
@@ -96,6 +102,7 @@ export const saveEngLanguage = async () => {
       saveAhEng,
       saveHtEng,
       saveDateEng,
+      saveIdEng,
     ]);
   };
   saveAll();
@@ -114,9 +121,9 @@ export const retrieveEngLanguage = async () => {
   const AhEng = AsyncStorage.getItem('ahEng');
   const HtEng = AsyncStorage.getItem('htEng');
   const dateEng = AsyncStorage.getItem('dateEng');
-
+  const idEng = AsyncStorage.getItem('idEng');
   const retrieveAll = async () => {
-      let results = await Promise.all([
+    let results = await Promise.all([
       commentEng,
       linkEng,
       seEng,
@@ -129,9 +136,9 @@ export const retrieveEngLanguage = async () => {
       AhEng,
       HtEng,
       dateEng,
+      idEng,
     ]);
-    return results
+    return LanguageStore().retrieveLang(results);
   };
   retrieveAll();
-  
 };

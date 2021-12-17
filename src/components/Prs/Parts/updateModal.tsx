@@ -16,6 +16,7 @@ import {
 import IssueDropdownItem from '../../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
 import {UpdateStore} from '../../../mobxStore/updateStore';
+import {LanguageStore} from '../../../mobxStore/languageStore';
 
 interface modalProps {
   visible: boolean;
@@ -28,7 +29,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
         <View style={updateStyle.modalContainer}>
           <View style={updateStyle.closeModalDiv}>
             <Text style={updateStyle.issueIdText}>
-              Update issue with id : {PrsStore().id.get()}
+              {LanguageStore().idTitle.get()} : {PrsStore().id.get()}
             </Text>
             <View style={updateStyle.closeIcon}>
               <TouchableOpacity onPress={UpdateStore().closeModal}>
@@ -43,21 +44,25 @@ const ModalForm: React.FC<modalProps> = observer(props => {
 
           <View style={updateStyle.propertiesDiv}>
             <View style={issueStyle.inputTextContainer}>
-              <Text style={issueStyle.itemProperty}>Update Comment</Text>
+              <Text style={issueStyle.itemProperty}>
+                {LanguageStore().commentTitle.get()}
+              </Text>
               <TextInput
                 value={PrsStore().comment.get()}
                 style={issueStyle.textInput}
-                placeholder="Update Comment"
+                placeholder={LanguageStore().commentTitle.get()}
                 onChangeText={PrsStore().setComment}
               />
             </View>
 
             <View style={issueStyle.inputTextContainer}>
-              <Text style={issueStyle.itemProperty}>Update Link</Text>
+              <Text style={issueStyle.itemProperty}>
+                {LanguageStore().linkTitle.get()}
+              </Text>
               <TextInput
                 value={PrsStore().link.get()}
                 style={issueStyle.textInput}
-                placeholder="Update Link"
+                placeholder={LanguageStore().linkTitle.get()}
                 onChangeText={PrsStore().setLink}
               />
             </View>
@@ -68,63 +73,64 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   defaultValue={PrsStore().se.get()}
                   data={SE_Array}
                   setItem={PrsStore().setSE}
-                  propertyDefinition="SE"
+                  propertyDefinition={LanguageStore().seTitle.get()}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().platform.get()}
                   data={Platform_Array}
                   setItem={PrsStore().setPlatform}
-                  propertyDefinition="Platform"
+                  propertyDefinition={LanguageStore().platformTitle.get()}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().size.get()}
                   data={Size_Array}
                   setItem={PrsStore().setSize}
-                  propertyDefinition="Size"
+                  propertyDefinition={LanguageStore().sizeTitle.get()}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().difficulty.get()}
                   data={Difficulty_Array}
                   setItem={PrsStore().setDifficulty}
-                  propertyDefinition="Difficulty"
+                  propertyDefinition={LanguageStore().difficultyTitle.get()}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().status.get()}
                   data={Status_Array}
                   setItem={PrsStore().setStatus}
-                  propertyDefinition="Status"
+                  propertyDefinition={LanguageStore().statusTitle.get()}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().version.get()}
                   data={Release_Version_Array}
                   setItem={PrsStore().setVersion}
-                  propertyDefinition="Version"
+                  propertyDefinition={LanguageStore().versionTitle.get()}
                 />
               </View>
 
               <View style={updateStyle.secondaryDivSecond}>
                 <IssueCheckBoxItem
-                  propertyText="Review by By"
+                  propertyText={LanguageStore().ByReviewTitle.get()}
                   reviewBy={PrsStore().reviewByBY.get()}
                   setReview={PrsStore().setReviewByBY}
                 />
                 <IssueCheckBoxItem
-                  propertyText="Review by AH"
+                  propertyText={LanguageStore().AhReviewTitle.get()}
                   reviewBy={PrsStore().reviewByAH.get()}
                   setReview={PrsStore().setReviewByAH}
                 />
                 <IssueCheckBoxItem
-                  propertyText="Review by HT"
+                  propertyText={LanguageStore().HtReviewTitle.get()}
                   reviewBy={PrsStore().reviewByHT.get()}
                   setReview={PrsStore().setReviewByHT}
                 />
-                <TouchableOpacity onPress={()=>UpdateStore().handleUpdate(UpdateStore().updatableItem.get())}>
+                <TouchableOpacity
+                  onPress={() =>
+                    UpdateStore().handleUpdate(
+                      UpdateStore().updatableItem.get(),
+                    )
+                  }>
                   <View style={updateStyle.updateButton}>
-                  <FontAwesome5
-                  name={'save'}
-                  size={23}
-                  color={'black'}
-                />
+                    <FontAwesome5 name={'save'} size={23} color={'black'} />
                   </View>
                 </TouchableOpacity>
               </View>

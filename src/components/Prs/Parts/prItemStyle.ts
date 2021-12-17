@@ -44,7 +44,7 @@ export const prItemStyle = StyleSheet.create({
     alignItems: 'center',
   },
   dateContainerText: {
-    color: 'olivedrab',
+    color: 'slategray',
     fontWeight: 'bold',
     fontSize: 15,
   },

@@ -48,11 +48,11 @@ export const issueStyle = StyleSheet.create({
     marginVertical: 10,
     borderColor: 'cornflowerblue',
     borderRadius: 10,
-    paddingHorizontal: 20,
   },
   checkboxProperty: {
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 8,
   },
   checkboxText: {
     fontWeight: 'bold',

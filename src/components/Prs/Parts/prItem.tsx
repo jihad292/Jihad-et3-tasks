@@ -25,7 +25,7 @@ const PrItem = observer((props: prItem) => {
     <>
       <View style={prItemStyle.container}>
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text="ID" property={props.id} />
+          <Property text={LanguageStore().idTitle.get()} property={props.id} />
 
           <View style={prItemStyle.actionSymbol}>
             <TouchableOpacity
@@ -51,29 +51,29 @@ const PrItem = observer((props: prItem) => {
         />
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text="SE" property={props.se} />
-          <Property text="Difficulty" property={props.difficulty} />
+          <Property text={LanguageStore().seTitle.get()} property={props.se} />
+          <Property text={LanguageStore().difficultyTitle.get()} property={props.difficulty} />
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text="Platform" property={props.platform} />
-          <Property text="Size" property={props.size} />
+          <Property text={LanguageStore().platformTitle.get()} property={props.platform} />
+          <Property text={LanguageStore().sizeTitle.get()} property={props.size} />
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text="Status" property={props.status} />
-          <Property text="Version" property={props.version} />
+          <Property text={LanguageStore().statusTitle.get()} property={props.status} />
+          <Property text={LanguageStore().versionTitle.get()} property={props.version} />
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text="Reaview by BY" property={props.ByStatus} />
-          <Property text="Reaview by AH" property={props.AhStatus} />
-          <Property text="Reaview by HT" property={props.HtStatus} />
+          <Property text={LanguageStore().ByReviewTitle.get()} property={props.ByStatus} />
+          <Property text={LanguageStore().AhReviewTitle.get()} property={props.AhStatus} />
+          <Property text={LanguageStore().HtReviewTitle.get()} property={props.HtStatus} />
         </View>
 
         <View style={prItemStyle.dateContainer}>
-          <Text style={prItemStyle.dateContainerText}>Date : </Text>
-          <Text style={prItemStyle.dateContainerText}>''+{props.dateS}</Text>
+          <Text style={prItemStyle.dateContainerText}>{LanguageStore().dateTitle.get()}</Text>
+          <Text style={prItemStyle.propertyData}>''+{props.dateS}</Text>
         </View>
       </View>
     </>
