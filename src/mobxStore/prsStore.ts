@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 export class prsStoreImpl {
   //Prs properties
   prs = observable([]);
+  test = observable([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
   link = observable.box<string>('');
@@ -183,6 +184,7 @@ export class prsStoreImpl {
   }
 
   addPr() {
+    this.test = this.prs;
     if (this.reviewByBY.get() === true) {
       this.setByStatus('Yes');
     }
@@ -220,12 +222,14 @@ export class prsStoreImpl {
       reviewByAH: this.reviewByAH.get(),
       reviewByHT: this.reviewByHT.get(),
     };
-    this.prs.push(pr);
+    this.test.push(pr);
     //the test array will help us to update prs array automatically after add a pr
     let test = this.prs.filter(pr => {
       return pr.id !== null;
     });
-    this.setPrs(test);
+    this.prs = this.test;
+    console.log(this.prs)
+    
   }
 
   pressHandler = () => {
