@@ -84,4 +84,11 @@ export const issueStyle = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
+  screenBottom:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    padding:15,
+    paddingHorizontal:25
+  },
 });

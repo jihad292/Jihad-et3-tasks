@@ -3,7 +3,6 @@ import memoize from 'lodash/memoize';
 import {Alert} from 'react-native';
 
 export class prsStoreImpl {
-  //Prs properties
   prs = observable([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
@@ -23,6 +22,7 @@ export class prsStoreImpl {
   date = observable.box<Date>(new Date());
   dateS = observable.box<string>('');
   flatListRender = observable.box<boolean>(false);
+  prsTotalNumber = observable.box<number>(0);
 
   setPrs = (array: any) => {
     runInAction(() => {
@@ -132,6 +132,12 @@ export class prsStoreImpl {
     });
   };
 
+  setTest = (value : number)=>{
+    runInAction(() =>{
+      this.prsTotalNumber.set(value);
+    })
+  }  
+
   float2int(value: number) {
     return value | 0;
   }
@@ -234,14 +240,16 @@ export class prsStoreImpl {
         this.se.get() !== '' &&
         this.platform.get() !== '' &&
         this.difficulty.get() !== '' &&
-        this.status.get() !== '' &&
+        this.status.get() !== '' &&     
         this.version.get() !== '' &&
-        this.dateS.get() !== ''
+        this.dateS.get() !== ''   
       ) {
+        this.prsTotalNumber.set(this.prsTotalNumber.get() + 1)
         this.addPr();
         this.resetStore();
-      }
-    });
+        }
+      }  
+    );        
   };
 
   deletePr(value: number) {

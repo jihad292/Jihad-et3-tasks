@@ -20,20 +20,21 @@ const HeadPage: React.FC<props> = props => {
     <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.headContainer}>
-          <View style={styles.button}>
-            <Button
-              color="rgb(0, 100, 500)"
-              title={props.name}
-              onPress={props.handleSort}></Button>
-          </View>
-
-          <View style={styles.search}>
+        <View style={styles.search}>
             <TextInput
               style={styles.textInput}
               value={props.value}
               onChangeText={props.handleChange}
               placeholder="Search"
+              placeholderTextColor={'black'}
             />
+          </View>
+
+          <View style={styles.button}>
+            <Button
+              color="rgb(0, 100, 500)"
+              title={props.name}
+              onPress={props.handleSort}></Button>
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    marginStart: 10,
+    marginEnd: 10,
   },
   search: {
     flex: 1,
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'rgb(0, 0, 204)',
     color: 'red',
+    marginStart:10,
   },
   textInput: {
     color: 'blue',

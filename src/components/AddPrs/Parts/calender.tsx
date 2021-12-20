@@ -10,7 +10,7 @@ const Calender = observer(() => {
     <>
       <View>
         <TouchableOpacity onPress={() => CalendarStore().showDatePicker()}>
-          <FontAwesome5 name={'calendar-alt'} size={27} color={'olivedrab'} />
+          <FontAwesome5 name={'calendar-alt'} size={33} color={'olivedrab'} />
         </TouchableOpacity>
         <DateTimePickerModal
           isVisible={CalendarStore().isDatePickerVisible.get()}

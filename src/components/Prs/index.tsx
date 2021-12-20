@@ -11,7 +11,7 @@ import {SearchStore} from '../../mobxStore/prsSearchStore';
 import {SortStore} from '../../mobxStore/prsSortStore';
 
 const PrsScreen = observer(() => {
-  return ( 
+  return (
     <>
       <ButtonHandler
         text={LanguageStore().languageStateText.get()}

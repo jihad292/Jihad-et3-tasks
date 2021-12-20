@@ -32,9 +32,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
         handleLanguage={LanguageStore().handleLanguage}
       />
       <View style={issueStyle.container}>
-        <View>
-          <Calender />
-        </View>
+        
 
         <View style={issueStyle.inputTextContainer}>
           <Text style={issueStyle.itemProperty}>
@@ -44,6 +42,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
             value={prsStore.comment.get()}
             style={issueStyle.textInput}
             placeholder={LanguageStore().commentTitle.get()}
+            placeholderTextColor={'black'}
             onChangeText={prsStore.setComment}
           />
         </View>
@@ -56,6 +55,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
             value={prsStore.link.get()}
             style={issueStyle.textInput}
             placeholder={LanguageStore().linkTitle.get()}
+            placeholderTextColor={'black'}
             onChangeText={prsStore.setLink}
           />
         </View>
@@ -143,10 +143,15 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               reviewBy={prsStore.reviewByHT.get()}
               setReview={prsStore.setReviewByHT}
             />
-          </View>
+          </View>  
         </View>
+        <View style={issueStyle.screenBottom}>
+        
+          <Calender />
+        
         <View style={issueStyle.addButtonDiv}>
           <AddButton text="+" pressHandler={prsStore.pressHandler} />
+        </View>
         </View>
       </View>
     </>

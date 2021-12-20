@@ -1,8 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { PrsStore } from '../../mobxStore/prsStore';
 
 const HomeScreen = () => {
+  setTimeout(stopTime,250000);//setting the stop time
+    const intervalId = setInterval(() =>{
+        console.log(PrsStore().prsTotalNumber.get())},2000);
+    function stopTime(){
+        clearInterval(intervalId)   
+    }
   return (
     <View
       style={{
