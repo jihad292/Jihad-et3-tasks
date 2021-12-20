@@ -15,7 +15,6 @@ import IssueDropdownItem from '../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../Common/issueCheckBoxItem';
 import Calender from './Parts/calender';
 import AddButton from './Parts/addButton';
-import {ButtonHandler} from '../../languageHandler/buttonHandler';
 import {LanguageStore} from '../../mobxStore/languageStore';
 
 interface issueProps {
@@ -27,13 +26,7 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
 
   return (
     <>
-      <ButtonHandler
-        text={LanguageStore().languageStateText.get()}
-        handleLanguage={LanguageStore().handleLanguage}
-      />
       <View style={issueStyle.container}>
-        
-
         <View style={issueStyle.inputTextContainer}>
           <Text style={issueStyle.itemProperty}>
             {LanguageStore().commentTitle.get()}
@@ -143,15 +136,14 @@ const IssueScreen: React.FC<issueProps> = observer(({prsStore}) => {
               reviewBy={prsStore.reviewByHT.get()}
               setReview={prsStore.setReviewByHT}
             />
-          </View>  
+          </View>
         </View>
         <View style={issueStyle.screenBottom}>
-        
           <Calender />
-        
-        <View style={issueStyle.addButtonDiv}>
-          <AddButton text="+" pressHandler={prsStore.pressHandler} />
-        </View>
+
+          <View style={issueStyle.addButtonDiv}>
+            <AddButton text="+" pressHandler={prsStore.pressHandler} />
+          </View>
         </View>
       </View>
     </>

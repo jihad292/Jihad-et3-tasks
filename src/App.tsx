@@ -5,11 +5,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './components/Home';
 import PrsScreen from './components/Prs';
 import IssueScreen from './components/AddPrs';
-import {observable} from 'mobx';
+import LanguageScreen from './components/Language';
 
 const Drawer = createDrawerNavigator();
 
-export const App = observable(() => {
+export const App = () => {
   return (
     <>
       <View>
@@ -18,9 +18,10 @@ export const App = observable(() => {
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Prs" component={PrsScreen} />
             <Drawer.Screen name="Add Pr" component={IssueScreen} />
+            <Drawer.Screen name="Languages" component={LanguageScreen} />
           </Drawer.Navigator>
         </NavigationContainer>
       </View>
     </>
   );
-});
+};
