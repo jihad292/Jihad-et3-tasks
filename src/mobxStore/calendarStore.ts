@@ -2,7 +2,7 @@ import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
 import {PrsStore} from './prsStore';
 
-export class calendarStoreImpl {
+export class CalendarStoreImpl {
   isDatePickerVisible = observable.box<boolean>(false);
 
   setIsDatePickerVisible = (value: boolean) => {
@@ -32,7 +32,7 @@ export class calendarStoreImpl {
 
 export const CalendarStore = memoize(
   () => {
-    return new calendarStoreImpl();
+    return new CalendarStoreImpl();
   },
   () => 1,
 );

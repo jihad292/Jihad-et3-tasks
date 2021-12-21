@@ -4,19 +4,14 @@ import PrsList from './Parts/prsList';
 import {observer} from 'mobx-react';
 import HeadPage from './Parts/headPage';
 import UpdateModal from './Parts/updateModal';
-import {ButtonHandler} from '../../languageHandler/buttonHandler';
-import {LanguageStore} from '../../mobxStore/languageStore';
 import {UpdateStore} from '../../mobxStore/updateStore';
 import {SearchStore} from '../../mobxStore/prsSearchStore';
 import {SortStore} from '../../mobxStore/prsSortStore';
 
 const PrsScreen = observer(() => {
+  
   return (
     <>
-      <ButtonHandler
-        text={LanguageStore().languageStateText.get()}
-        handleLanguage={LanguageStore().handleLanguage}
-      />
       <HeadPage
         handleSort={SortStore().handleSort}
         name={SortStore().sortStateText.get()}

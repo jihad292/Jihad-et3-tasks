@@ -2,7 +2,7 @@ import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
 import {PrsStore} from './prsStore';
 
-export class updateStoreImpl {
+export class UpdateStoreImpl {
   updateModalStatus = observable.box<boolean>(false);
   updatableItem = observable.box<prItem>();
 
@@ -103,7 +103,7 @@ export class updateStoreImpl {
 }
 
 export const UpdateStore = memoize(() => {
-  return new updateStoreImpl();
+  return new UpdateStoreImpl();
 });
 
 export default {UpdateStore};

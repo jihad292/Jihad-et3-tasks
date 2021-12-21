@@ -7,12 +7,13 @@ import {
   Keyboard,
 } from 'react-native';
 import {StyleSheet} from 'react-native';
+import {ColorStore} from '../../../mobxStore/colorStore';
 
 interface props {
   handleSort: voidFunction;
   name: string;
   value: string;
-  handleChange: stringFunction,
+  handleChange: stringFunction;
 }
 
 const HeadPage: React.FC<props> = props => {
@@ -20,7 +21,7 @@ const HeadPage: React.FC<props> = props => {
     <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.headContainer}>
-        <View style={styles.search}>
+          <View style={styles.search}>
             <TextInput
               style={styles.textInput}
               value={props.value}
@@ -50,11 +51,6 @@ const styles = StyleSheet.create({
     height: 'auto',
     alignItems: 'flex-start',
   },
-  language: {
-    color: 'rgb(0, 0, 204)',
-    fontStyle: 'italic',
-    fontSize: 20,
-  },
   inputContainer: {
     alignItems: 'center',
   },
@@ -67,12 +63,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 40,
     borderBottomWidth: 1,
-    borderColor: 'rgb(0, 0, 204)',
-    color: 'red',
-    marginStart:10,
+    borderColor: ColorStore().propertyBorderColor.get(),
+    marginStart: 10,
   },
   textInput: {
-    color: 'blue',
+    color: ColorStore().textInputColor.get(),
     fontStyle: 'italic',
     height: 40,
     fontSize: 20,

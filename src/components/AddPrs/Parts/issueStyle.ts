@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {ColorStore} from '../../../mobxStore/colorStore';
 
 export const issueStyle = StyleSheet.create({
   container: {
@@ -13,11 +14,12 @@ export const issueStyle = StyleSheet.create({
   itemProperty: {
     fontWeight: 'bold',
     fontSize: 20,
+    color: ColorStore().black.get(),
   },
   textInput: {
     borderBottomWidth: 2,
     borderBottomColor: 'cornflowerblue',
-    color: 'black',
+    color: ColorStore().black.get(),
     justifyContent: 'center',
   },
   dropdownDiv: {
@@ -28,7 +30,7 @@ export const issueStyle = StyleSheet.create({
   dropdownProperty: {
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: 'cornflowerblue',
+    borderColor: ColorStore().propertyBorderColor.get(),
     width: 210,
     maxwidth: 190,
     marginHorizontal: 1,
@@ -36,7 +38,7 @@ export const issueStyle = StyleSheet.create({
   },
   dropdownPropertyText: {
     fontWeight: 'bold',
-    color: 'darkolivegreen',
+    color: ColorStore().dropDownTextColor.get(),
     fontSize: 15,
     alignSelf: 'center',
   },
@@ -46,7 +48,7 @@ export const issueStyle = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 2,
     marginVertical: 10,
-    borderColor: 'cornflowerblue',
+    borderColor: ColorStore().propertyBorderColor.get(),
     borderRadius: 10,
   },
   checkboxProperty: {
@@ -57,7 +59,7 @@ export const issueStyle = StyleSheet.create({
   checkboxText: {
     fontWeight: 'bold',
     fontSize: 15,
-    color: 'darkslategrey',
+    color: ColorStore().checkBoxTextColor.get(),
     alignSelf: 'center',
   },
   checkboxContainer: {
@@ -70,25 +72,25 @@ export const issueStyle = StyleSheet.create({
     alignItems: 'center',
   },
   addButton: {
-    backgroundColor: 'skyblue',
+    backgroundColor: ColorStore().addButtonColor.get(),
     width: 70,
     height: 30,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
-    borderColor: 'mediumseagreen',
+    borderColor: ColorStore().addButtonBorderTextColor.get(),
     borderRadius: 10,
   },
   addButtonText: {
-    color: 'seagreen',
+    color: ColorStore().addButtonBorderTextColor.get(),
     fontWeight: 'bold',
     fontSize: 20,
   },
-  screenBottom:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    padding:15,
-    paddingHorizontal:25
+  screenBottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 15,
+    paddingHorizontal: 25,
   },
 });

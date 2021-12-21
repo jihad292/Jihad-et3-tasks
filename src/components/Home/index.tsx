@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {ColorStore} from '../../mobxStore/colorStore';
 // import { PrsStore } from '../../mobxStore/prsStore';
 
 const HomeScreen = () => {
@@ -8,7 +9,7 @@ const HomeScreen = () => {
   //   const intervalId = setInterval(() =>{
   //       console.log(PrsStore().prsTotalNumber.get())},2000);
   //   function stopTime(){
-  //       clearInterval(intervalId)   
+  //       clearInterval(intervalId)
   //   }
   return (
     <View
@@ -16,14 +17,18 @@ const HomeScreen = () => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgb(204, 204, 255)',
+        backgroundColor: ColorStore().homePageBackgroundColor.get(),
       }}>
-      <FontAwesome5 name={'robot'} size={80} color={'olivedrab'} />
+      <FontAwesome5
+        name={'robot'}
+        size={80}
+        color={ColorStore().homePageIconsColor.get()}
+      />
       <Text style={styles.text}>Welcome To your Prs Application </Text>
       <FontAwesome5
         name={'exclamation-triangle'}
         size={80}
-        color={'olivedrab'}
+        color={ColorStore().homePageIconsColor.get()}
       />
     </View>
   );
@@ -31,7 +36,7 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   text: {
-    color: 'rgb(0, 0, 204)',
+    color: ColorStore().homePageTextColor.get(),
     fontWeight: 'bold',
     fontSize: 20,
     fontStyle: 'italic',

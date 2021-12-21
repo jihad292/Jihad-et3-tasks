@@ -2,7 +2,7 @@ import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
 import {Alert} from 'react-native';
 
-export class prsStoreImpl {
+export class PrsStoreImpl {
   prs = observable([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
@@ -264,7 +264,7 @@ export class prsStoreImpl {
 }
 export const PrsStore = memoize(
   () => {
-    return new prsStoreImpl();
+    return new PrsStoreImpl();
   },
   () => 1,
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
+import {ColorStore} from '../../../mobxStore/colorStore';
 
 interface props {
   text: string;
@@ -18,15 +19,15 @@ export const ButtonHandler: React.FC<props> = props => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '25%',
-    height: 20,
+    width: '100%',
+    height: 70,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    color: 'blue',
+    color: ColorStore().languageTextColor.get(),
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 50,
     fontStyle: 'italic',
   },
 });

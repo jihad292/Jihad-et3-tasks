@@ -2,7 +2,7 @@ import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
 import {PrsStore} from './prsStore';
 
-export class searchStoreImpl {
+export class SearchStoreImpl {
   searchState = observable.box<boolean>(false);
   searchStateText = observable.box<string>('');
   searchArray = observable.box([]);
@@ -48,7 +48,7 @@ export class searchStoreImpl {
 }
 
 export const SearchStore = memoize(() => {
-  return new searchStoreImpl();
+  return new SearchStoreImpl();
 });
 
 export default {SearchStore};

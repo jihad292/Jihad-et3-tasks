@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {LanguageStore} from '../mobxStore/languageStore';
 
 //Arabic Part
 export const saveArLanguage = async () => {
@@ -67,7 +66,7 @@ export const retrieveArLanguage = async () => {
       dateAr,
       idAr,
     ]);
-    return LanguageStore().retrieveLang(results);
+    return results;
   };
   retrieveAll();
 };
@@ -138,7 +137,7 @@ export const retrieveEngLanguage = async () => {
       dateEng,
       idEng,
     ]);
-    return LanguageStore().retrieveLang(results);
+    return results;
   };
   retrieveAll();
 };

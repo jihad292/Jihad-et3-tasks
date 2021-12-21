@@ -6,6 +6,7 @@ import {prItemStyle} from './prItemStyle';
 import {observer} from 'mobx-react';
 import {LanguageStore} from '../../../mobxStore/languageStore';
 import {UpdateStore} from '../../../mobxStore/updateStore';
+import i18n from '../../Language/Parts/i18n';
 
 interface propertyProps {
   text: string;
@@ -25,7 +26,10 @@ const PrItem = observer((props: prItem) => {
     <>
       <View style={prItemStyle.container}>
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text={LanguageStore().idTitle.get()} property={props.id} />
+          <Property
+            text={i18n.get('id', LanguageStore().languageStateString.get())}
+            property={props.id}
+          />
 
           <View style={prItemStyle.actionSymbol}>
             <TouchableOpacity
@@ -42,37 +46,75 @@ const PrItem = observer((props: prItem) => {
         </View>
 
         <Property
-          text={LanguageStore().commentTitle.get()}
+          text={i18n.get('comment', LanguageStore().languageStateString.get())}
           property={props.comment}
         />
         <Property
-          text={LanguageStore().linkTitle.get()}
+          text={i18n.get('link', LanguageStore().languageStateString.get())}
           property={props.link}
         />
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text={LanguageStore().seTitle.get()} property={props.se} />
-          <Property text={LanguageStore().difficultyTitle.get()} property={props.difficulty} />
+          <Property
+            text={i18n.get('se', LanguageStore().languageStateString.get())}
+            property={props.se}
+          />
+          <Property
+            text={i18n.get(
+              'difficulty',
+              LanguageStore().languageStateString.get(),
+            )}
+            property={props.difficulty}
+          />
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text={LanguageStore().platformTitle.get()} property={props.platform} />
-          <Property text={LanguageStore().sizeTitle.get()} property={props.size} />
+          <Property
+            text={i18n.get(
+              'platform',
+              LanguageStore().languageStateString.get(),
+            )}
+            property={props.platform}
+          />
+          <Property
+            text={i18n.get('size', LanguageStore().languageStateString.get())}
+            property={props.size}
+          />
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text={LanguageStore().statusTitle.get()} property={props.status} />
-          <Property text={LanguageStore().versionTitle.get()} property={props.version} />
+          <Property
+            text={i18n.get('status', LanguageStore().languageStateString.get())}
+            property={props.status}
+          />
+          <Property
+            text={i18n.get(
+              'version',
+              LanguageStore().languageStateString.get(),
+            )}
+            property={props.version}
+          />
         </View>
 
         <View style={prItemStyle.smallPropertiesDiv}>
-          <Property text={LanguageStore().ByReviewTitle.get()} property={props.ByStatus} />
-          <Property text={LanguageStore().AhReviewTitle.get()} property={props.AhStatus} />
-          <Property text={LanguageStore().HtReviewTitle.get()} property={props.HtStatus} />
+          <Property
+            text={i18n.get('by', LanguageStore().languageStateString.get())}
+            property={props.ByStatus}
+          />
+          <Property
+            text={i18n.get('ah', LanguageStore().languageStateString.get())}
+            property={props.AhStatus}
+          />
+          <Property
+            text={i18n.get('ht', LanguageStore().languageStateString.get())}
+            property={props.HtStatus}
+          />
         </View>
 
         <View style={prItemStyle.dateContainer}>
-          <Text style={prItemStyle.dateContainerText}>{LanguageStore().dateTitle.get()}</Text>
+          <Text style={prItemStyle.dateContainerText}>
+            {i18n.get('date', LanguageStore().languageStateString.get())}
+          </Text>
           <Text style={prItemStyle.propertyData}>''+{props.dateS}</Text>
         </View>
       </View>

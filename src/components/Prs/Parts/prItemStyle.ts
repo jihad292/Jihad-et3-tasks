@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {ColorStore} from '../../../mobxStore/colorStore';
 
 export const prItemStyle = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: ColorStore().black.get(),
     marginTop: 15,
     width: 290,
     borderRadius: 20,
@@ -15,17 +16,17 @@ export const prItemStyle = StyleSheet.create({
   propoertySection: {
     flex: 1,
     flexDirection: 'column',
-    borderBottomColor: 'thistle',
+    borderBottomColor: ColorStore().itemPropertyBorderColor.get(),
     borderBottomWidth: 2,
     alignItems: 'center',
   },
   propertyText: {
-    color: 'slategray',
+    color: ColorStore().itemPropertyTextColor.get(),
     fontWeight: 'bold',
     fontSize: 15,
   },
   propertyData: {
-    color: 'olivedrab',
+    color: ColorStore().itemDataColor.get(),
     fontWeight: 'bold',
     fontSize: 15,
   },
@@ -44,7 +45,7 @@ export const prItemStyle = StyleSheet.create({
     alignItems: 'center',
   },
   dateContainerText: {
-    color: 'slategray',
+    color: ColorStore().itemPropertyTextColor.get(),
     fontWeight: 'bold',
     fontSize: 15,
   },

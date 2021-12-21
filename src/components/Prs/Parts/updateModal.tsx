@@ -17,6 +17,7 @@ import IssueDropdownItem from '../../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
 import {UpdateStore} from '../../../mobxStore/updateStore';
 import {LanguageStore} from '../../../mobxStore/languageStore';
+import i18n from '../../Language/Parts/i18n';
 
 interface modalProps {
   visible: boolean;
@@ -29,7 +30,8 @@ const ModalForm: React.FC<modalProps> = observer(props => {
         <View style={updateStyle.modalContainer}>
           <View style={updateStyle.closeModalDiv}>
             <Text style={updateStyle.issueIdText}>
-              {LanguageStore().idTitle.get()} : {PrsStore().id.get()}
+              {i18n.get('id', LanguageStore().languageStateString.get())} :{' '}
+              {PrsStore().id.get()}
             </Text>
             <View style={updateStyle.closeIcon}>
               <TouchableOpacity onPress={UpdateStore().closeModal}>
@@ -45,24 +47,30 @@ const ModalForm: React.FC<modalProps> = observer(props => {
           <View style={updateStyle.propertiesDiv}>
             <View style={issueStyle.inputTextContainer}>
               <Text style={issueStyle.itemProperty}>
-                {LanguageStore().commentTitle.get()}
+                {i18n.get('comment', LanguageStore().languageStateString.get())}
               </Text>
               <TextInput
                 value={PrsStore().comment.get()}
                 style={issueStyle.textInput}
-                placeholder={LanguageStore().commentTitle.get()}
+                placeholder={i18n.get(
+                  'comment',
+                  LanguageStore().languageStateString.get(),
+                )}
                 onChangeText={PrsStore().setComment}
               />
             </View>
 
             <View style={issueStyle.inputTextContainer}>
               <Text style={issueStyle.itemProperty}>
-                {LanguageStore().linkTitle.get()}
+                {i18n.get('link', LanguageStore().languageStateString.get())}
               </Text>
               <TextInput
                 value={PrsStore().link.get()}
                 style={issueStyle.textInput}
-                placeholder={LanguageStore().linkTitle.get()}
+                placeholder={i18n.get(
+                  'link',
+                  LanguageStore().languageStateString.get(),
+                )}
                 onChangeText={PrsStore().setLink}
               />
             </View>
@@ -73,53 +81,80 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   defaultValue={PrsStore().se.get()}
                   data={SE_Array}
                   setItem={PrsStore().setSE}
-                  propertyDefinition={LanguageStore().seTitle.get()}
+                  propertyDefinition={i18n.get(
+                    'se',
+                    LanguageStore().languageStateString.get(),
+                  )}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().platform.get()}
                   data={Platform_Array}
                   setItem={PrsStore().setPlatform}
-                  propertyDefinition={LanguageStore().platformTitle.get()}
+                  propertyDefinition={i18n.get(
+                    'platform',
+                    LanguageStore().languageStateString.get(),
+                  )}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().size.get()}
                   data={Size_Array}
                   setItem={PrsStore().setSize}
-                  propertyDefinition={LanguageStore().sizeTitle.get()}
+                  propertyDefinition={i18n.get(
+                    'size',
+                    LanguageStore().languageStateString.get(),
+                  )}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().difficulty.get()}
                   data={Difficulty_Array}
                   setItem={PrsStore().setDifficulty}
-                  propertyDefinition={LanguageStore().difficultyTitle.get()}
+                  propertyDefinition={i18n.get(
+                    'difficulty',
+                    LanguageStore().languageStateString.get(),
+                  )}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().status.get()}
                   data={Status_Array}
                   setItem={PrsStore().setStatus}
-                  propertyDefinition={LanguageStore().statusTitle.get()}
+                  propertyDefinition={i18n.get(
+                    'status',
+                    LanguageStore().languageStateString.get(),
+                  )}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().version.get()}
                   data={Release_Version_Array}
                   setItem={PrsStore().setVersion}
-                  propertyDefinition={LanguageStore().versionTitle.get()}
+                  propertyDefinition={i18n.get(
+                    'version',
+                    LanguageStore().languageStateString.get(),
+                  )}
                 />
               </View>
 
               <View style={updateStyle.secondaryDivSecond}>
                 <IssueCheckBoxItem
-                  propertyText={LanguageStore().ByReviewTitle.get()}
+                  propertyText={i18n.get(
+                    'by',
+                    LanguageStore().languageStateString.get(),
+                  )}
                   reviewBy={PrsStore().reviewByBY.get()}
                   setReview={PrsStore().setReviewByBY}
                 />
                 <IssueCheckBoxItem
-                  propertyText={LanguageStore().AhReviewTitle.get()}
+                  propertyText={i18n.get(
+                    'ah',
+                    LanguageStore().languageStateString.get(),
+                  )}
                   reviewBy={PrsStore().reviewByAH.get()}
                   setReview={PrsStore().setReviewByAH}
                 />
                 <IssueCheckBoxItem
-                  propertyText={LanguageStore().HtReviewTitle.get()}
+                  propertyText={i18n.get(
+                    'ht',
+                    LanguageStore().languageStateString.get(),
+                  )}
                   reviewBy={PrsStore().reviewByHT.get()}
                   setReview={PrsStore().setReviewByHT}
                 />
