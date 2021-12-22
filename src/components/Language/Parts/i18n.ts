@@ -52,6 +52,14 @@ const i18n = {
       AR: 'بطاقة تعريف',
       ENG: 'ID',
     },
+    drawer_Home: {
+      AR: 'الصفحة الرئيسية',
+      ENG: 'Home',
+    },
+    drawer_Prs: {
+      AR: 'عرض المشاكل',
+      ENG: 'Prs',
+    },
   },
   get(message: string, language: string) {
     return this.LG[message] === undefined || this.LG[message] === undefined

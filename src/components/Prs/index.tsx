@@ -7,9 +7,10 @@ import UpdateModal from './Parts/updateModal';
 import {UpdateStore} from '../../mobxStore/updateStore';
 import {SearchStore} from '../../mobxStore/prsSearchStore';
 import {SortStore} from '../../mobxStore/prsSortStore';
+import { PrsStore } from '../../mobxStore/prsStore';
 
 const PrsScreen = observer(() => {
-  
+  PrsStore().setPrss;  
   return (
     <>
       <HeadPage

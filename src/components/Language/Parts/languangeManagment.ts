@@ -16,6 +16,7 @@ export const saveArLanguage = async () => {
   const saveDateAr = AsyncStorage.setItem('dateAr', 'تاريخ');
   const saveIdAr = AsyncStorage.setItem('idAr', 'بطاقة تعريف');
 
+
   const saveAll = async () => {
     await Promise.all([
       saveCommentAr,

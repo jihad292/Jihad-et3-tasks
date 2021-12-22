@@ -1,8 +1,8 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import {SearchStore} from '../../../mobxStore/prsSearchStore';
-import FlatListComponent from './flatList';
-import FlatListSearchComponent from './flatListSearch';
+import FlatListComponent from './prsFlatList';
+import FlatListSearchComponent from './prsFlatListSearch';
 
 const PrsList = observer(() => {
   return (

@@ -1,8 +1,15 @@
 import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
 import {Alert} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class PrsStoreImpl {
+  setPrss = ()=>{
+    AsyncStorage.getItem('Prs').then(value=>{
+      this.setPrs(value);
+      this.flatListRender.set(!this.flatListRender.get())
+    })
+  }
   prs = observable([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
@@ -228,6 +235,8 @@ export class PrsStoreImpl {
       reviewByHT: this.reviewByHT.get(),
     };
     this.prs.push(pr);
+    AsyncStorage.clear();
+    AsyncStorage.setItem('Prs',JSON.stringify(this.prs));
     this.flatListRender.set(!this.flatListRender.get());
   }
 
@@ -259,6 +268,8 @@ export class PrsStoreImpl {
       });
       this.setPrs(test);
       this.flatListRender.set(!this.flatListRender.get());
+      AsyncStorage.clear();
+      AsyncStorage.setItem('Prs',JSON.stringify(this.prs));
     });
   }
 }
