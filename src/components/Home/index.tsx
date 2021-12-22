@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {ColorStore} from '../../mobxStore/colorStore';
 // import { PrsStore } from '../../mobxStore/prsStore';
@@ -11,6 +11,7 @@ const HomeScreen = () => {
   //   function stopTime(){
   //       clearInterval(intervalId)
   //   }
+  
   return (
     <View
       style={{

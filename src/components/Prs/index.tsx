@@ -9,8 +9,8 @@ import {SearchStore} from '../../mobxStore/prsSearchStore';
 import {SortStore} from '../../mobxStore/prsSortStore';
 import { PrsStore } from '../../mobxStore/prsStore';
 
-const PrsScreen = observer(() => {
-  PrsStore().setPrss;  
+const PrsScreen = observer(() => { 
+  // PrsStore().setInitialPrs();
   return (
     <>
       <HeadPage

@@ -4,12 +4,6 @@ import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class PrsStoreImpl {
-  setPrss = ()=>{
-    AsyncStorage.getItem('Prs').then(value=>{
-      this.setPrs(value);
-      this.flatListRender.set(!this.flatListRender.get())
-    })
-  }
   prs = observable([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
@@ -34,6 +28,19 @@ export class PrsStoreImpl {
   setPrs = (array: any) => {
     runInAction(() => {
       this.prs = array;
+    });
+  };
+  
+  setInitialPrs = () => {
+    runInAction(() => {   
+      const prss = AsyncStorage.getItem('Prs');
+      const retrievePrs = async() =>{
+        let result  = await Promise.all([
+          prss
+        ]);
+        return this.setPrs(result);
+      };
+      retrievePrs();
     });
   };
 
@@ -139,11 +146,11 @@ export class PrsStoreImpl {
     });
   };
 
-  setTest = (value : number)=>{
-    runInAction(() =>{
+  setTest = (value: number) => {
+    runInAction(() => {
       this.prsTotalNumber.set(value);
-    })
-  }  
+    });
+  };
 
   float2int(value: number) {
     return value | 0;
@@ -236,7 +243,7 @@ export class PrsStoreImpl {
     };
     this.prs.push(pr);
     AsyncStorage.clear();
-    AsyncStorage.setItem('Prs',JSON.stringify(this.prs));
+    AsyncStorage.setItem('Prs', JSON.stringify(this.prs));
     this.flatListRender.set(!this.flatListRender.get());
   }
 
@@ -249,16 +256,15 @@ export class PrsStoreImpl {
         this.se.get() !== '' &&
         this.platform.get() !== '' &&
         this.difficulty.get() !== '' &&
-        this.status.get() !== '' &&     
+        this.status.get() !== '' &&
         this.version.get() !== '' &&
-        this.dateS.get() !== ''   
+        this.dateS.get() !== ''
       ) {
-        this.prsTotalNumber.set(this.prsTotalNumber.get() + 1)
+        this.prsTotalNumber.set(this.prsTotalNumber.get() + 1);
         this.addPr();
         this.resetStore();
-        }
-      }  
-    );        
+      }
+    });
   };
 
   deletePr(value: number) {
@@ -269,7 +275,7 @@ export class PrsStoreImpl {
       this.setPrs(test);
       this.flatListRender.set(!this.flatListRender.get());
       AsyncStorage.clear();
-      AsyncStorage.setItem('Prs',JSON.stringify(this.prs));
+      AsyncStorage.setItem('Prs', JSON.stringify(this.prs));
     });
   }
 }
