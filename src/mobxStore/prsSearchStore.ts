@@ -35,7 +35,7 @@ export class SearchStoreImpl {
       if (this.searchStateText.get() !== '') {
         runInAction(() => {
           this.setSearchState(true);
-          let test: any = PrsStore().prs.filter(pr => {
+          let test: any = PrsStore().prs.get().filter(pr => {
             return pr.comment
               .toLowerCase()
               .includes(this.searchStateText.get().toLowerCase());

@@ -4,7 +4,7 @@ import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class PrsStoreImpl {
-  prs = observable([]);
+  prs = observable.box<prItem[]>([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
   link = observable.box<string>('');
@@ -24,23 +24,10 @@ export class PrsStoreImpl {
   dateS = observable.box<string>('');
   flatListRender = observable.box<boolean>(false);
   prsTotalNumber = observable.box<number>(0);
-
-  setPrs = (array: any) => {
-    runInAction(() => {
-      this.prs = array;
-    });
-  };
   
-  setInitialPrs = () => {
-    runInAction(() => {   
-      const prss = AsyncStorage.getItem('Prs');
-      const retrievePrs = async() =>{
-        let result  = await Promise.all([
-          prss
-        ]);
-        return this.setPrs(result);
-      };
-      retrievePrs();
+  setPrs = (array: prItem[]) => {
+    runInAction(() => {
+      this.prs.set(array);
     });
   };
 
@@ -203,6 +190,30 @@ export class PrsStoreImpl {
     }
   }
 
+  storePrs = async () => {
+    try {
+      await AsyncStorage.setItem('Prs', JSON.stringify(this.prs.get()));
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+  retrivePrs  = async () => {
+    try {
+      const value = await AsyncStorage.getItem('Prs');
+      if (value !== null) {
+        runInAction(()=>{
+          this.prs.set(JSON.parse(value));
+          this.flatListRender.set(!this.flatListRender.get());
+        })
+      }
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+
+
   addPr() {
     if (this.reviewByBY.get() === true) {
       this.setByStatus('Yes');
@@ -241,9 +252,9 @@ export class PrsStoreImpl {
       reviewByAH: this.reviewByAH.get(),
       reviewByHT: this.reviewByHT.get(),
     };
-    this.prs.push(pr);
+    this.prs.get().push(pr);
     AsyncStorage.clear();
-    AsyncStorage.setItem('Prs', JSON.stringify(this.prs));
+    this.storePrs();
     this.flatListRender.set(!this.flatListRender.get());
   }
 
@@ -269,15 +280,16 @@ export class PrsStoreImpl {
 
   deletePr(value: number) {
     runInAction(() => {
-      let test = this.prs.filter(pr => {
+      let test = this.prs.get().filter(pr => {
         return pr.id != value;
       });
       this.setPrs(test);
       this.flatListRender.set(!this.flatListRender.get());
       AsyncStorage.clear();
-      AsyncStorage.setItem('Prs', JSON.stringify(this.prs));
+      this.storePrs();
     });
   }
+  
 }
 export const PrsStore = memoize(
   () => {

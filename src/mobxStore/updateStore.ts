@@ -47,7 +47,6 @@ export class UpdateStoreImpl {
 
   handleUpdate = (props: prItem) => {
     runInAction(() => {
-      PrsStore().addChecker();
       if (
         PrsStore().comment.get() !== '' &&
         PrsStore().link.get() !== '' &&
@@ -57,48 +56,50 @@ export class UpdateStoreImpl {
         PrsStore().status.get() !== '' &&
         PrsStore().version.get() !== ''
       ) {
-        let test = PrsStore().prs.map(pr => {
-          if (pr.id === props.id) {
-            pr.comment = PrsStore().comment.get();
-            pr.link = PrsStore().link.get();
-            pr.se = PrsStore().se.get();
-            pr.difficulty = PrsStore().difficulty.get();
-            pr.platform = PrsStore().platform.get();
-            pr.size = PrsStore().size.get();
-            pr.status = PrsStore().status.get();
-            pr.version = PrsStore().version.get();
-            if(PrsStore().reviewByBY.get() === false){
-              pr.ByStatus = 'No';
-              pr.reviewByBY = false
-            }
-            if(PrsStore().reviewByBY.get() === true){
-              pr.ByStatus = 'Yes';
-              pr.reviewByBY = true;
-            }
-            if(PrsStore().reviewByAH.get() === false){
-              pr.AhStatus = 'No';
-              pr.reviewByAH = false
-            }
-            if(PrsStore().reviewByAH.get() === true){
-              pr.AhStatus = 'Yes';
-              pr.reviewByAH = true;
-            }
-            if(PrsStore().reviewByHT.get() === false){
-              pr.HtStatus = 'No';
-              pr.reviewByHT = false
-            }
-            if(PrsStore().reviewByHT.get() === true){
-              pr.HtStatus = 'Yes';
-              pr.reviewByHT = true;
+        let test = PrsStore()
+          .prs.get()
+          .map(pr => {
+            if (pr.id === props.id) {
+              pr.comment = PrsStore().comment.get();
+              pr.link = PrsStore().link.get();
+              pr.se = PrsStore().se.get();
+              pr.difficulty = PrsStore().difficulty.get();
+              pr.platform = PrsStore().platform.get();
+              pr.size = PrsStore().size.get();
+              pr.status = PrsStore().status.get();
+              pr.version = PrsStore().version.get();
+              if (PrsStore().reviewByBY.get() === false) {
+                pr.ByStatus = 'No';
+                pr.reviewByBY = false;
+              }
+              if (PrsStore().reviewByBY.get() === true) {
+                pr.ByStatus = 'Yes';
+                pr.reviewByBY = true;
+              }
+              if (PrsStore().reviewByAH.get() === false) {
+                pr.AhStatus = 'No';
+                pr.reviewByAH = false;
+              }
+              if (PrsStore().reviewByAH.get() === true) {
+                pr.AhStatus = 'Yes';
+                pr.reviewByAH = true;
+              }
+              if (PrsStore().reviewByHT.get() === false) {
+                pr.HtStatus = 'No';
+                pr.reviewByHT = false;
+              }
+              if (PrsStore().reviewByHT.get() === true) {
+                pr.HtStatus = 'Yes';
+                pr.reviewByHT = true;
+              }
+              return pr;
             }
             return pr;
-          }
-          return pr;
-        });
+          });
         PrsStore().setPrs(test);
         PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
         AsyncStorage.clear();
-        AsyncStorage.setItem('Prs',JSON.stringify(PrsStore().prs));
+        PrsStore().storePrs();
         this.closeModal();
       }
     });

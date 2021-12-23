@@ -8,7 +8,7 @@ const FlatListComponent = observer(() => {
   return (
     <View>
       <FlatList
-        data={PrsStore().prs}
+        data={PrsStore().prs.get()}
         keyExtractor={item => item.id.toString()}
         extraData={PrsStore().flatListRender.get()}
         renderItem={({item}) => (
