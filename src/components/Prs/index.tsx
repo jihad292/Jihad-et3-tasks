@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import PrsList from './Parts/prsList';
 import {observer} from 'mobx-react';
@@ -7,11 +7,7 @@ import UpdateModal from './Parts/updateModal';
 import {UpdateStore} from '../../mobxStore/updateStore';
 import {SearchStore} from '../../mobxStore/prsSearchStore';
 import {SortStore} from '../../mobxStore/prsSortStore';
-import {PrsStore} from '../../mobxStore/prsStore';
 const PrsScreen = observer(() => {
-  useEffect(() => {
-    PrsStore().retrivePrs();
-  }, []);
   return (
     <>
       <HeadPage

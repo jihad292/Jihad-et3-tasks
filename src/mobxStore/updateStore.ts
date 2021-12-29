@@ -35,6 +35,7 @@ export class UpdateStoreImpl {
       PrsStore().setReviewByAH(props.reviewByAH);
       PrsStore().setReviewByHT(props.reviewByHT);
       this.setUpdatablItem(props);
+      console.log(PrsStore().prsTotalNumber.get())
     });
   };
 

@@ -31,8 +31,7 @@ export const issueStyle = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     borderColor: ColorStore().propertyBorderColor.get(),
-    width: 210,
-    maxwidth: 190,
+    width: '50%',
     marginHorizontal: 1,
     alignItems: 'center',
   },
@@ -44,6 +43,7 @@ export const issueStyle = StyleSheet.create({
   },
   checkBoxesDiv: {
     flexDirection: 'row',
+    width:'100%',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderWidth: 2,

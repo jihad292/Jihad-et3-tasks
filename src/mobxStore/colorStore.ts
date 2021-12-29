@@ -15,6 +15,7 @@ export class ColorStoreImpl {
   itemPropertyBorderColor = observable.box<string>('thistle');
   itemPropertyTextColor = observable.box<string>('slategray');
   itemDataColor = observable.box<string>('olivedrab');
+  dropdownTextColor = observable.box<string>('blue');
   updateModalBackgroundColor = observable.box<string>('rgba(0,0,0,0.5)');
   updateModalMainContainerColor = observable.box<string>('burlywood');
   updateModalSecondaryContainercolor = observable.box<string>('darkkhaki');

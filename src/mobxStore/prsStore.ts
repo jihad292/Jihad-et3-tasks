@@ -24,7 +24,14 @@ export class PrsStoreImpl {
   dateS = observable.box<string>('');
   flatListRender = observable.box<boolean>(false);
   prsTotalNumber = observable.box<number>(0);
-  
+  prsNumberModal = observable.box<boolean>(false);
+
+  setPrsNumberModal = (value : boolean)=>{
+    runInAction(()=>{
+      this.prsNumberModal.set(value);
+    })
+  }
+
   setPrs = (array: prItem[]) => {
     runInAction(() => {
       this.prs.set(array);
@@ -133,7 +140,7 @@ export class PrsStoreImpl {
     });
   };
 
-  setTest = (value: number) => {
+  setPrsTotalNumber = (value: number) => {
     runInAction(() => {
       this.prsTotalNumber.set(value);
     });
@@ -193,26 +200,30 @@ export class PrsStoreImpl {
   storePrs = async () => {
     try {
       await AsyncStorage.setItem('Prs', JSON.stringify(this.prs.get()));
+      await AsyncStorage.setItem(
+        'PrsNumber',
+        JSON.stringify(this.prsTotalNumber.get()),
+      );
     } catch (error) {
       console.warn(error);
     }
   };
 
-  retrivePrs  = async () => {
+  retrivePrs = async () => {
     try {
-      const value = await AsyncStorage.getItem('Prs');
-      if (value !== null) {
-        runInAction(()=>{
-          this.prs.set(JSON.parse(value));
+      const prs = await AsyncStorage.getItem('Prs');
+      const prsNumber = await AsyncStorage.getItem('PrsNumber');
+      if (prs !== null) {
+        runInAction(() => {
+          this.prs.set(JSON.parse(prs));
           this.flatListRender.set(!this.flatListRender.get());
-        })
+        });
       }
+      this.setPrsTotalNumber(JSON.parse(prsNumber));
     } catch (error) {
       console.warn(error);
     }
   };
-
-
 
   addPr() {
     if (this.reviewByBY.get() === true) {
@@ -284,12 +295,12 @@ export class PrsStoreImpl {
         return pr.id != value;
       });
       this.setPrs(test);
+      this.setPrsTotalNumber(this.prsTotalNumber.get() - 1);
       this.flatListRender.set(!this.flatListRender.get());
       AsyncStorage.clear();
       this.storePrs();
     });
   }
-  
 }
 export const PrsStore = memoize(
   () => {
