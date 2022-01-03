@@ -4,17 +4,8 @@ import MainComponent from './components/Common/mainComponent';
 export default function App() {
   useEffect(() => {
     PrsStore().retrivePrs();
+    PrsStore().printPrsNumber();
   }, []);
-
-  // setInterval(() => {
-  //   let interval = setInterval(() => {
-  //     PrsStore().setPrsNumberModal(true);
-  //   }, 7000);
-  //   setTimeout(() => {
-  //     clearInterval(interval);
-  //     PrsStore().setPrsNumberModal(false);
-  //   }, 7100);
-  // }, 10000);
 
   return (
     <>

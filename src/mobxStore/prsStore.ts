@@ -26,11 +26,11 @@ export class PrsStoreImpl {
   prsTotalNumber = observable.box<number>(0);
   prsNumberModal = observable.box<boolean>(false);
 
-  setPrsNumberModal = (value : boolean)=>{
-    runInAction(()=>{
+  setPrsNumberModal = (value: boolean) => {
+    runInAction(() => {
       this.prsNumberModal.set(value);
-    })
-  }
+    });
+  };
 
   setPrs = (array: prItem[]) => {
     runInAction(() => {
@@ -301,7 +301,20 @@ export class PrsStoreImpl {
       this.storePrs();
     });
   }
+
+  printPrsNumber() {
+    setInterval(() => {
+      let interval = setInterval(() => {
+        PrsStore().setPrsNumberModal(true);
+      }, 10000);
+      setTimeout(() => {
+        clearInterval(interval);
+        PrsStore().setPrsNumberModal(false);
+      }, 10200);
+    }, 300000);
+  }
 }
+
 export const PrsStore = memoize(
   () => {
     return new PrsStoreImpl();
