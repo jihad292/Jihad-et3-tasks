@@ -60,6 +60,14 @@ const i18n = {
       AR: 'عرض المشاكل',
       ENG: 'Prs',
     },
+    drawer_Add_Pr:{
+      AR:'اضافة مشكلة',
+      ENG:'Add Pr'
+    },
+    drawer_Language:{
+      AR:'لغة',
+      ENG:'Language'
+    }
   },
   get(message: string, language: string) {
     return this.LG[message] === undefined || this.LG[message] === undefined
