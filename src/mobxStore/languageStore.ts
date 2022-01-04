@@ -12,10 +12,12 @@ export class LanguageStoreImpl {
   languageStateString = observable.box<string>('ENG');
   languageState = observable.box<boolean>(false);
   languageText = observable.box<string>('English');
-  drawerPosition = observable.box<string>('left');
+  drawerPosition = observable.box<"left" | "right">('left');
 
   setLanguageStateString = (value: string) => {
-    this.languageStateString.set(value);
+    runInAction(() => {
+      this.languageStateString.set(value);
+    });
   };
 
   setLanguageState = (value: boolean) => {
@@ -30,7 +32,7 @@ export class LanguageStoreImpl {
     });
   };
 
-  setDrawerPosition = (value: string) => {
+  setDrawerPosition = (value: "left" | "right") => {
     runInAction(() => {
       this.drawerPosition.set(value);
     });
@@ -45,6 +47,7 @@ export class LanguageStoreImpl {
         this.setDrawerPosition('left');
         saveEngLanguage();
         retrieveEngLanguage();
+
         PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
       } else {
         this.setLanguageState(true);

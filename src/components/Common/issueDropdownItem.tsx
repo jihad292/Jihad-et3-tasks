@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
-import {Text, View, StyleSheet} from 'react-native';
-import {issueStyle} from '../AddPrs/Parts/issueStyle';
+import {Text, View} from 'react-native';
+import {ColorStore} from '../../mobxStore/colorStore';
 
 interface props {
   data: string[];
@@ -10,7 +10,7 @@ interface props {
   defaultValue: string;
 }
 
-const IssueDropdownItem: React.FC<props> = (({
+const IssueDropdownItem: React.FC<props> = ({
   data,
   setItem,
   propertyDefinition,
@@ -18,10 +18,25 @@ const IssueDropdownItem: React.FC<props> = (({
 }) => {
   return (
     <View>
-      <Text style={issueStyle.dropdownPropertyText}>{propertyDefinition}</Text>
+      <Text
+        style={{
+          fontWeight: 'bold',
+          color: ColorStore().dropDownTextColor.get(),
+          fontSize: 15,
+          alignSelf: 'center',
+        }}>
+        {propertyDefinition}
+      </Text>
       <SelectDropdown
-        buttonStyle={styles.selectBtn}
-        buttonTextStyle={styles.selectBtnStyle}
+        buttonStyle={{
+          width: '100%',
+          height: 40,
+          borderRadius: 4,
+          backgroundColor: 'rgba(255,255,255,0.15)',
+          borderBottomWidth: 1,
+          borderBottomColor: '#fff',
+        }}
+        buttonTextStyle={{color: 'blue', fontSize: 17, fontWeight: 'bold'}}
         data={data}
         defaultButtonText={'Choose an option'}
         defaultValue={defaultValue}
@@ -37,22 +52,6 @@ const IssueDropdownItem: React.FC<props> = (({
       />
     </View>
   );
-});
-
-const styles = StyleSheet.create({
-  selectBtn: {
-    width: '100%',
-    height: 40,
-    borderRadius: 4,
-    backgroundColor: 'rgba(255,255,255,0.15)',
-    borderBottomWidth: 1,
-    borderBottomColor: '#fff',
-  },
-  selectBtnStyle:{
-    color:'blue',
-    fontSize:17,
-    fontWeight:'bold',
-  },
-});
+};
 
 export default IssueDropdownItem;

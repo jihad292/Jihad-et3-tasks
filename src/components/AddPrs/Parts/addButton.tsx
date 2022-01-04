@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
-import {issueStyle} from './issueStyle';
+import {Colors} from '../../Common/colors'
 
 interface props {
   text: string;
@@ -9,9 +9,26 @@ interface props {
 
 const AddButton: React.FC<props> = props => {
   return (
-    <View style={issueStyle.addButton}>
+    <View
+      style={{
+        backgroundColor: Colors.addButtonBackgroud,
+        width: 70,
+        height: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 2,
+        borderColor: Colors.addButtonBorder,
+        borderRadius: 10,
+      }}>
       <TouchableOpacity onPress={props.pressHandler}>
-        <Text style={issueStyle.addButtonText}>{props.text}</Text>
+        <Text
+          style={{
+            color: Colors.addButtonText,
+            fontWeight: 'bold',
+            fontSize: 20,
+          }}>
+          {props.text}
+        </Text>
       </TouchableOpacity>
     </View>
   );

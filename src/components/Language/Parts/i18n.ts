@@ -1,3 +1,5 @@
+import {LanguageStore} from '../../../mobxStore/languageStore';
+
 const i18n = {
   LG: {
     comment: {
@@ -60,19 +62,20 @@ const i18n = {
       AR: 'عرض المشاكل',
       ENG: 'Prs',
     },
-    drawer_Add_Pr:{
-      AR:'اضافة مشكلة',
-      ENG:'Add Pr'
+    drawer_Add_Pr: {
+      AR: 'اضافة مشكلة',
+      ENG: 'Add Pr',
     },
-    drawer_Language:{
-      AR:'لغة',
-      ENG:'Language'
-    }
+    drawer_Language: {
+      AR: 'لغة',
+      ENG: 'Language',
+    },
   },
-  get(message: string, language: string) {
+  get(message: string) {
     return this.LG[message] === undefined || this.LG[message] === undefined
       ? message
-      : this.LG[message][language];
+      : this.LG[message][LanguageStore().languageStateString.get()];
   },
 };
+
 export default i18n;

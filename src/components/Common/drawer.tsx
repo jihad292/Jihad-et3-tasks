@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,46 +7,55 @@ import HomeScreen from '../Home';
 import PrsScreen from '../Prs';
 import IssueScreen from '../AddPrs';
 import LanguageScreen from '../Language';
-import {ColorStore} from '../../mobxStore/colorStore';
 import {observer} from 'mobx-react';
 import i18n from '../Language/Parts/i18n';
-import {LanguageStore} from '../../mobxStore/languageStore';
+import {Colors} from '../Common/colors';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerComponent = observer(() => {
   return (
-    <View style={styles.container}>
+    <View style={{flex: 1}}>
       <NavigationContainer>
         <Drawer.Navigator
           initialRouteName="Home"
           // I am also facing trouble with drawer screens names on update,when I choose arabic for example the screens names will dessappear and come back on drawer refresh
           screenOptions={{
             headerShown: true,
+            drawerLabelStyle: {
+              fontSize: 20,
+              color: Colors.drawerScreensName,
+              fontWeight: 'bold',
+            },
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: Colors.drawerHeaderTitle,
+              fontSize: 25,
+            },
+            headerLeftContainerStyle: {
+              alignItems: 'center',
+            },
             drawerPosition: 'left', //LanguageStore().drawerPosition.get()
-            drawerActiveBackgroundColor: 'black',
-            drawerInactiveBackgroundColor: 'azure',
-            headerTintColor: 'coral',
+            drawerActiveBackgroundColor: Colors.drawerActiveScreenBackgroud,
+            drawerInactiveBackgroundColor: Colors.drawerInactiveScreenBackgroud,
+            headerTintColor: Colors.drawerHeaderContent,
             drawerType: 'slide',
             drawerStatusBarAnimation: 'fade',
             drawerHideStatusBarOnOpen: true,
             headerStyle: {
-              backgroundColor: 'grey',
+              backgroundColor: Colors.drawerHederBackground,
             },
           }}>
           <Drawer.Screen
             name="Home"
             component={HomeScreen}
             options={{
-              drawerLabel: i18n.get(
-                'drawer_Home',
-                LanguageStore().languageStateString.get(),
-              ),
+              drawerLabel: i18n.get('drawer_Home'),
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'home'}
                   size={28}
-                  color={ColorStore().homePageIconsColor.get()}
+                  color={Colors.drawerScreensIcons}
                 />
               ),
             }}
@@ -55,15 +64,12 @@ const DrawerComponent = observer(() => {
             name="Prs"
             component={PrsScreen}
             options={{
-              drawerLabel: i18n.get(
-                'drawer_Prs',
-                LanguageStore().languageStateString.get(),
-              ),
+              drawerLabel: i18n.get('drawer_Prs'),
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'digital-tachograph'}
                   size={28}
-                  color={ColorStore().homePageIconsColor.get()}
+                  color={Colors.drawerScreensIcons}
                 />
               ),
             }}
@@ -72,15 +78,12 @@ const DrawerComponent = observer(() => {
             name="Add Pr"
             component={IssueScreen}
             options={{
-              drawerLabel: i18n.get(
-                'drawer_Add_Pr',
-                LanguageStore().languageStateString.get(),
-              ),
+              drawerLabel: i18n.get('drawer_Add_Pr'),
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'plus-square'}
                   size={28}
-                  color={ColorStore().homePageIconsColor.get()}
+                  color={Colors.drawerScreensIcons}
                 />
               ),
             }}
@@ -89,15 +92,12 @@ const DrawerComponent = observer(() => {
             name="Languages"
             component={LanguageScreen}
             options={{
-              drawerLabel: i18n.get(
-                'drawer_Language',
-                LanguageStore().languageStateString.get(),
-              ),
+              drawerLabel: i18n.get('drawer_Language'),
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'language'}
                   size={28}
-                  color={ColorStore().homePageIconsColor.get()}
+                  color={Colors.drawerScreensIcons}
                 />
               ),
             }}
@@ -106,13 +106,6 @@ const DrawerComponent = observer(() => {
       </NavigationContainer>
     </View>
   );
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {},
 });
 
 export default DrawerComponent;

@@ -1,9 +1,7 @@
 import React from 'react';
-import {View, Text, Modal, TouchableOpacity, TextInput} from 'react-native';
+import {View, Modal, TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {PrsStore} from '../../../mobxStore/prsStore';
-import {issueStyle} from '../../AddPrs/Parts/issueStyle';
-import {updateStyle} from './updateStyle';
 import {observer} from 'mobx-react';
 import {
   SE_Array,
@@ -16,8 +14,10 @@ import {
 import IssueDropdownItem from '../../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
 import {UpdateStore} from '../../../mobxStore/updateStore';
-import {LanguageStore} from '../../../mobxStore/languageStore';
 import i18n from '../../Language/Parts/i18n';
+import {ColorStore} from '../../../mobxStore/colorStore';
+import UpdateModaHeader from './updadeModaHeader';
+import UpdateModalInputProperty from './updateModalInputProperty';
 
 interface modalProps {
   visible: boolean;
@@ -26,135 +26,128 @@ interface modalProps {
 const ModalForm: React.FC<modalProps> = observer(props => {
   return (
     <Modal transparent visible={props.visible}>
-      <View style={updateStyle.modal}>
-        <View style={updateStyle.modalContainer}>
-          <View style={updateStyle.closeModalDiv}>
-            <Text style={updateStyle.issueIdText}>
-              {i18n.get('id', LanguageStore().languageStateString.get())} :{' '}
-              {PrsStore().id.get()}
-            </Text>
-            <View style={updateStyle.closeIcon}>
-              <TouchableOpacity onPress={UpdateStore().closeModal}>
-                <FontAwesome5
-                  name={'window-close'}
-                  size={23}
-                  color={'olivedrab'}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: ColorStore().updateModalBackgroundColor.get(),
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            paddingTop: 0,
+            width: '95%',
+            backgroundColor: ColorStore().updateModalMainContainerColor.get(),
+            paddingHorizontal: 20,
+            paddingVertical: 30,
+            borderRadius: 20,
+            elevation: 25,
+            height: '100%',
+          }}>
+          <UpdateModaHeader />
 
-          <View style={updateStyle.propertiesDiv}>
-            <View style={issueStyle.inputTextContainer}>
-              <Text style={issueStyle.itemProperty}>
-                {i18n.get('comment', LanguageStore().languageStateString.get())}
-              </Text>
-              <TextInput
-                value={PrsStore().comment.get()}
-                style={issueStyle.textInput}
-                placeholder={i18n.get(
-                  'comment',
-                  LanguageStore().languageStateString.get(),
-                )}
-                onChangeText={PrsStore().setComment}
-              />
-            </View>
+          <View
+            style={{
+              paddingTop: 0,
+              backgroundColor: 'beige',
+              height: '100%',
+              borderWidth: 3,
+              borderColor: ColorStore().itemPropertyBorderColor.get(),
+              borderRadius: 20,
+              elevation: 10,
+            }}>
+            <UpdateModalInputProperty />
 
-            <View style={issueStyle.inputTextContainer}>
-              <Text style={issueStyle.itemProperty}>
-                {i18n.get('link', LanguageStore().languageStateString.get())}
-              </Text>
-              <TextInput
-                value={PrsStore().link.get()}
-                style={issueStyle.textInput}
-                placeholder={i18n.get(
-                  'link',
-                  LanguageStore().languageStateString.get(),
-                )}
-                onChangeText={PrsStore().setLink}
-              />
-            </View>
-
-            <View style={updateStyle.secondaryDiv}>
-              <View style={updateStyle.secondaryDivFirst}>
+            <View
+              style={{
+                flexDirection: 'row',
+                width: '95%',
+                borderWidth: 1,
+                borderColor: ColorStore().propertyBorderColor.get(),
+                alignSelf: 'center',
+                height: '65%',
+                borderRadius: 20,
+                backgroundColor:
+                  ColorStore().updateModalMainContainerColor.get(),
+              }}>
+              <View
+                style={{
+                  marginTop: 3,
+                  marginLeft: 5,
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                  paddingVertical: 5,
+                  borderWidth: 1,
+                  borderColor: ColorStore().propertyBorderColor.get(),
+                  borderRadius: 20,
+                  height: '100%',
+                  width: '65%',
+                }}>
                 <IssueDropdownItem
                   defaultValue={PrsStore().se.get()}
                   data={SE_Array}
                   setItem={PrsStore().setSE}
-                  propertyDefinition={i18n.get(
-                    'se',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyDefinition={i18n.get('se')}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().platform.get()}
                   data={Platform_Array}
                   setItem={PrsStore().setPlatform}
-                  propertyDefinition={i18n.get(
-                    'platform',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyDefinition={i18n.get('platform')}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().size.get()}
                   data={Size_Array}
                   setItem={PrsStore().setSize}
-                  propertyDefinition={i18n.get(
-                    'size',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyDefinition={i18n.get('size')}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().difficulty.get()}
                   data={Difficulty_Array}
                   setItem={PrsStore().setDifficulty}
-                  propertyDefinition={i18n.get(
-                    'difficulty',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyDefinition={i18n.get('difficulty')}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().status.get()}
                   data={Status_Array}
                   setItem={PrsStore().setStatus}
-                  propertyDefinition={i18n.get(
-                    'status',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyDefinition={i18n.get('status')}
                 />
                 <IssueDropdownItem
                   defaultValue={PrsStore().version.get()}
                   data={Release_Version_Array}
                   setItem={PrsStore().setVersion}
-                  propertyDefinition={i18n.get(
-                    'version',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyDefinition={i18n.get('version')}
                 />
               </View>
 
-              <View style={updateStyle.secondaryDivSecond}>
+              <View
+                style={{
+                  marginTop: 3,
+                  marginHorizontal: 2,
+                  flexDirection: 'column',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                  borderWidth: 1,
+                  borderColor: ColorStore().itemPropertyBorderColor.get(),
+                  borderRadius: 20,
+                  height: '100%',
+                  width: '32%',
+                  backgroundColor:
+                    ColorStore().updateModalSecondaryContainercolor.get(),
+                }}>
                 <IssueCheckBoxItem
-                  propertyText={i18n.get(
-                    'by',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyText={i18n.get('by')}
                   reviewBy={PrsStore().reviewByBY.get()}
                   setReview={PrsStore().setReviewByBY}
                 />
                 <IssueCheckBoxItem
-                  propertyText={i18n.get(
-                    'ah',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyText={i18n.get('ah')}
                   reviewBy={PrsStore().reviewByAH.get()}
                   setReview={PrsStore().setReviewByAH}
                 />
                 <IssueCheckBoxItem
-                  propertyText={i18n.get(
-                    'ht',
-                    LanguageStore().languageStateString.get(),
-                  )}
+                  propertyText={i18n.get('ht')}
                   reviewBy={PrsStore().reviewByHT.get()}
                   setReview={PrsStore().setReviewByHT}
                 />
@@ -164,7 +157,18 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                       UpdateStore().updatableItem.get(),
                     )
                   }>
-                  <View style={updateStyle.updateButton}>
+                  <View
+                    style={{
+                      width: 60,
+                      borderWidth: 2,
+                      borderColor: ColorStore().itemPropertyBorderColor.get(),
+                      height: 40,
+                      borderRadius: 20,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      backgroundColor:
+                        ColorStore().updateButtonbackgroundColor.get(),
+                    }}>
                     <FontAwesome5 name={'save'} size={23} color={'black'} />
                   </View>
                 </TouchableOpacity>

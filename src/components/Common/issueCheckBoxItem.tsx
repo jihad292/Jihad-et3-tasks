@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import {issueStyle} from '../AddPrs/Parts/issueStyle';
+import {Colors} from '../Common/colors';
 
 interface props {
   propertyText: string;
@@ -16,14 +16,22 @@ const IssueCheckBoxItem: React.FC<props> = ({
 }) => {
   return (
     <View>
-      <Text style={issueStyle.checkboxText}>{propertyText}</Text>
-      <View style={issueStyle.checkboxContainer}>
+      <Text
+        style={{
+          fontWeight: 'bold',
+          fontSize: 15,
+          color: Colors.checkboxText,
+          alignSelf: 'center',
+        }}>
+        {propertyText}
+      </Text>
+      <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <CheckBox
           disabled={false}
           value={reviewBy}
           onValueChange={newValue => setReview(newValue)}
         />
-      </View> 
+      </View>
     </View>
   );
 };

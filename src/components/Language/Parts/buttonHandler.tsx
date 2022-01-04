@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
+import {TouchableOpacity, Text, View} from 'react-native';
 import {ColorStore} from '../../../mobxStore/colorStore';
 
 interface props {
@@ -9,25 +9,24 @@ interface props {
 
 export const ButtonHandler: React.FC<props> = props => {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        width: '100%',
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
       <TouchableOpacity onPress={props.handleLanguage}>
-        <Text style={styles.text}>{props.text}</Text>
+        <Text
+          style={{
+            color: ColorStore().languageTextColor.get(),
+            fontWeight: 'bold',
+            fontSize: 50,
+            fontStyle: 'italic',
+          }}>
+          {props.text}
+        </Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    color: ColorStore().languageTextColor.get(),
-    fontWeight: 'bold',
-    fontSize: 50,
-    fontStyle: 'italic',
-  },
-});

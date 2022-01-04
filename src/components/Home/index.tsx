@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {ColorStore} from '../../mobxStore/colorStore';
 
@@ -17,7 +17,15 @@ const HomeScreen = () => {
         size={80}
         color={ColorStore().homePageIconsColor.get()}
       />
-      <Text style={styles.text}>Welcome To your Prs Application </Text>
+      <Text
+        style={{
+          color: ColorStore().homePageTextColor.get(),
+          fontWeight: 'bold',
+          fontSize: 20,
+          fontStyle: 'italic',
+        }}>
+        Welcome To your Prs Application{' '}
+      </Text>
       <FontAwesome5
         name={'exclamation-triangle'}
         size={80}
@@ -26,17 +34,5 @@ const HomeScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    color: ColorStore().homePageTextColor.get(),
-    fontWeight: 'bold',
-    fontSize: 20,
-    fontStyle: 'italic',
-  },
-  arrowDiv: {
-    padding: 50,
-  },
-});
 
 export default HomeScreen;

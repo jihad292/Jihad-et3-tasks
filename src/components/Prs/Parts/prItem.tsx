@@ -1,121 +1,84 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {PrsStore} from '../../../mobxStore/prsStore';
-import {prItemStyle} from './prItemStyle';
+import {View, Text} from 'react-native';
 import {observer} from 'mobx-react';
-import {LanguageStore} from '../../../mobxStore/languageStore';
-import {UpdateStore} from '../../../mobxStore/updateStore';
 import i18n from '../../Language/Parts/i18n';
-
-interface propertyProps {
-  text: string;
-  property: StringNumber;
-}
-const Property: React.FC<propertyProps> = props => {
-  return (
-    <View style={prItemStyle.propoertySection}>
-      <Text style={prItemStyle.propertyText}>{props.text}:</Text>
-      <Text style={prItemStyle.propertyData}>{props.property}</Text>
-    </View>
-  );
-};
+import ItemPropertyHeader from './itemPropertyHeader';
+import ItemInputProperty from './itemInputProperty';
+import ArrayPropertyItem from './arrayPropertyItem';
+import CheckboxPropertyItem from './checkboxPropertyItem';
+import {ColorStore} from '../../../mobxStore/colorStore';
 
 const PrItem = observer((props: prItem) => {
   return (
     <>
-      <View style={prItemStyle.container}>
-        <View style={prItemStyle.smallPropertiesDiv}>
-          <Property
-            text={i18n.get('id', LanguageStore().languageStateString.get())}
-            property={props.id}
-          />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: ColorStore().black.get(),
+          marginTop: 15,
+          width: 290,
+          borderRadius: 20,
+          paddingBottom: 15,
+          marginBottom: 20,
+        }}>
+        <ItemPropertyHeader id={props.id} issue={props} />
 
-          <View style={prItemStyle.actionSymbol}>
-            <TouchableOpacity
-              onPress={() => UpdateStore().openUpdateModal(props)}>
-              <FontAwesome5 name={'pen-alt'} size={25} color="white" />
-            </TouchableOpacity>
-          </View>
+        <ItemInputProperty comment={props.comment} link={props.link} />
 
-          <View style={prItemStyle.actionSymbol}>
-            <TouchableOpacity onPress={() => PrsStore().deletePr(props.id)}>
-              <FontAwesome5 name={'trash-alt'} size={25} color="white" />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <Property
-          text={i18n.get('comment', LanguageStore().languageStateString.get())}
-          property={props.comment}
-        />
-        <Property
-          text={i18n.get('link', LanguageStore().languageStateString.get())}
-          property={props.link}
+        <ArrayPropertyItem
+          property1={props.se}
+          propertyText1="se"
+          property2={props.difficulty}
+          propertyText2="difficulty"
         />
 
-        <View style={prItemStyle.smallPropertiesDiv}>
-          <Property
-            text={i18n.get('se', LanguageStore().languageStateString.get())}
-            property={props.se}
-          />
-          <Property
-            text={i18n.get(
-              'difficulty',
-              LanguageStore().languageStateString.get(),
-            )}
-            property={props.difficulty}
-          />
-        </View>
+        <ArrayPropertyItem
+          property1={props.platform}
+          propertyText1="platform"
+          property2={props.size}
+          propertyText2="size"
+        />
 
-        <View style={prItemStyle.smallPropertiesDiv}>
-          <Property
-            text={i18n.get(
-              'platform',
-              LanguageStore().languageStateString.get(),
-            )}
-            property={props.platform}
-          />
-          <Property
-            text={i18n.get('size', LanguageStore().languageStateString.get())}
-            property={props.size}
-          />
-        </View>
+        <ArrayPropertyItem
+          property1={props.status}
+          propertyText1="status"
+          property2={props.version}
+          propertyText2="version"
+        />
 
-        <View style={prItemStyle.smallPropertiesDiv}>
-          <Property
-            text={i18n.get('status', LanguageStore().languageStateString.get())}
-            property={props.status}
-          />
-          <Property
-            text={i18n.get(
-              'version',
-              LanguageStore().languageStateString.get(),
-            )}
-            property={props.version}
-          />
-        </View>
+        <CheckboxPropertyItem
+          property1={props.ByStatus}
+          propertyText1="by"
+          property2={props.AhStatus}
+          propertyText2="ah"
+          property3={props.HtStatus}
+          propertyText3="ht"
+        />
 
-        <View style={prItemStyle.smallPropertiesDiv}>
-          <Property
-            text={i18n.get('by', LanguageStore().languageStateString.get())}
-            property={props.ByStatus}
-          />
-          <Property
-            text={i18n.get('ah', LanguageStore().languageStateString.get())}
-            property={props.AhStatus}
-          />
-          <Property
-            text={i18n.get('ht', LanguageStore().languageStateString.get())}
-            property={props.HtStatus}
-          />
-        </View>
-
-        <View style={prItemStyle.dateContainer}>
-          <Text style={prItemStyle.dateContainerText}>
-            {i18n.get('date', LanguageStore().languageStateString.get())}
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text
+            style={{
+              color: ColorStore().itemPropertyTextColor.get(),
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}>
+            {i18n.get('date')}
           </Text>
-          <Text style={prItemStyle.propertyData}>''+{props.dateS}</Text>
+          <Text
+            style={{
+              color: ColorStore().itemDataColor.get(),
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}>
+            ''+{props.dateS}
+          </Text>
         </View>
       </View>
     </>

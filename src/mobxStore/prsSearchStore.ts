@@ -18,7 +18,7 @@ export class SearchStoreImpl {
     });
   };
 
-  setSearchArray = (value: []) => {
+  setSearchArray = (value: prItem[]) => {
     runInAction(() => {
       this.searchArray.set(value);
     });
@@ -35,7 +35,7 @@ export class SearchStoreImpl {
       if (this.searchStateText.get() !== '') {
         runInAction(() => {
           this.setSearchState(true);
-          let test: any = PrsStore().prs.get().filter(pr => {
+          let test: prItem[] = PrsStore().prs.get().filter(pr => {
             return pr.comment
               .toLowerCase()
               .includes(this.searchStateText.get().toLowerCase());
