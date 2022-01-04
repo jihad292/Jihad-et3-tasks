@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, TextInput} from 'react-native';
-import {ColorStore} from '../../../mobxStore/colorStore';
 import i18n from '../../Language/Parts/i18n';
 import {PrsStore} from '../../../mobxStore/prsStore';
+import {Colors} from '../../Common/colors';
 
 const UpdateModalInputProperty = () => {
   return (
@@ -12,7 +12,7 @@ const UpdateModalInputProperty = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 20,
-            color: ColorStore().black.get(),
+            color: Colors.updateModalTextInputColor,
           }}>
           {i18n.get('comment')}
         </Text>
@@ -20,8 +20,8 @@ const UpdateModalInputProperty = () => {
           value={PrsStore().comment.get()}
           style={{
             borderBottomWidth: 2,
-            borderBottomColor: 'cornflowerblue',
-            color: ColorStore().black.get(),
+            borderBottomColor: Colors.updateModalTextInputBottomBorder,
+            color: Colors.updateModalTextInputColor,
             justifyContent: 'center',
           }}
           placeholder={i18n.get('comment')}
@@ -33,7 +33,7 @@ const UpdateModalInputProperty = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 20,
-            color: ColorStore().black.get(),
+            color: Colors.updateModalTextInputColor,
           }}>
           {i18n.get('link')}
         </Text>
@@ -41,8 +41,8 @@ const UpdateModalInputProperty = () => {
           value={PrsStore().link.get()}
           style={{
             borderBottomWidth: 2,
-            borderBottomColor: 'cornflowerblue',
-            color: ColorStore().black.get(),
+            borderBottomColor: Colors.updateModalTextInputBottomBorder,
+            color: Colors.updateModalTextInputColor,
             justifyContent: 'center',
           }}
           placeholder={i18n.get('link')}

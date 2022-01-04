@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text, View} from 'react-native';
-import {ColorStore} from '../../../mobxStore/colorStore';
+import {Colors} from '../../Common/colors';
 
 interface props {
   text: string;
@@ -19,7 +19,7 @@ export const ButtonHandler: React.FC<props> = props => {
       <TouchableOpacity onPress={props.handleLanguage}>
         <Text
           style={{
-            color: ColorStore().languageTextColor.get(),
+            color: Colors.languageText,
             fontWeight: 'bold',
             fontSize: 50,
             fontStyle: 'italic',

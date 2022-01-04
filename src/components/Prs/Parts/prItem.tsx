@@ -6,7 +6,7 @@ import ItemPropertyHeader from './itemPropertyHeader';
 import ItemInputProperty from './itemInputProperty';
 import ArrayPropertyItem from './arrayPropertyItem';
 import CheckboxPropertyItem from './checkboxPropertyItem';
-import {ColorStore} from '../../../mobxStore/colorStore';
+import {Colors} from '../../Common/colors';
 
 const PrItem = observer((props: prItem) => {
   return (
@@ -16,7 +16,7 @@ const PrItem = observer((props: prItem) => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: ColorStore().black.get(),
+          backgroundColor: Colors.prsScreenItemBackground,
           marginTop: 15,
           width: 290,
           borderRadius: 20,
@@ -65,7 +65,7 @@ const PrItem = observer((props: prItem) => {
           }}>
           <Text
             style={{
-              color: ColorStore().itemPropertyTextColor.get(),
+              color: Colors.prsScreenItemDateTitle,
               fontWeight: 'bold',
               fontSize: 15,
             }}>
@@ -73,7 +73,7 @@ const PrItem = observer((props: prItem) => {
           </Text>
           <Text
             style={{
-              color: ColorStore().itemDataColor.get(),
+              color: Colors.prsScreenItemDateData,
               fontWeight: 'bold',
               fontSize: 15,
             }}>

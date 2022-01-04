@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {ColorStore} from '../../../mobxStore/colorStore';
+import { Colors } from '../../Common/colors';
 
 interface propertyProps {
   text: string;
@@ -12,7 +12,7 @@ const Property: React.FC<propertyProps> = props => {
       style={{
         flex: 1,
         flexDirection: 'column',
-        borderBottomColor: ColorStore().itemPropertyBorderColor.get(),
+        borderBottomColor: Colors.prsSreenItemPropertyBottomBorder,
         borderBottomWidth: 2,
         alignItems: 'center',
         justifyContent: 'center',
@@ -20,7 +20,7 @@ const Property: React.FC<propertyProps> = props => {
       <View>
         <Text
           style={{
-            color: ColorStore().itemPropertyTextColor.get(),
+            color: Colors.prsScreenItemPropertyTitle,
             fontWeight: 'bold',
             fontSize: 16,
           }}>
@@ -30,7 +30,7 @@ const Property: React.FC<propertyProps> = props => {
       <View>
         <Text
           style={{
-            color: ColorStore().itemDataColor.get(),
+            color: Colors.prsScreenItemPropertyData,
             fontWeight: 'bold',
             fontSize: 15,
           }}>

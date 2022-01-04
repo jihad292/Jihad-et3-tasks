@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import {Text, View} from 'react-native';
-import {ColorStore} from '../../mobxStore/colorStore';
+import {Colors} from '../Common/colors';
 
 interface props {
   data: string[];
@@ -21,7 +21,7 @@ const IssueDropdownItem: React.FC<props> = ({
       <Text
         style={{
           fontWeight: 'bold',
-          color: ColorStore().dropDownTextColor.get(),
+          color: Colors.dropdownText,
           fontSize: 15,
           alignSelf: 'center',
         }}>

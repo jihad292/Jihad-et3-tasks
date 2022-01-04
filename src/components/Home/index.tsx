@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {ColorStore} from '../../mobxStore/colorStore';
+import {Colors} from '../Common/colors';
 
 const HomeScreen = () => {
   return (
@@ -10,16 +10,12 @@ const HomeScreen = () => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: ColorStore().homePageBackgroundColor.get(),
+        backgroundColor: Colors.homeScreenBackground,
       }}>
-      <FontAwesome5
-        name={'robot'}
-        size={80}
-        color={ColorStore().homePageIconsColor.get()}
-      />
+      <FontAwesome5 name={'robot'} size={80} color={Colors.homeScreenIcon} />
       <Text
         style={{
-          color: ColorStore().homePageTextColor.get(),
+          color: Colors.homeScreenText,
           fontWeight: 'bold',
           fontSize: 20,
           fontStyle: 'italic',
@@ -29,7 +25,7 @@ const HomeScreen = () => {
       <FontAwesome5
         name={'exclamation-triangle'}
         size={80}
-        color={ColorStore().homePageIconsColor.get()}
+        color={Colors.homeScreenIcon}
       />
     </View>
   );

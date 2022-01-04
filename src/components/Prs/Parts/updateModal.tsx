@@ -15,9 +15,9 @@ import IssueDropdownItem from '../../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
 import {UpdateStore} from '../../../mobxStore/updateStore';
 import i18n from '../../Language/Parts/i18n';
-import {ColorStore} from '../../../mobxStore/colorStore';
 import UpdateModaHeader from './updadeModaHeader';
 import UpdateModalInputProperty from './updateModalInputProperty';
+import {Colors} from '../../Common/colors';
 
 interface modalProps {
   visible: boolean;
@@ -29,7 +29,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
       <View
         style={{
           flex: 1,
-          backgroundColor: ColorStore().updateModalBackgroundColor.get(),
+          backgroundColor: Colors.updateModalMainBackground,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -37,7 +37,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
           style={{
             paddingTop: 0,
             width: '95%',
-            backgroundColor: ColorStore().updateModalMainContainerColor.get(),
+            backgroundColor: Colors.updateModalSecondaryBackground,
             paddingHorizontal: 20,
             paddingVertical: 30,
             borderRadius: 20,
@@ -49,10 +49,10 @@ const ModalForm: React.FC<modalProps> = observer(props => {
           <View
             style={{
               paddingTop: 0,
-              backgroundColor: 'beige',
+              backgroundColor: Colors.updateModalSecondaryContainerBackground,
               height: '100%',
               borderWidth: 3,
-              borderColor: ColorStore().itemPropertyBorderColor.get(),
+              borderColor: Colors.updateModalSecondaryContainerBorder,
               borderRadius: 20,
               elevation: 10,
             }}>
@@ -63,12 +63,11 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                 flexDirection: 'row',
                 width: '95%',
                 borderWidth: 1,
-                borderColor: ColorStore().propertyBorderColor.get(),
+                borderColor: Colors.updateModalInternContainersBorder,
                 alignSelf: 'center',
                 height: '65%',
                 borderRadius: 20,
-                backgroundColor:
-                  ColorStore().updateModalMainContainerColor.get(),
+                backgroundColor: Colors.updateModalSecondaryBackground,
               }}>
               <View
                 style={{
@@ -78,7 +77,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   justifyContent: 'flex-start',
                   paddingVertical: 5,
                   borderWidth: 1,
-                  borderColor: ColorStore().propertyBorderColor.get(),
+                  borderColor: Colors.updateModalInternContainersBorder,
                   borderRadius: 20,
                   height: '100%',
                   width: '65%',
@@ -129,12 +128,11 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   justifyContent: 'space-around',
                   alignItems: 'center',
                   borderWidth: 1,
-                  borderColor: ColorStore().itemPropertyBorderColor.get(),
+                  borderColor: Colors.updateModalInternContainersBorder,
                   borderRadius: 20,
                   height: '100%',
                   width: '32%',
-                  backgroundColor:
-                    ColorStore().updateModalSecondaryContainercolor.get(),
+                  backgroundColor: Colors.updateModalReviewsContainerBackground,
                 }}>
                 <IssueCheckBoxItem
                   propertyText={i18n.get('by')}
@@ -161,15 +159,18 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                     style={{
                       width: 60,
                       borderWidth: 2,
-                      borderColor: ColorStore().itemPropertyBorderColor.get(),
+                      borderColor: Colors.updateModalInternContainersBorder,
                       height: 40,
                       borderRadius: 20,
                       justifyContent: 'center',
                       alignItems: 'center',
-                      backgroundColor:
-                        ColorStore().updateButtonbackgroundColor.get(),
+                      backgroundColor: Colors.updateModalSaveButtonBackground,
                     }}>
-                    <FontAwesome5 name={'save'} size={23} color={'black'} />
+                    <FontAwesome5
+                      name={'save'}
+                      size={23}
+                      color={Colors.updateModalSaveButtonIcon}
+                    />
                   </View>
                 </TouchableOpacity>
               </View>
