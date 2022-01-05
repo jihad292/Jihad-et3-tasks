@@ -15,10 +15,10 @@ export const Colors = {
   drawerScreensIcons: '#6b8e23',
   checkboxText: '#2f4f4f',
   dropdownText: '#000080',
-  prsNumberModalMainBackground: '#a39f95',
+  prsNumberModalMainBackground: '#808080',
   prsNumberModalSecondaryBackground: '#5f9ea0',
   prsNumberModalBorder: '#008000',
-  prsNumberModalText: '#ff0000',
+  prsNumberModalText: '#008000',
   homeScreenBackground: '#b0e0e6',
   homeScreenIcon: '#6b8e23',
   homeScreenText: '#002b70',
@@ -45,4 +45,6 @@ export const Colors = {
   updateModalSaveButtonIcon: '#000000',
   updateModalTextInputColor: '#000000',
   updateModalTextInputBottomBorder: '#6495ed',
+  
+  
 };

@@ -5,13 +5,8 @@ import FlatListComponent from './prsFlatList';
 import FlatListSearchComponent from './prsFlatListSearch';
 
 const PrsList = observer(() => {
-  return (
-    <>
-      {SearchStore().searchState.get() !== true && <FlatListComponent />}
-
-      {SearchStore().searchState.get() && <FlatListSearchComponent />}
-    </>
-  );
+  const showList = SearchStore().searchState.get();
+  return showList ? <FlatListSearchComponent /> : <FlatListComponent />;
 });
 
 export default PrsList;

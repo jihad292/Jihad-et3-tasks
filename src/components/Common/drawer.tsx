@@ -10,12 +10,15 @@ import LanguageScreen from '../Language';
 import {observer} from 'mobx-react';
 import i18n from '../Language/Parts/i18n';
 import {Colors} from '../Common/colors';
+import PrsTotalNumberModal from '../Common/prsTotalNumberModal';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerComponent = observer(() => {
   return (
     <View style={{flex: 1}}>
+      <PrsTotalNumberModal />
+
       <NavigationContainer>
         <Drawer.Navigator
           initialRouteName="Home"

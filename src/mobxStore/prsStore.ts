@@ -24,7 +24,7 @@ export class PrsStoreImpl {
   dateS = observable.box<string>('');
   flatListRender = observable.box<boolean>(false);
   prsTotalNumber = observable.box<number>(0);
-  prsNumberModal = observable.box<boolean>(false);
+  prsNumberModal = observable.box<boolean>(true);  
 
   setPrsNumberModal = (value: boolean) => {
     runInAction(() => {

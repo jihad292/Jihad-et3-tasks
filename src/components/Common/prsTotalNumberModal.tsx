@@ -1,41 +1,34 @@
 import React from 'react';
-import {Modal, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import {PrsStore} from '../../mobxStore/prsStore';
 import {observer} from 'mobx-react';
 import {Colors} from '../Common/colors';
 
 const PrsTotalNumberModal = observer(() => {
   return (
-    <Modal visible={PrsStore().prsNumberModal.get()}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: Colors.prsNumberModalMainBackground,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+    <View >
+      {PrsStore().prsNumberModal.get() && (
         <View
           style={{
-            backgroundColor: Colors.prsNumberModalSecondaryBackground,
-            width: '80%',
-            height: 70,
-            borderWidth: 1,
-            borderRadius: 25,
-            borderColor: Colors.prsNumberModalBorder,
+            backgroundColor: Colors.prsNumberModalMainBackground,
+            height: 21,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-end',
+            paddingRight: 10,
           }}>
           <Text
             style={{
               color: Colors.prsNumberModalText,
-              fontSize: 25,
+              fontSize: 20,
+              elevation: 1,
+              fontStyle: 'italic',
               fontWeight: 'bold',
             }}>
-            Number Of Prs is : {PrsStore().prsTotalNumber.get()}
+            Number of Prs is : {PrsStore().prsTotalNumber.get()}
           </Text>
         </View>
-      </View>
-    </Modal>
+      )}
+    </View>
   );
 });
 
