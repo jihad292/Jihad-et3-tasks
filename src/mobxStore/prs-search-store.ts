@@ -1,6 +1,6 @@
 import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
-import {PrsStore} from './prsStore';
+import {PrsStore} from './prs-store';
 
 export class SearchStoreImpl {
   searchState = observable.box<boolean>(false);

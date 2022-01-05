@@ -1,4 +1,4 @@
-import {LanguageStore} from '../../../mobxStore/languageStore';
+import {LanguageStore} from '../../../mobxStore/language-store';
 
 const i18n = {
   LG: {

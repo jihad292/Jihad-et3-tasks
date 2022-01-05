@@ -2,7 +2,7 @@ import React from 'react';
 import {FlatList, View} from 'react-native';
 import {observer} from 'mobx-react';
 import PrItem from './prItem';
-import {PrsStore} from '../../../mobxStore/prsStore';
+import {PrsStore} from '../../../mobxStore/prs-store';
 
 const FlatListComponent = observer(() => {
   return (

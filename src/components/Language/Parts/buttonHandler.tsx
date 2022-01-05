@@ -8,6 +8,7 @@ interface props {
 }
 
 export const ButtonHandler: React.FC<props> = props => {
+  const {text, handleLanguage} = props;
   return (
     <View
       style={{
@@ -16,7 +17,7 @@ export const ButtonHandler: React.FC<props> = props => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <TouchableOpacity onPress={props.handleLanguage}>
+      <TouchableOpacity onPress={handleLanguage}>
         <Text
           style={{
             color: Colors.languageText,
@@ -24,7 +25,7 @@ export const ButtonHandler: React.FC<props> = props => {
             fontSize: 50,
             fontStyle: 'italic',
           }}>
-          {props.text}
+          {text}
         </Text>
       </TouchableOpacity>
     </View>

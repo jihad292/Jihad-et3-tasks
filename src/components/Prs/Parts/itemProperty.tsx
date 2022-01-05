@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import { Colors } from '../../Common/colors';
+import {Colors} from '../../Common/colors';
 
 interface propertyProps {
   text: string;
   property: StringNumber;
 }
 const Property: React.FC<propertyProps> = props => {
+  const {text, property} = props;
   return (
     <View
       style={{
@@ -24,7 +25,7 @@ const Property: React.FC<propertyProps> = props => {
             fontWeight: 'bold',
             fontSize: 16,
           }}>
-          {props.text}:
+          {text}:
         </Text>
       </View>
       <View>
@@ -34,7 +35,7 @@ const Property: React.FC<propertyProps> = props => {
             fontWeight: 'bold',
             fontSize: 15,
           }}>
-          {props.property}
+          {property}
         </Text>
       </View>
     </View>

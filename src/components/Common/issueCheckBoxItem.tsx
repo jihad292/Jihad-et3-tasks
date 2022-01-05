@@ -3,17 +3,14 @@ import {Text, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import {Colors} from '../Common/colors';
 
-interface props {
+interface Props {
   propertyText: string;
   setReview: booleanFunction;
   reviewBy: boolean;
 }
 
-const IssueCheckBoxItem: React.FC<props> = ({
-  propertyText,
-  setReview,
-  reviewBy,
-}) => {
+const IssueCheckBoxItem: React.FC<Props> = props => {
+  const {propertyText, setReview, reviewBy} = props;
   return (
     <View>
       <Text

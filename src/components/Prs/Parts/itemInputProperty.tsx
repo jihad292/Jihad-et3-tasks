@@ -9,6 +9,7 @@ interface Props {
 }
 
 const ItemInputProperty: React.FC<Props> = props => {
+  const {comment, link} = props;
   return (
     <View
       style={{
@@ -18,8 +19,8 @@ const ItemInputProperty: React.FC<Props> = props => {
         marginTop: 10,
         marginBottom: 10,
       }}>
-      <Property text={i18n.get('comment')} property={props.comment} />
-      <Property text={i18n.get('link')} property={props.link} />
+      <Property text={i18n.get('comment')} property={comment} />
+      <Property text={i18n.get('link')} property={link} />
     </View>
   );
 };

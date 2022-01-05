@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {ButtonHandler} from './Parts/buttonHandler';
-import {LanguageStore} from '../../mobxStore/languageStore';
+import {LanguageStore} from '../../mobxStore/language-store';
 import {observer} from 'mobx-react';
 import {Colors} from '../Common/colors';
 

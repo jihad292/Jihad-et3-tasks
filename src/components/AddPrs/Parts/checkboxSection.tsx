@@ -16,6 +16,17 @@ interface Props {
 }
 
 const CheckboxSection: React.FC<Props> = props => {
+  const {
+    propertyText1,
+    reviewBy1,
+    setReviewBy1,
+    propertyText2,
+    reviewBy2,
+    setReviewBy2,
+    propertyText3,
+    reviewBy3,
+    setReviewBy3,
+  } = props;
   return (
     <View
       style={{
@@ -35,9 +46,9 @@ const CheckboxSection: React.FC<Props> = props => {
           paddingHorizontal: 8,
         }}>
         <IssueCheckBoxItem
-          propertyText={props.propertyText1}
-          reviewBy={props.reviewBy1}
-          setReview={props.setReviewBy1}
+          propertyText={propertyText1}
+          reviewBy={reviewBy1}
+          setReview={setReviewBy1}
         />
       </View>
 
@@ -48,9 +59,9 @@ const CheckboxSection: React.FC<Props> = props => {
           paddingHorizontal: 8,
         }}>
         <IssueCheckBoxItem
-          propertyText={props.propertyText2}
-          reviewBy={props.reviewBy2}
-          setReview={props.setReviewBy2}
+          propertyText={propertyText2}
+          reviewBy={reviewBy2}
+          setReview={setReviewBy2}
         />
       </View>
 
@@ -61,9 +72,9 @@ const CheckboxSection: React.FC<Props> = props => {
           paddingHorizontal: 8,
         }}>
         <IssueCheckBoxItem
-          propertyText={props.propertyText3}
-          reviewBy={props.reviewBy3}
-          setReview={props.setReviewBy3}
+          propertyText={propertyText3}
+          reviewBy={reviewBy3}
+          setReview={setReviewBy3}
         />
       </View>
     </View>

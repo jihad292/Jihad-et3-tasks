@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Modal, TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {PrsStore} from '../../../mobxStore/prsStore';
+import {PrsStore} from '../../../mobxStore/prs-store';
 import {observer} from 'mobx-react';
 import {
   SE_Array,
@@ -10,10 +10,10 @@ import {
   Difficulty_Array,
   Status_Array,
   Release_Version_Array,
-} from '../../Common/prProperties';
+} from '../../../constants';
 import IssueDropdownItem from '../../Common/issueDropdownItem';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
-import {UpdateStore} from '../../../mobxStore/updateStore';
+import {UpdateStore} from '../../../mobxStore/update-store';
 import i18n from '../../Language/Parts/i18n';
 import UpdateModaHeader from './updadeModaHeader';
 import UpdateModalInputProperty from './updateModalInputProperty';
@@ -24,8 +24,9 @@ interface modalProps {
 }
 
 const ModalForm: React.FC<modalProps> = observer(props => {
+  const {visible} = props;
   return (
-    <Modal transparent visible={props.visible}>
+    <Modal transparent visible={visible}>
       <View
         style={{
           flex: 1,

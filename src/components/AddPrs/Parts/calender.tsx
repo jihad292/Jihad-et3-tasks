@@ -2,7 +2,7 @@ import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import {CalendarStore} from '../../../mobxStore/calendarStore';
+import {CalendarStore} from '../../../mobxStore/calendar-store';
 import {observer} from 'mobx-react';
 
 const Calender = observer(() => {

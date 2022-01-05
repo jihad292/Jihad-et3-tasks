@@ -10,6 +10,7 @@ interface Props {
 }
 
 const TextInputComponent: React.FC<Props> = props => {
+  const {title, value, placeholder, onChangeText} = props;
   return (
     <View
       style={{
@@ -23,19 +24,19 @@ const TextInputComponent: React.FC<Props> = props => {
           fontSize: 20,
           color: Colors.textInputTitle,
         }}>
-        {props.title}
+        {title}
       </Text>
       <TextInput
-        value={props.value}
+        value={value}
         style={{
           borderBottomWidth: 2,
           borderBottomColor: Colors.addTextInputBottomBorder,
           color: Colors.textInputTitle,
           justifyContent: 'center',
         }}
-        placeholder={props.placeholder}
-        placeholderTextColor={'black'}
-        onChangeText={props.onChangeText}
+        placeholder={placeholder}
+        placeholderTextColor={Colors.textInputTitle}
+        onChangeText={onChangeText}
       />
     </View>
   );

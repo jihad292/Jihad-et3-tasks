@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {UpdateStore} from '../../../mobxStore/updateStore';
-import {PrsStore} from '../../../mobxStore/prsStore';
+import {UpdateStore} from '../../../mobxStore/update-store';
+import {PrsStore} from '../../../mobxStore/prs-store';
 import i18n from '../../Language/Parts/i18n';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from '../../Common/colors';

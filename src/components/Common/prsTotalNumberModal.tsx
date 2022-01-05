@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {PrsStore} from '../../mobxStore/prsStore';
+import {PrsStore} from '../../mobxStore/prs-store';
 import {observer} from 'mobx-react';
 import {Colors} from '../Common/colors';
 
@@ -11,7 +11,7 @@ const PrsTotalNumberModal = observer(() => {
         <View
           style={{
             backgroundColor: Colors.prsNumberModalMainBackground,
-            height: 21,
+            height: 25,
             justifyContent: 'center',
             alignItems: 'flex-end',
             paddingRight: 10,

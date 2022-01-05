@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import IssueDropdownItem from '../../Common/issueDropdownItem';
-import { Colors } from '../../Common/colors'
+import {Colors} from '../../Common/colors';
 
 interface Props {
   defaultValue1: string;
@@ -15,6 +15,16 @@ interface Props {
 }
 
 const DropdownSection: React.FC<Props> = props => {
+  const {
+    defaultValue1,
+    data1,
+    setItem1,
+    propertyDefinition1,
+    defaultValue2,
+    data2,
+    setItem2,
+    propertyDefinition2,
+  } = props;
   return (
     <View
       style={{
@@ -32,10 +42,10 @@ const DropdownSection: React.FC<Props> = props => {
           alignItems: 'center',
         }}>
         <IssueDropdownItem
-          defaultValue={props.defaultValue1}
-          data={props.data1}
-          setItem={props.setItem1}
-          propertyDefinition={props.propertyDefinition1}
+          defaultValue={defaultValue1}
+          data={data1}
+          setItem={setItem1}
+          propertyDefinition={propertyDefinition1}
         />
       </View>
 
@@ -49,10 +59,10 @@ const DropdownSection: React.FC<Props> = props => {
           alignItems: 'center',
         }}>
         <IssueDropdownItem
-          defaultValue={props.defaultValue2}
-          data={props.data2}
-          setItem={props.setItem2}
-          propertyDefinition={props.propertyDefinition2}
+          defaultValue={defaultValue2}
+          data={data2}
+          setItem={setItem2}
+          propertyDefinition={propertyDefinition2}
         />
       </View>
     </View>

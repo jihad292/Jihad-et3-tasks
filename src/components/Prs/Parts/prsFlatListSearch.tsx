@@ -2,7 +2,7 @@ import React from 'react';
 import {FlatList, View} from 'react-native';
 import {observer} from 'mobx-react';
 import PrItem from './prItem';
-import {SearchStore} from '../../../mobxStore/prsSearchStore';
+import {SearchStore} from '../../../mobxStore/prs-search-store';
 
 const FlatListSearchComponent = observer(() => {
   return (

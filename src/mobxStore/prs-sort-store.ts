@@ -1,7 +1,7 @@
 import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
 import sortBy from 'lodash.sortby';
-import {PrsStore} from './prsStore';
+import {PrsStore} from './prs-store';
 
 export class SortStoreImpl {
   sortState = observable.box<boolean>(false);

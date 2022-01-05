@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {PrsStore} from '../../mobxStore/prsStore';
+import {PrsStore} from '../../mobxStore/prs-store';
 import {observer} from 'mobx-react';
 import {
   SE_Array,
@@ -9,7 +9,7 @@ import {
   Difficulty_Array,
   Status_Array,
   Release_Version_Array,
-} from '../Common/prProperties';
+} from '../../constants';
 import Calender from './Parts/calender';
 import AddButton from './Parts/addButton';
 import i18n from '../Language/Parts/i18n';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 import i18n from '../../Language/Parts/i18n';
-import {PrsStore} from '../../../mobxStore/prsStore';
+import {PrsStore} from '../../../mobxStore/prs-store';
 import {Colors} from '../../Common/colors';
 
 const UpdateModalInputProperty = () => {

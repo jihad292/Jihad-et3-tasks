@@ -16,6 +16,7 @@ interface props {
 }
 
 const HeadPage: React.FC<props> = props => {
+  const {handleSort, name, value, handleChange} = props;
   return (
     <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -43,15 +44,15 @@ const HeadPage: React.FC<props> = props => {
                 height: 40,
                 fontSize: 20,
               }}
-              value={props.value}
-              onChangeText={props.handleChange}
+              value={value}
+              onChangeText={handleChange}
               placeholder="Search"
               placeholderTextColor={Colors.prsScreenSearchText}
             />
           </View>
 
           <View style={{marginEnd: 10}}>
-            <Button title={props.name} onPress={props.handleSort}></Button>
+            <Button title={name} onPress={handleSort}></Button>
           </View>
         </View>
       </TouchableWithoutFeedback>

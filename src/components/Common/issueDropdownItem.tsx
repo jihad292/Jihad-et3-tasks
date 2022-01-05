@@ -3,19 +3,15 @@ import SelectDropdown from 'react-native-select-dropdown';
 import {Text, View} from 'react-native';
 import {Colors} from '../Common/colors';
 
-interface props {
+interface Props {
   data: string[];
   setItem: stringFunction;
   propertyDefinition: string;
   defaultValue: string;
 }
 
-const IssueDropdownItem: React.FC<props> = ({
-  data,
-  setItem,
-  propertyDefinition,
-  defaultValue,
-}) => {
+const IssueDropdownItem: React.FC<Props> = props => {
+  const {data, setItem, propertyDefinition, defaultValue} = props;
   return (
     <View>
       <Text

@@ -13,6 +13,14 @@ interface Props {
 }
 
 const CheckboxPropertyItem: React.FC<Props> = props => {
+  const {
+    property1,
+    propertyText1,
+    property2,
+    propertyText2,
+    property3,
+    propertyText3,
+  } = props;
   return (
     <View
       style={{
@@ -20,18 +28,9 @@ const CheckboxPropertyItem: React.FC<Props> = props => {
         justifyContent: 'space-around',
         paddingHorizontal: 12,
       }}>
-      <Property
-        text={i18n.get(props.propertyText1)}
-        property={props.property1}
-      />
-      <Property
-        text={i18n.get(props.propertyText2)}
-        property={props.property2}
-      />
-      <Property
-        text={i18n.get(props.propertyText3)}
-        property={props.property3}
-      />
+      <Property text={i18n.get(propertyText1)} property={property1} />
+      <Property text={i18n.get(propertyText2)} property={property2} />
+      <Property text={i18n.get(propertyText3)} property={property3} />
     </View>
   );
 };

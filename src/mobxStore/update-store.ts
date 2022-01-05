@@ -1,6 +1,6 @@
 import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
-import {PrsStore} from './prsStore';
+import {PrsStore} from './prs-store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class UpdateStoreImpl {

@@ -6,7 +6,7 @@ import {
   saveEngLanguage,
   retrieveEngLanguage,
 } from '../components/Language/Parts/languangeManagment';
-import {PrsStore} from './prsStore';
+import {PrsStore} from './prs-store';
 
 export class LanguageStoreImpl {
   languageStateString = observable.box<string>('ENG');

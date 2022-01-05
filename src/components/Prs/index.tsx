@@ -4,9 +4,9 @@ import PrsList from './Parts/prsList';
 import {observer} from 'mobx-react';
 import HeadPage from './Parts/headPage';
 import UpdateModal from './Parts/updateModal';
-import {UpdateStore} from '../../mobxStore/updateStore';
-import {SearchStore} from '../../mobxStore/prsSearchStore';
-import {SortStore} from '../../mobxStore/prsSortStore';
+import {UpdateStore} from '../../mobxStore/update-store';
+import {SearchStore} from '../../mobxStore/prs-search-store';
+import {SortStore} from '../../mobxStore/prs-sort-store';
 const PrsScreen = observer(() => {
   return (
     <>
