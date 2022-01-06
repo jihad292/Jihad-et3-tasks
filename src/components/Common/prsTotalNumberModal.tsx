@@ -6,7 +6,11 @@ import {Colors} from '../Common/colors';
 
 const PrsTotalNumberModal = observer(() => {
   return (
-    <View >
+    <View
+      style={{
+        alignItems: 'flex-end',
+        backgroundColor: Colors.prsNumberModalMainBackground,
+      }}>
       {PrsStore().prsNumberModal.get() && (
         <View
           style={{
@@ -15,6 +19,11 @@ const PrsTotalNumberModal = observer(() => {
             justifyContent: 'center',
             alignItems: 'flex-end',
             paddingRight: 10,
+            borderWidth: 2,
+            borderTopWidth: 0,
+            borderColor: Colors.prsNumberModalBorder,
+            width: '60%',
+            borderRadius: 25,
           }}>
           <Text
             style={{

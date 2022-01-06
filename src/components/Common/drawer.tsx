@@ -11,6 +11,7 @@ import {observer} from 'mobx-react';
 import i18n from '../Language/Parts/i18n';
 import {Colors} from '../Common/colors';
 import PrsTotalNumberModal from '../Common/prsTotalNumberModal';
+import {LanguageStore} from '../../mobxStore/language-store';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,12 +22,12 @@ const DrawerComponent = observer(() => {
 
       <NavigationContainer>
         <Drawer.Navigator
-          initialRouteName="Home"
+          initialRouteName={i18n.get('drawer_Home')}
           // I am also facing trouble with drawer screens names on update,when I choose arabic for example the screens names will dessappear and come back on drawer refresh
           screenOptions={{
             headerShown: true,
             drawerLabelStyle: {
-              fontSize: 20,
+              fontSize: 23,
               color: Colors.drawerScreensName,
               fontWeight: 'bold',
             },
@@ -36,7 +37,8 @@ const DrawerComponent = observer(() => {
               fontSize: 25,
             },
             headerLeftContainerStyle: {
-              alignItems: 'center',
+              alignItems: LanguageStore().drawerIconPosition.get(),
+              width: '100%',
             },
             drawerPosition: 'left', //LanguageStore().drawerPosition.get()
             drawerActiveBackgroundColor: Colors.drawerActiveScreenBackgroud,
@@ -50,7 +52,7 @@ const DrawerComponent = observer(() => {
             },
           }}>
           <Drawer.Screen
-            name="Home"
+            name={i18n.get('drawer_Home')}
             component={HomeScreen}
             options={{
               drawerLabel: i18n.get('drawer_Home'),
@@ -64,7 +66,7 @@ const DrawerComponent = observer(() => {
             }}
           />
           <Drawer.Screen
-            name="Prs"
+            name={i18n.get('drawer_Prs')}
             component={PrsScreen}
             options={{
               drawerLabel: i18n.get('drawer_Prs'),
@@ -78,7 +80,7 @@ const DrawerComponent = observer(() => {
             }}
           />
           <Drawer.Screen
-            name="Add Pr"
+            name={i18n.get('drawer_Add_Pr')}
             component={IssueScreen}
             options={{
               drawerLabel: i18n.get('drawer_Add_Pr'),
@@ -92,14 +94,14 @@ const DrawerComponent = observer(() => {
             }}
           />
           <Drawer.Screen
-            name="Languages"
+            name={i18n.get('drawer_Language')}
             component={LanguageScreen}
             options={{
               drawerLabel: i18n.get('drawer_Language'),
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'language'}
-                  size={28}
+                  size={25}
                   color={Colors.drawerScreensIcons}
                 />
               ),

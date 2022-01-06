@@ -17,7 +17,7 @@ const HomeScreen = () => {
         style={{
           color: Colors.homeScreenText,
           fontWeight: 'bold',
-          fontSize: 20,
+          fontSize: 22,
           fontStyle: 'italic',
         }}>
         Welcome To your Prs Application{' '}
