@@ -30,7 +30,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
       <View
         style={{
           flex: 1,
-          backgroundColor: Colors.updateModalMainBackground,
+          backgroundColor: Colors.gray,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -38,7 +38,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
           style={{
             paddingTop: 0,
             width: '95%',
-            backgroundColor: Colors.updateModalSecondaryBackground,
+            backgroundColor: Colors.orange,
             paddingHorizontal: 20,
             paddingVertical: 30,
             borderRadius: 20,
@@ -50,10 +50,10 @@ const ModalForm: React.FC<modalProps> = observer(props => {
           <View
             style={{
               paddingTop: 0,
-              backgroundColor: Colors.updateModalSecondaryContainerBackground,
+              backgroundColor: Colors.azure,
               height: '100%',
               borderWidth: 3,
-              borderColor: Colors.updateModalSecondaryContainerBorder,
+              borderColor: Colors.blue,
               borderRadius: 20,
               elevation: 10,
             }}>
@@ -64,11 +64,11 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                 flexDirection: 'row',
                 width: '95%',
                 borderWidth: 1,
-                borderColor: Colors.updateModalInternContainersBorder,
+                borderColor: Colors.blue,
                 alignSelf: 'center',
                 height: '65%',
                 borderRadius: 20,
-                backgroundColor: Colors.updateModalSecondaryBackground,
+                backgroundColor: Colors.orange,
               }}>
               <View
                 style={{
@@ -78,7 +78,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   justifyContent: 'flex-start',
                   paddingVertical: 5,
                   borderWidth: 1,
-                  borderColor: Colors.updateModalInternContainersBorder,
+                  borderColor: Colors.blue,
                   borderRadius: 20,
                   height: '100%',
                   width: '65%',
@@ -129,11 +129,11 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   justifyContent: 'space-around',
                   alignItems: 'center',
                   borderWidth: 1,
-                  borderColor: Colors.updateModalInternContainersBorder,
+                  borderColor: Colors.blue,
                   borderRadius: 20,
                   height: '100%',
                   width: '32%',
-                  backgroundColor: Colors.updateModalReviewsContainerBackground,
+                  backgroundColor: Colors.gray,
                 }}>
                 <IssueCheckBoxItem
                   propertyText={i18n.get('by')}
@@ -160,17 +160,17 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                     style={{
                       width: 60,
                       borderWidth: 2,
-                      borderColor: Colors.updateModalInternContainersBorder,
+                      borderColor: Colors.blue,
                       height: 40,
                       borderRadius: 20,
                       justifyContent: 'center',
                       alignItems: 'center',
-                      backgroundColor: Colors.updateModalSaveButtonBackground,
+                      backgroundColor: Colors.green,
                     }}>
                     <FontAwesome5
                       name={'save'}
                       size={23}
-                      color={Colors.updateModalSaveButtonIcon}
+                      color={Colors.black}
                     />
                   </View>
                 </TouchableOpacity>

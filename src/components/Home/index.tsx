@@ -10,12 +10,12 @@ const HomeScreen = () => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: Colors.homeScreenBackground,
+        backgroundColor: Colors.blue,
       }}>
-      <FontAwesome5 name={'robot'} size={80} color={Colors.homeScreenIcon} />
+      <FontAwesome5 name={'robot'} size={80} color={Colors.oliveGreen} />
       <Text
         style={{
-          color: Colors.homeScreenText,
+          color: Colors.black,
           fontWeight: 'bold',
           fontSize: 22,
           fontStyle: 'italic',
@@ -25,7 +25,7 @@ const HomeScreen = () => {
       <FontAwesome5
         name={'exclamation-triangle'}
         size={80}
-        color={Colors.homeScreenIcon}
+        color={Colors.oliveGreen}
       />
     </View>
   );

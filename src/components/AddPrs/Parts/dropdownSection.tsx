@@ -36,7 +36,7 @@ const DropdownSection: React.FC<Props> = props => {
         style={{
           borderWidth: 2,
           borderRadius: 10,
-          borderColor: Colors.addBorderDropdown,
+          borderColor: Colors.blue,
           width: '50%',
           marginHorizontal: 1,
           alignItems: 'center',
@@ -53,7 +53,7 @@ const DropdownSection: React.FC<Props> = props => {
         style={{
           borderWidth: 2,
           borderRadius: 10,
-          borderColor: Colors.addBorderDropdown,
+          borderColor: Colors.blue,
           width: '50%',
           marginHorizontal: 1,
           alignItems: 'center',

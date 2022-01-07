@@ -36,7 +36,7 @@ const CheckboxSection: React.FC<Props> = props => {
         justifyContent: 'space-between',
         borderWidth: 2,
         marginVertical: 10,
-        borderColor: Colors.addBorderCheckbox,
+        borderColor: Colors.blue,
         borderRadius: 10,
       }}>
       <View

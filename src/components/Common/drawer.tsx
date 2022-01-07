@@ -20,35 +20,34 @@ const DrawerComponent = observer(() => {
     <View style={{flex: 1}}>
       <PrsTotalNumberModal />
 
-      <NavigationContainer>
+      <NavigationContainer>  
         <Drawer.Navigator
-          initialRouteName={i18n.get('drawer_Home')}
-          // I am also facing trouble with drawer screens names on update,when I choose arabic for example the screens names will dessappear and come back on drawer refresh
+          initialRouteName={i18n.get('drawer_Home')}   //key + costum
           screenOptions={{
             headerShown: true,
             drawerLabelStyle: {
               fontSize: 23,
-              color: Colors.drawerScreensName,
+              color: Colors.black,
               fontWeight: 'bold',
             },
             headerTitleStyle: {
               fontWeight: 'bold',
-              color: Colors.drawerHeaderTitle,
+              color: Colors.gray,
               fontSize: 25,
             },
             headerLeftContainerStyle: {
               alignItems: LanguageStore().drawerIconPosition.get(),
               width: '100%',
             },
-            drawerPosition: 'left', //LanguageStore().drawerPosition.get()
-            drawerActiveBackgroundColor: Colors.drawerActiveScreenBackgroud,
-            drawerInactiveBackgroundColor: Colors.drawerInactiveScreenBackgroud,
-            headerTintColor: Colors.drawerHeaderContent,
+            drawerPosition: 'left',//LanguageStore().drawerPosition.get()
+            drawerActiveBackgroundColor: Colors.green,
+            drawerInactiveBackgroundColor: Colors.azure,
+            headerTintColor: Colors.blue,
             drawerType: 'slide',
             drawerStatusBarAnimation: 'fade',
             drawerHideStatusBarOnOpen: true,
             headerStyle: {
-              backgroundColor: Colors.drawerHederBackground,
+              backgroundColor: Colors.gray,
             },
           }}>
           <Drawer.Screen
@@ -60,7 +59,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'home'}
                   size={28}
-                  color={Colors.drawerScreensIcons}
+                  color={Colors.oliveGreen}
                 />
               ),
             }}
@@ -74,7 +73,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'digital-tachograph'}
                   size={28}
-                  color={Colors.drawerScreensIcons}
+                  color={Colors.oliveGreen}
                 />
               ),
             }}
@@ -88,7 +87,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'plus-square'}
                   size={28}
-                  color={Colors.drawerScreensIcons}
+                  color={Colors.oliveGreen}
                 />
               ),
             }}
@@ -102,7 +101,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'language'}
                   size={25}
-                  color={Colors.drawerScreensIcons}
+                  color={Colors.oliveGreen}
                 />
               ),
             }}

@@ -12,7 +12,7 @@ const UpdateModalInputProperty = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 20,
-            color: Colors.updateModalTextInputColor,
+            color: Colors.black,
           }}>
           {i18n.get('comment')}
         </Text>
@@ -20,8 +20,8 @@ const UpdateModalInputProperty = () => {
           value={PrsStore().comment.get()}
           style={{
             borderBottomWidth: 2,
-            borderBottomColor: Colors.updateModalTextInputBottomBorder,
-            color: Colors.updateModalTextInputColor,
+            borderBottomColor: Colors.blue,
+            color: Colors.black,
             justifyContent: 'center',
           }}
           placeholder={i18n.get('comment')}
@@ -33,7 +33,7 @@ const UpdateModalInputProperty = () => {
           style={{
             fontWeight: 'bold',
             fontSize: 20,
-            color: Colors.updateModalTextInputColor,
+            color: Colors.black,
           }}>
           {i18n.get('link')}
         </Text>
@@ -41,8 +41,8 @@ const UpdateModalInputProperty = () => {
           value={PrsStore().link.get()}
           style={{
             borderBottomWidth: 2,
-            borderBottomColor: Colors.updateModalTextInputBottomBorder,
-            color: Colors.updateModalTextInputColor,
+            borderBottomColor: Colors.blue,
+            color: Colors.black,
             justifyContent: 'center',
           }}
           placeholder={i18n.get('link')}

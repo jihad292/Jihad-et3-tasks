@@ -34,12 +34,12 @@ const HeadPage: React.FC<props> = props => {
               marginLeft: 20,
               marginRight: 40,
               borderBottomWidth: 1,
-              borderColor: Colors.prsScreenSearchBottomBorder,
+              borderColor: Colors.blue,
               marginStart: 10,
             }}>
             <TextInput
               style={{
-                color: Colors.prsScreenSearchText,
+                color: Colors.black,
                 fontStyle: 'italic',
                 height: 40,
                 fontSize: 20,
@@ -47,7 +47,7 @@ const HeadPage: React.FC<props> = props => {
               value={value}
               onChangeText={handleChange}
               placeholder="Search"
-              placeholderTextColor={Colors.prsScreenSearchText}
+              placeholderTextColor={Colors.black}
             />
           </View>
 

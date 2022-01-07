@@ -22,7 +22,7 @@ const TextInputComponent: React.FC<Props> = props => {
         style={{
           fontWeight: 'bold',
           fontSize: 20,
-          color: Colors.textInputTitle,
+          color: Colors.black,
         }}>
         {title}
       </Text>
@@ -30,12 +30,12 @@ const TextInputComponent: React.FC<Props> = props => {
         value={value}
         style={{
           borderBottomWidth: 2,
-          borderBottomColor: Colors.addTextInputBottomBorder,
-          color: Colors.textInputTitle,
+          borderBottomColor: Colors.blue,
+          color: Colors.black,
           justifyContent: 'center',
         }}
         placeholder={placeholder}
-        placeholderTextColor={Colors.textInputTitle}
+        placeholderTextColor={Colors.black}
         onChangeText={onChangeText}
       />
     </View>

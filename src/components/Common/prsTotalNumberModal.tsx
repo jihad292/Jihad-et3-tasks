@@ -9,25 +9,25 @@ const PrsTotalNumberModal = observer(() => {
     <View
       style={{
         alignItems: 'flex-end',
-        backgroundColor: Colors.prsNumberModalMainBackground,
+        backgroundColor: Colors.gray,
       }}>
       {PrsStore().prsNumberModal.get() && (
         <View
           style={{
-            backgroundColor: Colors.prsNumberModalMainBackground,
+            backgroundColor: Colors.gray,
             height: 25,
             justifyContent: 'center',
             alignItems: 'flex-end',
             paddingRight: 10,
             borderWidth: 2,
             borderTopWidth: 0,
-            borderColor: Colors.prsNumberModalBorder,
+            borderColor: Colors.green,
             width: '60%',
             borderRadius: 25,
           }}>
           <Text
             style={{
-              color: Colors.prsNumberModalText,
+              color: Colors.green,
               fontSize: 20,
               elevation: 1,
               fontStyle: 'italic',
