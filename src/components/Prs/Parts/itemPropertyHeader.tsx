@@ -28,7 +28,7 @@ const ItemPropertyHeader: React.FC<Props> = props => {
           <FontAwesome5
             name={'pen-alt'}
             size={25}
-            color={Colors.azure}
+            color={Colors.AZURE}
           />
         </TouchableOpacity>
       </View>
@@ -38,7 +38,7 @@ const ItemPropertyHeader: React.FC<Props> = props => {
           <FontAwesome5
             name={'trash-alt'}
             size={25}
-            color={Colors.azure}
+            color={Colors.AZURE}
           />
         </TouchableOpacity>
       </View>

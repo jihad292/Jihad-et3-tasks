@@ -12,19 +12,19 @@ const AddButton: React.FC<props> = props => {
   return (
     <View
       style={{
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.BLUE,
         width: 70,
         height: 30,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,
-        borderColor: Colors.green,
+        borderColor: Colors.GREEN,
         borderRadius: 10,
       }}>
       <TouchableOpacity onPress={pressHandler}>
         <Text
           style={{
-            color: Colors.green,
+            color: Colors.GREEN,
             fontWeight: 'bold',
             fontSize: 20,
           }}>

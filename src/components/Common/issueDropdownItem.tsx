@@ -17,7 +17,7 @@ const IssueDropdownItem: React.FC<Props> = props => {
       <Text
         style={{
           fontWeight: 'bold',
-          color: Colors.blue,
+          color: Colors.BLUE,
           fontSize: 15,
           alignSelf: 'center',
         }}>

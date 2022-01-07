@@ -17,7 +17,7 @@ const IssueCheckBoxItem: React.FC<Props> = props => {
         style={{
           fontWeight: 'bold',
           fontSize: 15,
-          color: Colors.darkslategrey,
+          color: Colors.DARKS_SLATE_GRAY,
           alignSelf: 'center',
         }}>
         {propertyText}

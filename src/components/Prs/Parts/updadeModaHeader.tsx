@@ -21,7 +21,7 @@ const UpdateModaHeader = () => {
           fontStyle: 'italic',
           fontWeight: 'bold',
           fontSize: 17,
-          color: Colors.black,
+          color: Colors.BLACK,
           alignSelf: 'center',
         }}>
         {i18n.get('id')} : {PrsStore().id.get()}
@@ -31,7 +31,7 @@ const UpdateModaHeader = () => {
           <FontAwesome5
             name={'window-close'}
             size={23}
-            color={Colors.oliveGreen}
+            color={Colors.OLIVE_GREEN}
           />
         </TouchableOpacity>
       </View>

@@ -16,7 +16,7 @@ const PrItem = observer((props: prItem) => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.BLACK,
           marginTop: 15,
           width: 290,
           borderRadius: 20,
@@ -65,7 +65,7 @@ const PrItem = observer((props: prItem) => {
           }}>
           <Text
             style={{
-              color: Colors.azure,
+              color: Colors.AZURE,
               fontWeight: 'bold',
               fontSize: 15,
             }}>
@@ -73,7 +73,7 @@ const PrItem = observer((props: prItem) => {
           </Text>
           <Text
             style={{
-              color: Colors.oliveGreen,
+              color: Colors.OLIVE_GREEN,
               fontWeight: 'bold',
               fontSize: 15,
             }}>

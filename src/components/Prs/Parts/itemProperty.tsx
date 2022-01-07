@@ -13,7 +13,7 @@ const Property: React.FC<propertyProps> = props => {
       style={{
         flex: 1,
         flexDirection: 'column',
-        borderBottomColor: Colors.blue,
+        borderBottomColor: Colors.BLUE,
         borderBottomWidth: 2,
         alignItems: 'center',
         justifyContent: 'center',
@@ -21,7 +21,7 @@ const Property: React.FC<propertyProps> = props => {
       <View>
         <Text
           style={{
-            color: Colors.azure,
+            color: Colors.AZURE,
             fontWeight: 'bold',
             fontSize: 16,
           }}>
@@ -31,7 +31,7 @@ const Property: React.FC<propertyProps> = props => {
       <View>
         <Text
           style={{
-            color: Colors.oliveGreen,
+            color: Colors.OLIVE_GREEN,
             fontWeight: 'bold',
             fontSize: 15,
           }}>

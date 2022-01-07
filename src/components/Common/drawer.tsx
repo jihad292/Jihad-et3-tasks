@@ -27,12 +27,12 @@ const DrawerComponent = observer(() => {
             headerShown: true,
             drawerLabelStyle: {
               fontSize: 23,
-              color: Colors.black,
+              color: Colors.BLACK,
               fontWeight: 'bold',
             },
             headerTitleStyle: {
               fontWeight: 'bold',
-              color: Colors.gray,
+              color: Colors.GRAY,
               fontSize: 25,
             },
             headerLeftContainerStyle: {
@@ -40,14 +40,14 @@ const DrawerComponent = observer(() => {
               width: '100%',
             },
             drawerPosition: 'left',//LanguageStore().drawerPosition.get()
-            drawerActiveBackgroundColor: Colors.green,
-            drawerInactiveBackgroundColor: Colors.azure,
-            headerTintColor: Colors.blue,
+            drawerActiveBackgroundColor: Colors.GREEN,
+            drawerInactiveBackgroundColor: Colors.AZURE,
+            headerTintColor: Colors.BLUE,
             drawerType: 'slide',
             drawerStatusBarAnimation: 'fade',
             drawerHideStatusBarOnOpen: true,
             headerStyle: {
-              backgroundColor: Colors.gray,
+              backgroundColor: Colors.GRAY,
             },
           }}>
           <Drawer.Screen
@@ -59,7 +59,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'home'}
                   size={28}
-                  color={Colors.oliveGreen}
+                  color={Colors.OLIVE_GREEN}
                 />
               ),
             }}
@@ -73,7 +73,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'digital-tachograph'}
                   size={28}
-                  color={Colors.oliveGreen}
+                  color={Colors.OLIVE_GREEN}
                 />
               ),
             }}
@@ -87,7 +87,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'plus-square'}
                   size={28}
-                  color={Colors.oliveGreen}
+                  color={Colors.OLIVE_GREEN}
                 />
               ),
             }}
@@ -101,7 +101,7 @@ const DrawerComponent = observer(() => {
                 <FontAwesome5
                   name={'language'}
                   size={25}
-                  color={Colors.oliveGreen}
+                  color={Colors.OLIVE_GREEN}
                 />
               ),
             }}
