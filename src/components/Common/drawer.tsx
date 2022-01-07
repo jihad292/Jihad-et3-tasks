@@ -12,6 +12,7 @@ import i18n from '../Language/Parts/i18n';
 import {Colors} from '../Common/colors';
 import PrsTotalNumberModal from '../Common/prsTotalNumberModal';
 import {LanguageStore} from '../../mobxStore/language-store';
+import CustomDrawer from './customDrawer';
 
 const Drawer = createDrawerNavigator();
 
@@ -20,13 +21,14 @@ const DrawerComponent = observer(() => {
     <View style={{flex: 1}}>
       <PrsTotalNumberModal />
 
-      <NavigationContainer>  
+      <NavigationContainer>
         <Drawer.Navigator
-          initialRouteName={i18n.get('drawer_Home')}   //key + costum
+          drawerContent={props => <CustomDrawer {...props} />}
+          initialRouteName={i18n.get('drawer_Home')} //key + costum
           screenOptions={{
             headerShown: true,
             drawerLabelStyle: {
-              fontSize: 23,
+              fontSize: 22,
               color: Colors.BLACK,
               fontWeight: 'bold',
             },
@@ -39,7 +41,7 @@ const DrawerComponent = observer(() => {
               alignItems: LanguageStore().drawerIconPosition.get(),
               width: '100%',
             },
-            drawerPosition: 'left',//LanguageStore().drawerPosition.get()
+            drawerPosition: 'right', //LanguageStore().drawerPosition.get()
             drawerActiveBackgroundColor: Colors.GREEN,
             drawerInactiveBackgroundColor: Colors.AZURE,
             headerTintColor: Colors.BLUE,
@@ -52,6 +54,7 @@ const DrawerComponent = observer(() => {
           }}>
           <Drawer.Screen
             name={i18n.get('drawer_Home')}
+            key={'home-1'}
             component={HomeScreen}
             options={{
               drawerLabel: i18n.get('drawer_Home'),
@@ -66,6 +69,7 @@ const DrawerComponent = observer(() => {
           />
           <Drawer.Screen
             name={i18n.get('drawer_Prs')}
+            key={'prs-1'}
             component={PrsScreen}
             options={{
               drawerLabel: i18n.get('drawer_Prs'),
@@ -80,6 +84,7 @@ const DrawerComponent = observer(() => {
           />
           <Drawer.Screen
             name={i18n.get('drawer_Add_Pr')}
+            key={'add-pr-1'}
             component={IssueScreen}
             options={{
               drawerLabel: i18n.get('drawer_Add_Pr'),
@@ -94,6 +99,7 @@ const DrawerComponent = observer(() => {
           />
           <Drawer.Screen
             name={i18n.get('drawer_Language')}
+            key={'language-1'}
             component={LanguageScreen}
             options={{
               drawerLabel: i18n.get('drawer_Language'),
