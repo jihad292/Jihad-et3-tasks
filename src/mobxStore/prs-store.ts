@@ -303,15 +303,12 @@ export class PrsStoreImpl {
   }
 
   printPrsNumber() {
-    let interval = setInterval(() => {
+    setInterval(() => {
       PrsStore().setPrsNumberModal(true);
       setTimeout(() => {
         PrsStore().setPrsNumberModal(false);
-      }, 5500);
-    }, 15000);
-    setTimeout(() => {
-      clearInterval(interval);
-    }, 10000000);
+      }, 10000);
+    }, 310000);
   }
 }
 

@@ -17,6 +17,17 @@ export class LanguageStoreImpl {
   drawerIconPosition = observable.box<'flex-start' | 'flex-end'>('flex-start');
   englishLanguageOptionTextColor = observable.box<string>('green');
   arabicLanguageOptionTextColor = observable.box<string>('grey');
+  drawerRefresher = observable.box<string>('0');
+
+  setDrawerRefresher = () => {
+    runInAction(() => {
+      if (this.drawerRefresher.get() === '0') {
+        this.drawerRefresher.set('1');
+      } else {
+        this.drawerRefresher.set('0');
+      }
+    });
+  };
 
   setLanguageStateString = (value: string) => {
     runInAction(() => {
@@ -72,6 +83,7 @@ export class LanguageStoreImpl {
 
   setLanguageToEnglish = () => {
     runInAction(() => {
+      this.setDrawerRefresher();
       this.setEnglishLanguageOptionTextColor('green');
       this.setArabicLanguageOptionTextColor('grey');
       this.setLanguageState(false);
@@ -88,6 +100,7 @@ export class LanguageStoreImpl {
 
   setLanguageToArabic = () => {
     runInAction(() => {
+      this.setDrawerRefresher();
       this.setEnglishLanguageOptionTextColor('grey');
       this.setArabicLanguageOptionTextColor('green');
       this.setLanguageState(true);

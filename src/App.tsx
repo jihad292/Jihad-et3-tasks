@@ -4,10 +4,10 @@ import MainComponent from './components/Common/mainComponent';
 export default function App() {
   useEffect(() => {
     PrsStore().retrivePrs();
-    // PrsStore().printPrsNumber();    
-  }, []);  
-    
-  return (  
+    PrsStore().printPrsNumber();
+  }, []);
+
+  return (
     <>
       <MainComponent />
     </>

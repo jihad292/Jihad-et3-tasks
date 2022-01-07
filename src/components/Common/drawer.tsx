@@ -23,6 +23,7 @@ const DrawerComponent = observer(() => {
 
       <NavigationContainer>
         <Drawer.Navigator
+          key={LanguageStore().drawerRefresher.get()}
           drawerContent={props => <CustomDrawer {...props} />}
           initialRouteName={i18n.get('drawer_Home')} //key + costum
           screenOptions={{
@@ -41,7 +42,7 @@ const DrawerComponent = observer(() => {
               alignItems: LanguageStore().drawerIconPosition.get(),
               width: '100%',
             },
-            drawerPosition: 'right', //LanguageStore().drawerPosition.get()
+            drawerPosition: LanguageStore().drawerPosition.get(),
             drawerActiveBackgroundColor: Colors.GREEN,
             drawerInactiveBackgroundColor: Colors.AZURE,
             headerTintColor: Colors.BLUE,
@@ -54,7 +55,6 @@ const DrawerComponent = observer(() => {
           }}>
           <Drawer.Screen
             name={i18n.get('drawer_Home')}
-            key={'home-1'}
             component={HomeScreen}
             options={{
               drawerLabel: i18n.get('drawer_Home'),
@@ -69,7 +69,6 @@ const DrawerComponent = observer(() => {
           />
           <Drawer.Screen
             name={i18n.get('drawer_Prs')}
-            key={'prs-1'}
             component={PrsScreen}
             options={{
               drawerLabel: i18n.get('drawer_Prs'),
@@ -84,7 +83,6 @@ const DrawerComponent = observer(() => {
           />
           <Drawer.Screen
             name={i18n.get('drawer_Add_Pr')}
-            key={'add-pr-1'}
             component={IssueScreen}
             options={{
               drawerLabel: i18n.get('drawer_Add_Pr'),
@@ -99,7 +97,6 @@ const DrawerComponent = observer(() => {
           />
           <Drawer.Screen
             name={i18n.get('drawer_Language')}
-            key={'language-1'}
             component={LanguageScreen}
             options={{
               drawerLabel: i18n.get('drawer_Language'),
