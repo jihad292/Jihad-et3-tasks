@@ -18,7 +18,7 @@ import i18n from '../../Language/Parts/i18n';
 import UpdateModaHeader from './updadeModaHeader';
 import UpdateModalInputProperty from './updateModalInputProperty';
 import {Colors} from '../../Common/colors';
-import { LanguageStore } from '../../../mobxStore/language-store';
+import {LanguageStore} from '../../../mobxStore/language-store';
 
 interface modalProps {
   visible: boolean;
@@ -58,7 +58,12 @@ const ModalForm: React.FC<modalProps> = observer(props => {
               borderRadius: 20,
               elevation: 10,
             }}>
-            <UpdateModalInputProperty />
+            <UpdateModalInputProperty
+              comment={PrsStore().comment.get()}
+              onChangeText1={PrsStore().setComment}
+              link={PrsStore().link.get()}
+              onChangeText2={PrsStore().setLink}
+            />
 
             <View
               style={{
