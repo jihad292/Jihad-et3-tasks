@@ -2,6 +2,8 @@ import React from 'react';
 import {View} from 'react-native';
 import IssueCheckBoxItem from '../../Common/issueCheckBoxItem';
 import {Colors} from '../../Common/colors';
+import {LanguageStore} from '../../../mobxStore/language-store';
+import Et3Theme from '../../Common/getTheme';
 
 interface Props {
   propertyText1: string;
@@ -30,14 +32,14 @@ const CheckboxSection: React.FC<Props> = props => {
   return (
     <View
       style={{
-        flexDirection: 'row',
+        flexDirection: LanguageStore().flexDirection.get(),
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         borderWidth: 2,
-        marginVertical: 10,
         borderColor: Colors.BLUE,
         borderRadius: 10,
+        height: Et3Theme().getAppUnits.get().initialHeight * 0.13,
       }}>
       <View
         style={{

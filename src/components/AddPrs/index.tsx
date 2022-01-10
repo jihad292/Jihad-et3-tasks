@@ -16,11 +16,13 @@ import i18n from '../Language/Parts/i18n';
 import TextInputComponent from './Parts/textInput';
 import DropdownSection from './Parts/dropdownSection';
 import CheckboxSection from './Parts/checkboxSection';
+import {LanguageStore} from '../../mobxStore/language-store';
+import Et3Theme from '../Common/getTheme';
 
 const IssueScreen = observer(() => {
   return (
     <>
-      <View style={{flex: 1, padding: 10}}>
+      <View style={{flex: 1}}>
         <TextInputComponent
           title={i18n.get('comment')}
           value={PrsStore().comment.get()}
@@ -82,18 +84,19 @@ const IssueScreen = observer(() => {
 
         <View
           style={{
-            flexDirection: 'row',
+            flexDirection: LanguageStore().flexDirection.get(),
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: 15,
+            paddingTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,
             paddingHorizontal: 25,
           }}>
           <Calender />
 
           <View
             style={{
-              width: '100%',
-              justifyContent: 'center',
+              marginTop: 0,
+              width: Et3Theme().getAppUnits.get().initialWidth,
+              justifyContent: 'flex-start',
               alignItems: 'center',
             }}>
             <AddButton text="+" pressHandler={PrsStore().pressHandler} />

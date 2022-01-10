@@ -1,7 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
-import Property from './itemProperty';
+import {View, Text} from 'react-native';
 import i18n from '../../Language/Parts/i18n';
+import {LanguageStore} from '../../../mobxStore/language-store';
+import {Colors} from '../../Common/colors';
+import Et3Theme from '../../Common/getTheme';
 
 interface Props {
   comment: string;
@@ -11,16 +13,41 @@ interface Props {
 const ItemInputProperty: React.FC<Props> = props => {
   const {comment, link} = props;
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 100,
-        marginTop: 10,
-        marginBottom: 10,
-      }}>
-      <Property text={i18n.get('comment')} property={comment} />
-      <Property text={i18n.get('link')} property={link} />
+    <View style={{alignSelf: 'flex-start', paddingHorizontal: 4}}>
+      <View style={{flexDirection: LanguageStore().flexDirection.get()}}>
+        <Text
+          style={{
+            color: Colors.AZURE,
+            paddingHorizontal: 3,
+            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+          }}>
+          {i18n.get('comment')}
+        </Text>
+        <Text
+          style={{
+            color: Colors.OLIVE_GREEN,
+            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+          }}>
+          {comment}
+        </Text>
+      </View>
+      <View style={{flexDirection: LanguageStore().flexDirection.get()}}>
+        <Text
+          style={{
+            color: Colors.AZURE,
+            paddingHorizontal: 3,
+            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+          }}>
+          {i18n.get('link')}
+        </Text>
+        <Text
+          style={{
+            color: Colors.OLIVE_GREEN,
+            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+          }}>
+          {link}
+        </Text>
+      </View>
     </View>
   );
 };

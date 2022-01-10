@@ -67,7 +67,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                 borderWidth: 1,
                 borderColor: Colors.BLUE,
                 alignSelf: 'center',
-                height: '65%',
+                height: '75%',
                 borderRadius: 20,
                 backgroundColor: Colors.ORANGE,
               }}>
@@ -82,7 +82,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   borderColor: Colors.BLUE,
                   borderRadius: 20,
                   height: '100%',
-                  width: '65%',
+                  width: '68%',
                 }}>
                 <IssueDropdownItem
                   defaultValue={PrsStore().se.get()}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {Colors} from '../../Common/colors';
+import Et3Theme from '../../Common/getTheme';
 
 interface propertyProps {
   text: string;
@@ -23,7 +24,7 @@ const Property: React.FC<propertyProps> = props => {
           style={{
             color: Colors.AZURE,
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
           }}>
           {text}:
         </Text>
@@ -33,7 +34,7 @@ const Property: React.FC<propertyProps> = props => {
           style={{
             color: Colors.OLIVE_GREEN,
             fontWeight: 'bold',
-            fontSize: 15,
+            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.025,
           }}>
           {property}
         </Text>

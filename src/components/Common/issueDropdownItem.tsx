@@ -2,6 +2,7 @@ import React from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import {Text, View} from 'react-native';
 import {Colors} from '../Common/colors';
+import Et3Theme from '../Common/getTheme';
 
 interface Props {
   data: string[];
@@ -26,7 +27,7 @@ const IssueDropdownItem: React.FC<Props> = props => {
       <SelectDropdown
         buttonStyle={{
           width: '100%',
-          height: 40,
+          height: Et3Theme().getAppUnits.get().initialHeight * 0.05,
           borderRadius: 4,
           backgroundColor: 'rgba(255,255,255,0.15)',
           borderBottomWidth: 1,
@@ -34,7 +35,7 @@ const IssueDropdownItem: React.FC<Props> = props => {
         }}
         buttonTextStyle={{color: 'blue', fontSize: 17, fontWeight: 'bold'}}
         data={data}
-        defaultButtonText={'Choose an option'}
+        defaultButtonText={'Please Choose'}
         defaultValue={defaultValue}
         onSelect={(selectedItem, index) => {
           setItem(selectedItem);

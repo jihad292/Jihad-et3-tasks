@@ -7,6 +7,8 @@ import ItemInputProperty from './itemInputProperty';
 import ArrayPropertyItem from './arrayPropertyItem';
 import CheckboxPropertyItem from './checkboxPropertyItem';
 import {Colors} from '../../Common/colors';
+import {LanguageStore} from '../../../mobxStore/language-store';
+import Et3Theme from '../../Common/getTheme';
 
 const PrItem = observer((props: prItem) => {
   return (
@@ -14,18 +16,22 @@ const PrItem = observer((props: prItem) => {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: Colors.BLACK,
-          marginTop: 15,
-          width: 290,
+          marginTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,
+          width: Et3Theme().getAppUnits.get().initialWidth * 0.88,
           borderRadius: 20,
-          paddingBottom: 15,
           marginBottom: 20,
         }}>
         <ItemPropertyHeader id={props.id} issue={props} />
 
-        <ItemInputProperty comment={props.comment} link={props.link} />
+        <View
+          style={{
+            flexDirection: LanguageStore().flexDirection.get(),
+            width: '100%',
+          }}>
+          <ItemInputProperty comment={props.comment} link={props.link} />
+        </View>
 
         <ArrayPropertyItem
           property1={props.se}
@@ -75,7 +81,7 @@ const PrItem = observer((props: prItem) => {
             style={{
               color: Colors.OLIVE_GREEN,
               fontWeight: 'bold',
-              fontSize: 15,
+              fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.02,
             }}>
             ''+{props.dateS}
           </Text>

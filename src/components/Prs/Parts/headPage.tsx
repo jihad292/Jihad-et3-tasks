@@ -6,8 +6,9 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import { LanguageStore } from '../../../mobxStore/language-store';
+import {LanguageStore} from '../../../mobxStore/language-store';
 import {Colors} from '../../Common/colors';
+import Et3Theme from '../../Common/getTheme';
 
 interface props {
   handleSort: voidFunction;
@@ -24,10 +25,10 @@ const HeadPage: React.FC<props> = props => {
         <View
           style={{
             flexDirection: LanguageStore().flexDirection.get(),
-            marginTop: 10,
             height: 'auto',
             alignItems: 'flex-start',
-            paddingHorizontal:10
+            paddingTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,
+            paddingHorizontal: Et3Theme().getAppUnits.get().initialWidth * 0.01,
           }}>
           <View
             style={{

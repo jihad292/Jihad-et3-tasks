@@ -6,14 +6,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {UpdateStore} from '../../../mobxStore/update-store';
 import {PrsStore} from '../../../mobxStore/prs-store';
 import {Colors} from '../../Common/colors';
-import {LanguageStore} from '../../../mobxStore/language-store'
+import {LanguageStore} from '../../../mobxStore/language-store';
+import Et3Theme from '../../Common/getTheme';
 
 interface Props {
   id: number;
   issue: prItem;
 }
 
-const ItemPropertyHeader: React.FC<Props> = (props) => {
+const ItemPropertyHeader: React.FC<Props> = props => {
   const {id, issue} = props;
   return (
     <View
@@ -21,7 +22,7 @@ const ItemPropertyHeader: React.FC<Props> = (props) => {
         flexDirection: LanguageStore().flexDirection.get(),
         justifyContent: 'space-around',
         paddingHorizontal: 12,
-
+        height: Et3Theme().getAppUnits.get().initialHeight * 0.1,
       }}>
       <Property text={i18n.get('id')} property={id} />
 
@@ -29,7 +30,7 @@ const ItemPropertyHeader: React.FC<Props> = (props) => {
         <TouchableOpacity onPress={() => UpdateStore().openUpdateModal(issue)}>
           <FontAwesome5
             name={'pen-alt'}
-            size={25}
+            size={Et3Theme().getAppUnits.get().initialHeight * 0.04}
             color={Colors.AZURE}
           />
         </TouchableOpacity>
@@ -39,7 +40,7 @@ const ItemPropertyHeader: React.FC<Props> = (props) => {
         <TouchableOpacity onPress={() => PrsStore().deletePr(id)}>
           <FontAwesome5
             name={'trash-alt'}
-            size={25}
+            size={Et3Theme().getAppUnits.get().initialHeight * 0.04}
             color={Colors.AZURE}
           />
         </TouchableOpacity>

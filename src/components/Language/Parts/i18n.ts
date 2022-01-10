@@ -35,15 +35,15 @@ const i18n = {
       ENGLISH: 'Size',
     },
     by: {
-      ARABIC: 'مراجعة بواسطة BY',
+      ARABIC: 'مراجعة  BY',
       ENGLISH: 'Review by BY',
     },
     ah: {
-      ARABIC: 'مراجعة بواسطة AH',
+      ARABIC: 'مراجعة  AH',
       ENGLISH: 'Review by AH',
     },
     ht: {
-      ARABIC: 'مراجعة بواسطة HT',
+      ARABIC: 'مراجعة  HT',
       ENGLISH: 'Review by HT',
     },
     date: {

@@ -27,7 +27,7 @@ const DrawerComponent = observer(() => {
           drawerContent={props => <CustomDrawer {...props} />}
           initialRouteName={i18n.get('drawer_Home')} //key + costum
           screenOptions={{
-            headerShown: true,
+            headerShown: false,
             drawerLabelStyle: {
               fontSize: 22,
               color: Colors.BLACK,

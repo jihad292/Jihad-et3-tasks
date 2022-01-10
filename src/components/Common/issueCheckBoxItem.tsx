@@ -12,7 +12,7 @@ interface Props {
 const IssueCheckBoxItem: React.FC<Props> = props => {
   const {propertyText, setReview, reviewBy} = props;
   return (
-    <View>
+    <View style={{width:'100%'}}>
       <Text
         style={{
           fontWeight: 'bold',
