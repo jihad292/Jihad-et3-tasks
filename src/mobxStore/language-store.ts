@@ -10,14 +10,24 @@ import {PrsStore} from './prs-store';
 import {ToastAndroid} from 'react-native';
 
 export class LanguageStoreImpl {
-  languageStateString = observable.box<string>('ENG');
   languageState = observable.box<boolean>(false);
-  languageText = observable.box<string>('English');
+  languageText = observable.box<string>('ENGLISH');
   drawerPosition = observable.box<'left' | 'right'>('left');
   drawerIconPosition = observable.box<'flex-start' | 'flex-end'>('flex-start');
   englishLanguageOptionTextColor = observable.box<string>('green');
   arabicLanguageOptionTextColor = observable.box<string>('grey');
   drawerRefresher = observable.box<string>('0');
+  flexDirection = observable.box<'row' | 'row-reverse'>('row');
+
+  setFlexDirection = () => {
+    runInAction(() => {
+      if (this.flexDirection.get() === 'row') {
+        this.flexDirection.set('row-reverse');
+      } else {
+        this.flexDirection.set('row');
+      }
+    });
+  };
 
   setDrawerRefresher = () => {
     runInAction(() => {
@@ -26,12 +36,6 @@ export class LanguageStoreImpl {
       } else {
         this.drawerRefresher.set('0');
       }
-    });
-  };
-
-  setLanguageStateString = (value: string) => {
-    runInAction(() => {
-      this.languageStateString.set(value);
     });
   };
 
@@ -87,11 +91,11 @@ export class LanguageStoreImpl {
       this.setEnglishLanguageOptionTextColor('green');
       this.setArabicLanguageOptionTextColor('grey');
       this.setLanguageState(false);
-      this.setLanguageStateText('English');
+      this.setLanguageStateText('ENGLISH');
       this.showLanguageChosen();
-      this.setLanguageStateString('ENG');
       this.setDrawerPosition('left');
       this.setDrawerIconPosition('flex-start');
+      this.setFlexDirection();
       saveEngLanguage();
       retrieveEngLanguage();
       PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
@@ -104,11 +108,11 @@ export class LanguageStoreImpl {
       this.setEnglishLanguageOptionTextColor('grey');
       this.setArabicLanguageOptionTextColor('green');
       this.setLanguageState(true);
-      this.setLanguageStateText('Arabic');
+      this.setLanguageStateText('ARABIC');
       this.showLanguageChosen();
-      this.setLanguageStateString('AR');
       this.setDrawerPosition('right');
       this.setDrawerIconPosition('flex-end');
+      this.setFlexDirection();
       saveArLanguage();
       retrieveArLanguage();
       PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
@@ -119,8 +123,7 @@ export class LanguageStoreImpl {
     runInAction(() => {
       if (this.languageState.get() === true) {
         this.setLanguageState(false);
-        this.setLanguageStateText('English');
-        this.setLanguageStateString('ENG');
+        this.setLanguageStateText('ENGLISH');
         this.setDrawerPosition('left');
         this.setDrawerIconPosition('flex-start');
         saveEngLanguage();
@@ -129,8 +132,7 @@ export class LanguageStoreImpl {
         PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
       } else {
         this.setLanguageState(true);
-        this.setLanguageStateText('Arabic');
-        this.setLanguageStateString('AR');
+        this.setLanguageStateText('ARABIC');
         this.setDrawerPosition('right');
         this.setDrawerIconPosition('flex-end');
         saveArLanguage();

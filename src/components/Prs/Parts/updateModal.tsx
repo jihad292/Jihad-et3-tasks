@@ -18,6 +18,7 @@ import i18n from '../../Language/Parts/i18n';
 import UpdateModaHeader from './updadeModaHeader';
 import UpdateModalInputProperty from './updateModalInputProperty';
 import {Colors} from '../../Common/colors';
+import { LanguageStore } from '../../../mobxStore/language-store';
 
 interface modalProps {
   visible: boolean;
@@ -61,7 +62,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
 
             <View
               style={{
-                flexDirection: 'row',
+                flexDirection: LanguageStore().flexDirection.get(),
                 width: '95%',
                 borderWidth: 1,
                 borderColor: Colors.BLUE,

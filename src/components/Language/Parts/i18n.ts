@@ -3,78 +3,78 @@ import {LanguageStore} from '../../../mobxStore/language-store';
 const i18n = {
   LG: {
     comment: {
-      AR: 'تعليق',
-      ENG: 'Comment',
+      ARABIC: 'تعليق',
+      ENGLISH: 'Comment',
     },
     link: {
-      AR: 'حلقة الوصل',
-      ENG: 'Link',
+      ARABIC: 'حلقة الوصل',
+      ENGLISH: 'Link',
     },
     se: {
-      AR: 'المبرمج',
-      ENG: 'SE',
+      ARABIC: 'المبرمج',
+      ENGLISH: 'SE',
     },
     difficulty: {
-      AR: 'صعوبة',
-      ENG: 'Difficulty',
+      ARABIC: 'صعوبة',
+      ENGLISH: 'Difficulty',
     },
     platform: {
-      AR: 'برنامج',
-      ENG: 'Platform',
+      ARABIC: 'برنامج',
+      ENGLISH: 'Platform',
     },
     status: {
-      AR: 'الحالة',
-      ENG: 'Status',
+      ARABIC: 'الحالة',
+      ENGLISH: 'Status',
     },
     version: {
-      AR: 'الإصدار',
-      ENG: 'Version',
+      ARABIC: 'الإصدار',
+      ENGLISH: 'Version',
     },
     size: {
-      AR: 'حجم',
-      ENG: 'Size',
+      ARABIC: 'حجم',
+      ENGLISH: 'Size',
     },
     by: {
-      AR: 'مراجعة بواسطة BY',
-      ENG: 'Review by BY',
+      ARABIC: 'مراجعة بواسطة BY',
+      ENGLISH: 'Review by BY',
     },
     ah: {
-      AR: 'مراجعة بواسطة AH',
-      ENG: 'Review by AH',
+      ARABIC: 'مراجعة بواسطة AH',
+      ENGLISH: 'Review by AH',
     },
     ht: {
-      AR: 'مراجعة بواسطة HT',
-      ENG: 'Review by HT',
+      ARABIC: 'مراجعة بواسطة HT',
+      ENGLISH: 'Review by HT',
     },
     date: {
-      AR: 'تاريخ',
-      ENG: 'Date',
+      ARABIC: 'تاريخ',
+      ENGLISH: 'Date',
     },
     id: {
-      AR: 'بطاقة تعريف',
-      ENG: 'ID',
+      ARABIC: 'بطاقة تعريف',
+      ENGLISH: 'ID',
     },
     drawer_Home: {
-      AR: 'الصفحة الرئيسية',
-      ENG: 'Home',
+      ARABIC: 'الصفحة الرئيسية',
+      ENGLISH: 'Home',
     },
     drawer_Prs: {
-      AR: 'عرض المشاكل',
-      ENG: 'Prs',
+      ARABIC: 'عرض المشاكل',
+      ENGLISH: 'Prs',
     },
     drawer_Add_Pr: {
-      AR: 'اضافة مشكلة',
-      ENG: 'Add Pr',
+      ARABIC: 'اضافة مشكلة',
+      ENGLISH: 'Add Pr',
     },
     drawer_Language: {
-      AR: 'لغة',
-      ENG: 'Language',
+      ARABIC: 'لغة',
+      ENGLISH: 'Language',
     },
   },
   get(message: string) {
     return this.LG[message] === undefined || this.LG[message] === undefined
       ? message
-      : this.LG[message][LanguageStore().languageStateString.get()];
+      : this.LG[message][LanguageStore().languageText.get()];
   },
 };
 

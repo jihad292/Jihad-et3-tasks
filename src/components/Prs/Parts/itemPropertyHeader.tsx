@@ -6,20 +6,22 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {UpdateStore} from '../../../mobxStore/update-store';
 import {PrsStore} from '../../../mobxStore/prs-store';
 import {Colors} from '../../Common/colors';
+import {LanguageStore} from '../../../mobxStore/language-store'
 
 interface Props {
   id: number;
   issue: prItem;
 }
 
-const ItemPropertyHeader: React.FC<Props> = props => {
+const ItemPropertyHeader: React.FC<Props> = (props) => {
   const {id, issue} = props;
   return (
     <View
       style={{
-        flexDirection: 'row',
+        flexDirection: LanguageStore().flexDirection.get(),
         justifyContent: 'space-around',
         paddingHorizontal: 12,
+
       }}>
       <Property text={i18n.get('id')} property={id} />
 

@@ -14,7 +14,7 @@ const LanguageScreen = observer(() => {
         color={LanguageStore().englishLanguageOptionTextColor.get()}
       />
       <ButtonHandler
-        text="عربى"
+        text="العربية"
         handleLanguage={LanguageStore().setLanguageToArabic}
         color={LanguageStore().arabicLanguageOptionTextColor.get()}
       />

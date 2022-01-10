@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
+import { LanguageStore } from '../../../mobxStore/language-store';
 import {Colors} from '../../Common/colors';
 
 interface props {
@@ -22,20 +23,19 @@ const HeadPage: React.FC<props> = props => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
           style={{
-            flexDirection: 'row',
+            flexDirection: LanguageStore().flexDirection.get(),
             marginTop: 10,
             height: 'auto',
             alignItems: 'flex-start',
+            paddingHorizontal:10
           }}>
           <View
             style={{
               flex: 1,
               alignItems: 'flex-start',
-              marginLeft: 20,
-              marginRight: 40,
               borderBottomWidth: 1,
               borderColor: Colors.BLUE,
-              marginStart: 10,
+              marginHorizontal: 10,
             }}>
             <TextInput
               style={{
