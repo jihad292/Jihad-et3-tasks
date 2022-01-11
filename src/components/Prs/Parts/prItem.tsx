@@ -18,10 +18,9 @@ const PrItem = observer((props: prItem) => {
           flex: 1,
           alignItems: 'center',
           backgroundColor: Colors.BLACK,
-          marginTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,
-          width: Et3Theme().getAppUnits.get().initialWidth * 0.88,
+          marginTop: Et3Theme().getAppUnits.get().unitY * 4,
+          width: Et3Theme().getAppUnits.get().unitX * 100,
           borderRadius: 20,
-          marginBottom: 20,
         }}>
         <ItemPropertyHeader id={props.id} issue={props} />
 
@@ -76,7 +75,7 @@ const PrItem = observer((props: prItem) => {
             style={{
               color: Colors.AZURE,
               fontWeight: 'bold',
-              fontSize: 15,
+              fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
             }}>
             {i18n.get('date')}
           </Text>
@@ -84,7 +83,7 @@ const PrItem = observer((props: prItem) => {
             style={{
               color: Colors.OLIVE_GREEN,
               fontWeight: 'bold',
-              fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.02,
+              fontSize: Et3Theme().getThemeData.get().getKhFontSize(4),
             }}>
             ''+{props.dateS}
           </Text>

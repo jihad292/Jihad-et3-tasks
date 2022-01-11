@@ -1,12 +1,12 @@
-import memoize from "lodash/memoize";
-import round from "lodash/round";
-import { Dimensions } from "react-native";
-import { computed } from "mobx";
+import memoize from 'lodash/memoize';
+import round from 'lodash/round';
+import {Dimensions} from 'react-native';
+import {computed} from 'mobx';
 
 class Et3Theme {
   getAppUnits = computed(() => {
-    const initialHeight = Dimensions.get("screen").height;
-    const initialWidth = Dimensions.get("screen").width;
+    const initialHeight = Dimensions.get('screen').height;
+    const initialWidth = Dimensions.get('screen').width;
     const width = initialHeight > initialWidth ? initialWidth : initialHeight;
     const height = initialHeight > initialWidth ? initialHeight : initialWidth;
     const resolutionHeight = 192;
@@ -22,7 +22,17 @@ class Et3Theme {
     }
     const childX = round(subRectWidth / resolutionWidth, 5);
     const childY = round(subRectHeight / resolutionHeight, 5);
-    return { unitX, unitY, childX, childY,initialHeight,initialWidth };
+    return {unitX, unitY, childX, childY, initialHeight, initialWidth};
+  });
+
+  getThemeData = computed(() => {
+    const {childX} = this.getAppUnits.get();
+
+    return {
+      getKhFontSize: (fontSize: number) => {
+        return fontSize * childX;
+      },
+    };
   });
 }
 

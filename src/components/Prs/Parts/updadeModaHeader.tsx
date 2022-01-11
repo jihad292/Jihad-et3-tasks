@@ -6,6 +6,7 @@ import i18n from '../../Language/Parts/i18n';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from '../../Common/colors';
 import {LanguageStore} from '../../../mobxStore/language-store';
+import Et3Theme from '../../Common/getTheme';
 
 const UpdateModaHeader = () => {
   return (
@@ -13,7 +14,7 @@ const UpdateModaHeader = () => {
       style={{
         width: '100%',
         alignItems: 'flex-end',
-        height: 23,
+        height: Et3Theme().getAppUnits.get().unitY * 6,
         flexDirection:
           LanguageStore().languageText.get() === 'ENGLISH'
             ? 'row'
@@ -24,7 +25,7 @@ const UpdateModaHeader = () => {
         style={{
           fontStyle: 'italic',
           fontWeight: 'bold',
-          fontSize: 17,
+          fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
           color: Colors.BLACK,
           alignSelf: 'center',
         }}>
@@ -34,7 +35,7 @@ const UpdateModaHeader = () => {
         <TouchableOpacity onPress={UpdateStore().closeModal}>
           <FontAwesome5
             name={'window-close'}
-            size={23}
+            size={Et3Theme().getThemeData.get().getKhFontSize(6)}
             color={Colors.OLIVE_GREEN}
           />
         </TouchableOpacity>

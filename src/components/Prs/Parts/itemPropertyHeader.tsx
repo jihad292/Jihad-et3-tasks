@@ -24,26 +24,34 @@ const ItemPropertyHeader: React.FC<Props> = props => {
             ? 'row'
             : 'row-reverse',
         justifyContent: 'space-around',
-        paddingHorizontal: 12,
-        height: Et3Theme().getAppUnits.get().initialHeight * 0.1,
+        paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
+        height: Et3Theme().getAppUnits.get().unitY * 16,
       }}>
       <Property text={i18n.get('id')} property={id} />
 
-      <View style={{width: 30, marginHorizontal: 7}}>
+      <View
+        style={{
+          width: Et3Theme().getAppUnits.get().unitX * 8,
+          marginHorizontal: Et3Theme().getAppUnits.get().unitX,
+        }}>
         <TouchableOpacity onPress={() => UpdateStore().openUpdateModal(issue)}>
           <FontAwesome5
             name={'pen-alt'}
-            size={Et3Theme().getAppUnits.get().initialHeight * 0.04}
+            size={Et3Theme().getAppUnits.get().unitX * 8}
             color={Colors.AZURE}
           />
         </TouchableOpacity>
       </View>
 
-      <View style={{width: 30, marginHorizontal: 7}}>
+      <View
+        style={{
+          width: Et3Theme().getAppUnits.get().unitX * 8,
+          marginHorizontal: Et3Theme().getAppUnits.get().unitX,
+        }}>
         <TouchableOpacity onPress={() => PrsStore().deletePr(id)}>
           <FontAwesome5
             name={'trash-alt'}
-            size={Et3Theme().getAppUnits.get().initialHeight * 0.04}
+            size={Et3Theme().getAppUnits.get().unitX * 8}
             color={Colors.AZURE}
           />
         </TouchableOpacity>

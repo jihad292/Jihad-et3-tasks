@@ -14,6 +14,7 @@ import PrsTotalNumberModal from '../Common/prsTotalNumberModal';
 import {LanguageStore} from '../../mobxStore/language-store';
 import CustomDrawer from './customDrawer';
 import {PrsStore} from '../../mobxStore/prs-store';
+import Et3Theme from '../Common/getTheme';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,21 +32,21 @@ const DrawerComponent = observer(() => {
             headerShown:
               PrsStore().prsNumberModal.get() === false ? true : false,
             drawerLabelStyle: {
-              fontSize: 22,
+              fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
               color: Colors.BLACK,
               fontWeight: 'bold',
             },
             headerTitleStyle: {
               fontWeight: 'bold',
               color: Colors.GRAY,
-              fontSize: 25,
+              fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
             },
             headerLeftContainerStyle: {
               alignItems:
                 LanguageStore().languageText.get() === 'ENGLISH'
                   ? 'flex-start'
                   : 'flex-end',
-              width: '100%',
+              width: Et3Theme().getAppUnits.get().childX * 110,
             },
             drawerPosition:
               LanguageStore().languageText.get() === 'ENGLISH'
@@ -69,7 +70,7 @@ const DrawerComponent = observer(() => {
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'home'}
-                  size={28}
+                  size={Et3Theme().getThemeData.get().getKhFontSize(7)}
                   color={Colors.OLIVE_GREEN}
                 />
               ),
@@ -83,7 +84,7 @@ const DrawerComponent = observer(() => {
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'digital-tachograph'}
-                  size={28}
+                  size={Et3Theme().getThemeData.get().getKhFontSize(7)}
                   color={Colors.OLIVE_GREEN}
                 />
               ),
@@ -97,7 +98,7 @@ const DrawerComponent = observer(() => {
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'plus-square'}
-                  size={28}
+                  size={Et3Theme().getThemeData.get().getKhFontSize(7)}
                   color={Colors.OLIVE_GREEN}
                 />
               ),
@@ -111,7 +112,7 @@ const DrawerComponent = observer(() => {
               drawerIcon: ({color}) => (
                 <FontAwesome5
                   name={'language'}
-                  size={25}
+                  size={Et3Theme().getThemeData.get().getKhFontSize(7)}
                   color={Colors.OLIVE_GREEN}
                 />
               ),

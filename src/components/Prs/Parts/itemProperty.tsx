@@ -24,7 +24,7 @@ const Property: React.FC<propertyProps> = props => {
           style={{
             color: Colors.AZURE,
             fontWeight: 'bold',
-            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
           }}>
           {text}:
         </Text>
@@ -34,7 +34,7 @@ const Property: React.FC<propertyProps> = props => {
           style={{
             color: Colors.OLIVE_GREEN,
             fontWeight: 'bold',
-            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.025,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
           }}>
           {property}
         </Text>

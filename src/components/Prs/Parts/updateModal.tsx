@@ -19,6 +19,7 @@ import UpdateModaHeader from './updadeModaHeader';
 import UpdateModalInputProperty from './updateModalInputProperty';
 import {Colors} from '../../Common/colors';
 import {LanguageStore} from '../../../mobxStore/language-store';
+import Et3Theme from '../../Common/getTheme';
 
 interface modalProps {
   visible: boolean;
@@ -38,13 +39,13 @@ const ModalForm: React.FC<modalProps> = observer(props => {
         <View
           style={{
             paddingTop: 0,
-            width: '95%',
+            width: Et3Theme().getAppUnits.get().unitX * 103,
             backgroundColor: Colors.ORANGE,
-            paddingHorizontal: 20,
-            paddingVertical: 30,
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 3,
+            paddingVertical: Et3Theme().getAppUnits.get().unitX * 8,
             borderRadius: 20,
             elevation: 25,
-            height: '100%',
+            height: Et3Theme().getAppUnits.get().unitY * 170,
           }}>
           <UpdateModaHeader />
 
@@ -52,7 +53,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
             style={{
               paddingTop: 0,
               backgroundColor: Colors.AZURE,
-              height: '100%',
+              height: Et3Theme().getAppUnits.get().unitY * 160,
               borderWidth: 3,
               borderColor: Colors.BLUE,
               borderRadius: 20,
@@ -71,26 +72,25 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   LanguageStore().languageText.get() === 'ENGLISH'
                     ? 'row'
                     : 'row-reverse',
-                width: '95%',
+                width: Et3Theme().getAppUnits.get().unitX * 90,
                 borderWidth: 1,
                 borderColor: Colors.BLUE,
                 alignSelf: 'center',
-                height: '75%',
+                height: Et3Theme().getAppUnits.get().unitY * 123,
                 borderRadius: 20,
                 backgroundColor: Colors.ORANGE,
               }}>
               <View
                 style={{
-                  marginTop: 3,
-                  marginLeft: 5,
+                  marginTop: Et3Theme().getAppUnits.get().unitX,
                   flexDirection: 'column',
                   justifyContent: 'flex-start',
-                  paddingVertical: 5,
+                  paddingVertical: Et3Theme().getAppUnits.get().unitY,
                   borderWidth: 1,
                   borderColor: Colors.BLUE,
                   borderRadius: 20,
-                  height: '100%',
-                  width: '68%',
+                  height: Et3Theme().getAppUnits.get().unitY * 122,
+                  width: Et3Theme().getAppUnits.get().unitX * 62,
                 }}>
                 <IssueDropdownItem
                   defaultValue={PrsStore().se.get()}
@@ -132,16 +132,15 @@ const ModalForm: React.FC<modalProps> = observer(props => {
 
               <View
                 style={{
-                  marginTop: 3,
-                  marginHorizontal: 2,
+                  marginTop: Et3Theme().getAppUnits.get().unitX,
                   flexDirection: 'column',
                   justifyContent: 'space-around',
                   alignItems: 'center',
                   borderWidth: 1,
                   borderColor: Colors.BLUE,
                   borderRadius: 20,
-                  height: '100%',
-                  width: '32%',
+                  height: Et3Theme().getAppUnits.get().unitY * 122,
+                  width: Et3Theme().getAppUnits.get().unitX * 28,
                   backgroundColor: Colors.GRAY,
                 }}>
                 <IssueCheckBoxItem
@@ -167,10 +166,10 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                   }>
                   <View
                     style={{
-                      width: 60,
+                      width: Et3Theme().getAppUnits.get().unitX * 20,
                       borderWidth: 2,
                       borderColor: Colors.BLUE,
-                      height: 40,
+                      height: Et3Theme().getAppUnits.get().unitY * 10,
                       borderRadius: 20,
                       justifyContent: 'center',
                       alignItems: 'center',
@@ -178,7 +177,7 @@ const ModalForm: React.FC<modalProps> = observer(props => {
                     }}>
                     <FontAwesome5
                       name={'save'}
-                      size={23}
+                      size={Et3Theme().getThemeData.get().getKhFontSize(7)}
                       color={Colors.BLACK}
                     />
                   </View>

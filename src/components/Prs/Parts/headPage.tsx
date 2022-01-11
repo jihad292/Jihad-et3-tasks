@@ -30,8 +30,8 @@ const HeadPage: React.FC<props> = props => {
                 : 'row-reverse',
             height: 'auto',
             alignItems: 'flex-start',
-            paddingTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,
-            paddingHorizontal: Et3Theme().getAppUnits.get().initialWidth * 0.01,
+            paddingTop: Et3Theme().getAppUnits.get().unitY * 3,
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
           }}>
           <View
             style={{
@@ -39,14 +39,14 @@ const HeadPage: React.FC<props> = props => {
               alignItems: 'flex-start',
               borderBottomWidth: 1,
               borderColor: Colors.BLUE,
-              marginHorizontal: 10,
+              marginHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
             }}>
             <TextInput
               style={{
                 color: Colors.BLACK,
                 fontStyle: 'italic',
-                height: 40,
-                fontSize: 20,
+                height: Et3Theme().getAppUnits.get().unitY * 12,
+                fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
               }}
               value={value}
               onChangeText={handleChange}
@@ -55,7 +55,7 @@ const HeadPage: React.FC<props> = props => {
             />
           </View>
 
-          <View style={{marginEnd: 10}}>
+          <View style={{marginEnd: Et3Theme().getAppUnits.get().unitX * 2}}>
             <Button title={name} onPress={handleSort}></Button>
           </View>
         </View>

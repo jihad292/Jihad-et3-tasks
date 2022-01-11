@@ -1,5 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text, View} from 'react-native';
+import Et3Theme from '../../Common/getTheme';
 
 interface props {
   text: string;
@@ -12,8 +13,8 @@ export const ButtonHandler: React.FC<props> = props => {
   return (
     <View
       style={{
-        width: '100%',
-        height: 70,
+        width: Et3Theme().getAppUnits.get().childX * 50,
+        height: Et3Theme().getAppUnits.get().unitY * 25,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
@@ -22,7 +23,7 @@ export const ButtonHandler: React.FC<props> = props => {
           style={{
             color: color,
             fontWeight: 'bold',
-            fontSize: 50,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(15),
             fontStyle: 'italic',
           }}>
           {text}

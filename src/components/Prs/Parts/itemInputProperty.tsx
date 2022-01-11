@@ -13,7 +13,11 @@ interface Props {
 const ItemInputProperty: React.FC<Props> = props => {
   const {comment, link} = props;
   return (
-    <View style={{alignSelf: 'flex-start', paddingHorizontal: 4}}>
+    <View
+      style={{
+        alignSelf: 'flex-start',
+        paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
+      }}>
       <View
         style={{
           flexDirection:
@@ -24,15 +28,15 @@ const ItemInputProperty: React.FC<Props> = props => {
         <Text
           style={{
             color: Colors.AZURE,
-            paddingHorizontal: 3,
-            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
           }}>
           {i18n.get('comment')}
         </Text>
         <Text
           style={{
             color: Colors.OLIVE_GREEN,
-            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
           }}>
           {comment}
         </Text>
@@ -47,15 +51,15 @@ const ItemInputProperty: React.FC<Props> = props => {
         <Text
           style={{
             color: Colors.AZURE,
-            paddingHorizontal: 3,
-            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
           }}>
           {i18n.get('link')}
         </Text>
         <Text
           style={{
             color: Colors.OLIVE_GREEN,
-            fontSize: Et3Theme().getAppUnits.get().initialHeight * 0.03,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
           }}>
           {link}
         </Text>

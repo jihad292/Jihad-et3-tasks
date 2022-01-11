@@ -15,7 +15,7 @@ interface Props {
 const UpdateModalInputProperty: React.FC<Props> = props => {
   const {comment, onChangeText1, link, onChangeText2} = props;
   return (
-    <View style={{paddingHorizontal: 3}}>
+    <View style={{paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2}}>
       <View
         style={{
           flexDirection:
@@ -23,13 +23,17 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
               ? 'row'
               : 'row-reverse',
           justifyContent: 'flex-start',
-          height: Et3Theme().getAppUnits.get().initialHeight * 0.09,
+          height: Et3Theme().getAppUnits.get().unitY * 16,
         }}>
-        <View style={{paddingHorizontal: 4, justifyContent: 'center'}}>
+        <View
+          style={{
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX,
+            justifyContent: 'center',
+          }}>
           <Text
             style={{
               fontWeight: 'bold',
-              fontSize: 20,
+              fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
               color: Colors.BLACK,
             }}>
             {i18n.get('comment')}
@@ -54,13 +58,17 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
             LanguageStore().languageText.get() === 'ENGLISH'
               ? 'row'
               : 'row-reverse',
-          height: Et3Theme().getAppUnits.get().initialHeight * 0.09,
+          height: Et3Theme().getAppUnits.get().unitY * 16,
         }}>
-        <View style={{paddingHorizontal: 4, justifyContent: 'center'}}>
+        <View
+          style={{
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
+            justifyContent: 'center',
+          }}>
           <Text
             style={{
               fontWeight: 'bold',
-              fontSize: 20,
+              fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
               color: Colors.BLACK,
             }}>
             {i18n.get('link')}

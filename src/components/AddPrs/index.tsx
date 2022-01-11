@@ -90,8 +90,8 @@ const IssueScreen = observer(() => {
                 : 'row-reverse',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,
-            paddingHorizontal: 25,
+            paddingTop: Et3Theme().getAppUnits.get().unitY * 2,
+            paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 4,
           }}>
           <Calender />
 

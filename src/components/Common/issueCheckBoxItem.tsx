@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import {Colors} from '../Common/colors';
+import Et3Theme from '../Common/getTheme';
 
 interface Props {
   propertyText: string;
@@ -12,11 +13,11 @@ interface Props {
 const IssueCheckBoxItem: React.FC<Props> = props => {
   const {propertyText, setReview, reviewBy} = props;
   return (
-    <View style={{width:'100%'}}>
+    <View style={{width: Et3Theme().getAppUnits.get().childX * 30}}>
       <Text
         style={{
           fontWeight: 'bold',
-          fontSize: 15,
+          fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
           color: Colors.DARKS_SLATE_GRAY,
           alignSelf: 'center',
         }}>

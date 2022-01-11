@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from '../Common/colors';
+import Et3Theme from '../Common/getTheme';
 
 const HomeScreen = () => {
   return (
@@ -12,19 +13,23 @@ const HomeScreen = () => {
         justifyContent: 'center',
         backgroundColor: Colors.BLUE,
       }}>
-      <FontAwesome5 name={'robot'} size={80} color={Colors.OLIVE_GREEN} />
+      <FontAwesome5
+        name={'robot'}
+        size={Et3Theme().getThemeData.get().getKhFontSize(20)}
+        color={Colors.OLIVE_GREEN}
+      />
       <Text
         style={{
           color: Colors.BLACK,
           fontWeight: 'bold',
-          fontSize: 22,
+          fontSize: Et3Theme().getThemeData.get().getKhFontSize(7),
           fontStyle: 'italic',
         }}>
-        Welcome To your Prs Application{' '}
+        Welcome To your Prs Application
       </Text>
       <FontAwesome5
         name={'exclamation-triangle'}
-        size={80}
+        size={Et3Theme().getThemeData.get().getKhFontSize(20)}
         color={Colors.OLIVE_GREEN}
       />
     </View>

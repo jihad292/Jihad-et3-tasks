@@ -16,31 +16,31 @@ const TextInputComponent: React.FC<Props> = props => {
   return (
     <View
       style={{
-        padding: 1,
-        marginBottom: 2,
+        padding: Et3Theme().getAppUnits.get().unitX * 0.2,
+        marginBottom: Et3Theme().getAppUnits.get().unitX * 0.1,
         flexDirection:
           LanguageStore().languageText.get() === 'ENGLISH'
             ? 'row'
             : 'row-reverse',
-        paddingHorizontal: Et3Theme().getAppUnits.get().initialWidth * 0.01,
+        paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 1.5,
         marginTop: 0,
       }}>
       <View
         style={{
-          paddingHorizontal: Et3Theme().getAppUnits.get().initialWidth * 0.05,
+          paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
           justifyContent: 'center',
         }}>
         <Text
           style={{
             fontWeight: 'bold',
-            fontSize: 20,
+            fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
             color: Colors.BLACK,
             marginBottom: 0,
           }}>
           {title}
         </Text>
       </View>
-      <View style={{height: Et3Theme().getAppUnits.get().initialHeight * 0.1}}>
+      <View style={{height: Et3Theme().getAppUnits.get().unitY * 14}}>
         <View>
           <TextInput
             value={value}

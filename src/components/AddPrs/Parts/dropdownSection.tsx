@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import IssueDropdownItem from '../../Common/issueDropdownItem';
 import {Colors} from '../../Common/colors';
 import {LanguageStore} from '../../../mobxStore/language-store';
+import Et3Theme from '../../Common/getTheme';
 
 interface Props {
   defaultValue1: string;
@@ -34,15 +35,15 @@ const DropdownSection: React.FC<Props> = props => {
             ? 'row'
             : 'row-reverse',
         justifyContent: 'center',
-        marginBottom: 10,
+        marginBottom: Et3Theme().getAppUnits.get().childY * 3,
       }}>
       <View
         style={{
           borderWidth: 2,
           borderRadius: 10,
           borderColor: Colors.BLUE,
-          width: '50%',
-          marginHorizontal: 1,
+          width: Et3Theme().getAppUnits.get().unitX * 52,
+          marginHorizontal: Et3Theme().getAppUnits.get().unitX * 0.5,
           alignItems: 'center',
         }}>
         <IssueDropdownItem
@@ -58,8 +59,8 @@ const DropdownSection: React.FC<Props> = props => {
           borderWidth: 2,
           borderRadius: 10,
           borderColor: Colors.BLUE,
-          width: '50%',
-          marginHorizontal: 1,
+          width: Et3Theme().getAppUnits.get().unitX * 52,
+          marginHorizontal: Et3Theme().getAppUnits.get().unitX * 0.5,
           alignItems: 'center',
         }}>
         <IssueDropdownItem

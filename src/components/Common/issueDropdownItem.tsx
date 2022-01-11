@@ -19,21 +19,25 @@ const IssueDropdownItem: React.FC<Props> = props => {
         style={{
           fontWeight: 'bold',
           color: Colors.BLUE,
-          fontSize: 15,
+          fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
           alignSelf: 'center',
         }}>
         {propertyDefinition}
       </Text>
       <SelectDropdown
         buttonStyle={{
-          width: '100%',
-          height: Et3Theme().getAppUnits.get().initialHeight * 0.05,
+          width: Et3Theme().getAppUnits.get().unitX * 61,
+          height: Et3Theme().getAppUnits.get().unitY * 12,
           borderRadius: 4,
           backgroundColor: 'rgba(255,255,255,0.15)',
           borderBottomWidth: 1,
           borderBottomColor: '#fff',
         }}
-        buttonTextStyle={{color: 'blue', fontSize: 17, fontWeight: 'bold'}}
+        buttonTextStyle={{
+          color: 'blue',
+          fontSize: Et3Theme().getThemeData.get().getKhFontSize(5),
+          fontWeight: 'bold',
+        }}
         data={data}
         defaultButtonText={'Please Choose'}
         defaultValue={defaultValue}

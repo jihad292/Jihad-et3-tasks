@@ -36,19 +36,20 @@ const CheckboxSection: React.FC<Props> = props => {
           LanguageStore().languageText.get() === 'ENGLISH'
             ? 'row'
             : 'row-reverse',
-        width: '100%',
+        width: Et3Theme().getAppUnits.get().unitX * 106,
         alignItems: 'center',
+        alignSelf: 'center',
         justifyContent: 'center',
         borderWidth: 2,
         borderColor: Colors.BLUE,
         borderRadius: 10,
-        height: Et3Theme().getAppUnits.get().initialHeight * 0.13,
+        height: Et3Theme().getAppUnits.get().unitY * 23,
       }}>
       <View
         style={{
           alignItems: 'center',
           justifyContent: 'center',
-          paddingHorizontal: 8,
+          paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 1.5,
         }}>
         <IssueCheckBoxItem
           propertyText={propertyText1}
@@ -61,7 +62,7 @@ const CheckboxSection: React.FC<Props> = props => {
         style={{
           alignItems: 'center',
           justifyContent: 'center',
-          paddingHorizontal: 8,
+          paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 1.5,
         }}>
         <IssueCheckBoxItem
           propertyText={propertyText2}
@@ -74,7 +75,7 @@ const CheckboxSection: React.FC<Props> = props => {
         style={{
           alignItems: 'center',
           justifyContent: 'center',
-          paddingHorizontal: 8,
+          paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 1.5,
         }}>
         <IssueCheckBoxItem
           propertyText={propertyText3}
