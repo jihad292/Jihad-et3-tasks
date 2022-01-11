@@ -18,7 +18,10 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
     <View style={{paddingHorizontal: 3}}>
       <View
         style={{
-          flexDirection: LanguageStore().flexDirection.get(),
+          flexDirection:
+            LanguageStore().languageText.get() === 'ENGLISH'
+              ? 'row'
+              : 'row-reverse',
           justifyContent: 'flex-start',
           height: Et3Theme().getAppUnits.get().initialHeight * 0.09,
         }}>
@@ -47,7 +50,10 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
       </View>
       <View
         style={{
-          flexDirection: LanguageStore().flexDirection.get(),
+          flexDirection:
+            LanguageStore().languageText.get() === 'ENGLISH'
+              ? 'row'
+              : 'row-reverse',
           height: Et3Theme().getAppUnits.get().initialHeight * 0.09,
         }}>
         <View style={{paddingHorizontal: 4, justifyContent: 'center'}}>

@@ -18,7 +18,10 @@ const TextInputComponent: React.FC<Props> = props => {
       style={{
         padding: 1,
         marginBottom: 2,
-        flexDirection: LanguageStore().flexDirection.get(),
+        flexDirection:
+          LanguageStore().languageText.get() === 'ENGLISH'
+            ? 'row'
+            : 'row-reverse',
         paddingHorizontal: Et3Theme().getAppUnits.get().initialWidth * 0.01,
         marginTop: 0,
       }}>

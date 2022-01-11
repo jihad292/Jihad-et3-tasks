@@ -84,7 +84,10 @@ const IssueScreen = observer(() => {
 
         <View
           style={{
-            flexDirection: LanguageStore().flexDirection.get(),
+            flexDirection:
+              LanguageStore().languageText.get() === 'ENGLISH'
+                ? 'row'
+                : 'row-reverse',
             justifyContent: 'space-between',
             alignItems: 'center',
             paddingTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,

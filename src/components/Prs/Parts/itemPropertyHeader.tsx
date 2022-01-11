@@ -19,7 +19,10 @@ const ItemPropertyHeader: React.FC<Props> = props => {
   return (
     <View
       style={{
-        flexDirection: LanguageStore().flexDirection.get(),
+        flexDirection:
+          LanguageStore().languageText.get() === 'ENGLISH'
+            ? 'row'
+            : 'row-reverse',
         justifyContent: 'space-around',
         paddingHorizontal: 12,
         height: Et3Theme().getAppUnits.get().initialHeight * 0.1,

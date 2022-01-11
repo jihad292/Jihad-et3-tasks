@@ -32,7 +32,10 @@ const CheckboxSection: React.FC<Props> = props => {
   return (
     <View
       style={{
-        flexDirection: LanguageStore().flexDirection.get(),
+        flexDirection:
+          LanguageStore().languageText.get() === 'ENGLISH'
+            ? 'row'
+            : 'row-reverse',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',

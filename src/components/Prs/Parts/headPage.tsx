@@ -24,7 +24,10 @@ const HeadPage: React.FC<props> = props => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
           style={{
-            flexDirection: LanguageStore().flexDirection.get(),
+            flexDirection:
+              LanguageStore().languageText.get() === 'ENGLISH'
+                ? 'row'
+                : 'row-reverse',
             height: 'auto',
             alignItems: 'flex-start',
             paddingTop: Et3Theme().getAppUnits.get().initialHeight * 0.005,

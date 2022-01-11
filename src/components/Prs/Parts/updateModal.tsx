@@ -67,7 +67,10 @@ const ModalForm: React.FC<modalProps> = observer(props => {
 
             <View
               style={{
-                flexDirection: LanguageStore().flexDirection.get(),
+                flexDirection:
+                  LanguageStore().languageText.get() === 'ENGLISH'
+                    ? 'row'
+                    : 'row-reverse',
                 width: '95%',
                 borderWidth: 1,
                 borderColor: Colors.BLUE,

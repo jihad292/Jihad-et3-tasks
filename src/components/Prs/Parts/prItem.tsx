@@ -27,7 +27,10 @@ const PrItem = observer((props: prItem) => {
 
         <View
           style={{
-            flexDirection: LanguageStore().flexDirection.get(),
+            flexDirection:
+              LanguageStore().languageText.get() === 'ENGLISH'
+                ? 'row'
+                : 'row-reverse',
             width: '100%',
           }}>
           <ItemInputProperty comment={props.comment} link={props.link} />

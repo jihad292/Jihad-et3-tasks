@@ -14,7 +14,13 @@ const ItemInputProperty: React.FC<Props> = props => {
   const {comment, link} = props;
   return (
     <View style={{alignSelf: 'flex-start', paddingHorizontal: 4}}>
-      <View style={{flexDirection: LanguageStore().flexDirection.get()}}>
+      <View
+        style={{
+          flexDirection:
+            LanguageStore().languageText.get() === 'ENGLISH'
+              ? 'row'
+              : 'row-reverse',
+        }}>
         <Text
           style={{
             color: Colors.AZURE,
@@ -31,7 +37,13 @@ const ItemInputProperty: React.FC<Props> = props => {
           {comment}
         </Text>
       </View>
-      <View style={{flexDirection: LanguageStore().flexDirection.get()}}>
+      <View
+        style={{
+          flexDirection:
+            LanguageStore().languageText.get() === 'ENGLISH'
+              ? 'row'
+              : 'row-reverse',
+        }}>
         <Text
           style={{
             color: Colors.AZURE,

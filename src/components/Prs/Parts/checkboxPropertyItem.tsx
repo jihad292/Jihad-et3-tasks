@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import Property from './itemProperty';
 import i18n from '../../Language/Parts/i18n';
+import {LanguageStore} from '../../../mobxStore/language-store';
 
 interface Props {
   property1: string;
@@ -24,7 +25,10 @@ const CheckboxPropertyItem: React.FC<Props> = props => {
   return (
     <View
       style={{
-        flexDirection: 'row',
+        flexDirection:
+          LanguageStore().languageText.get() === 'ENGLISH'
+            ? 'row'
+            : 'row-reverse',
         justifyContent: 'space-around',
         paddingHorizontal: 12,
       }}>

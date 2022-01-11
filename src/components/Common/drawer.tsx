@@ -13,6 +13,7 @@ import {Colors} from '../Common/colors';
 import PrsTotalNumberModal from '../Common/prsTotalNumberModal';
 import {LanguageStore} from '../../mobxStore/language-store';
 import CustomDrawer from './customDrawer';
+import {PrsStore} from '../../mobxStore/prs-store';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,11 +24,12 @@ const DrawerComponent = observer(() => {
 
       <NavigationContainer>
         <Drawer.Navigator
-          key={LanguageStore().drawerRefresher.get()}
+          key={LanguageStore().languageText.get()}
           drawerContent={props => <CustomDrawer {...props} />}
-          initialRouteName={i18n.get('drawer_Home')} //key + costum
+          initialRouteName={i18n.get('drawer_Home')}
           screenOptions={{
-            headerShown: false,
+            headerShown:
+              PrsStore().prsNumberModal.get() === false ? true : false,
             drawerLabelStyle: {
               fontSize: 22,
               color: Colors.BLACK,
@@ -39,10 +41,16 @@ const DrawerComponent = observer(() => {
               fontSize: 25,
             },
             headerLeftContainerStyle: {
-              alignItems: LanguageStore().drawerIconPosition.get(),
+              alignItems:
+                LanguageStore().languageText.get() === 'ENGLISH'
+                  ? 'flex-start'
+                  : 'flex-end',
               width: '100%',
             },
-            drawerPosition: LanguageStore().drawerPosition.get(),
+            drawerPosition:
+              LanguageStore().languageText.get() === 'ENGLISH'
+                ? 'left'
+                : 'right',
             drawerActiveBackgroundColor: Colors.GREEN,
             drawerInactiveBackgroundColor: Colors.AZURE,
             headerTintColor: Colors.BLUE,

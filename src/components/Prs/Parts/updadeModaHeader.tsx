@@ -5,7 +5,7 @@ import {PrsStore} from '../../../mobxStore/prs-store';
 import i18n from '../../Language/Parts/i18n';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from '../../Common/colors';
-import { LanguageStore } from '../../../mobxStore/language-store';
+import {LanguageStore} from '../../../mobxStore/language-store';
 
 const UpdateModaHeader = () => {
   return (
@@ -14,7 +14,10 @@ const UpdateModaHeader = () => {
         width: '100%',
         alignItems: 'flex-end',
         height: 23,
-        flexDirection: LanguageStore().flexDirection.get(),
+        flexDirection:
+          LanguageStore().languageText.get() === 'ENGLISH'
+            ? 'row'
+            : 'row-reverse',
         justifyContent: 'space-between',
       }}>
       <Text

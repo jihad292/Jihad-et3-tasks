@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import IssueDropdownItem from '../../Common/issueDropdownItem';
 import {Colors} from '../../Common/colors';
-import { LanguageStore } from '../../../mobxStore/language-store';
+import {LanguageStore} from '../../../mobxStore/language-store';
 
 interface Props {
   defaultValue1: string;
@@ -29,7 +29,10 @@ const DropdownSection: React.FC<Props> = props => {
   return (
     <View
       style={{
-        flexDirection: LanguageStore().flexDirection.get(),
+        flexDirection:
+          LanguageStore().languageText.get() === 'ENGLISH'
+            ? 'row'
+            : 'row-reverse',
         justifyContent: 'center',
         marginBottom: 10,
       }}>

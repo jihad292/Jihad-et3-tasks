@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import {ButtonHandler} from './Parts/buttonHandler';
 import {LanguageStore} from '../../mobxStore/language-store';
 import {observer} from 'mobx-react';
+import { Colors } from '../Common/colors';
 
 const LanguageScreen = observer(() => {
   return (
@@ -11,12 +12,12 @@ const LanguageScreen = observer(() => {
       <ButtonHandler
         text="English"
         handleLanguage={LanguageStore().setLanguageToEnglish}
-        color={LanguageStore().englishLanguageOptionTextColor.get()}
+        color={LanguageStore().languageText.get() === "ENGLISH" ? Colors.GREEN : Colors.GRAY}
       />
       <ButtonHandler
         text="العربية"
         handleLanguage={LanguageStore().setLanguageToArabic}
-        color={LanguageStore().arabicLanguageOptionTextColor.get()}
+        color={LanguageStore().languageText.get() === "ARABIC" ? Colors.GREEN : Colors.GRAY}
       />
     </View>
   );
