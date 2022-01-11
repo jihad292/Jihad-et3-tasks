@@ -43,7 +43,7 @@ const CheckboxSection: React.FC<Props> = props => {
         borderWidth: 2,
         borderColor: Colors.BLUE,
         borderRadius: 10,
-        height: Et3Theme().getAppUnits.get().unitY * 23,
+        height: Et3Theme().getAppUnits.get().unitY * 29,
       }}>
       <View
         style={{

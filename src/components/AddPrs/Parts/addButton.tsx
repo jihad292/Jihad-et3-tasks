@@ -15,7 +15,7 @@ const AddButton: React.FC<props> = props => {
       style={{
         backgroundColor: Colors.BLUE,
         width: Et3Theme().getAppUnits.get().unitX * 18,
-        height: Et3Theme().getAppUnits.get().unitY * 8,
+        height: Et3Theme().getAppUnits.get().unitY * 10,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,

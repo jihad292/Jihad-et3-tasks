@@ -23,12 +23,13 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
               ? 'row'
               : 'row-reverse',
           justifyContent: 'flex-start',
-          height: Et3Theme().getAppUnits.get().unitY * 16,
+          height: Et3Theme().getAppUnits.get().unitY * 18,
         }}>
         <View
           style={{
             paddingHorizontal: Et3Theme().getAppUnits.get().unitX,
             justifyContent: 'center',
+            height:Et3Theme().getAppUnits.get().childY * 18
           }}>
           <Text
             style={{
@@ -39,7 +40,11 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
             {i18n.get('comment')}
           </Text>
         </View>
-        <View style={{justifyContent: 'flex-start'}}>
+        <View
+          style={{
+            justifyContent: 'flex-end',
+            height: Et3Theme().getAppUnits.get().childY * 17,
+          }}>
           <TextInput
             value={comment}
             style={{
@@ -58,7 +63,7 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
             LanguageStore().languageText.get() === 'ENGLISH'
               ? 'row'
               : 'row-reverse',
-          height: Et3Theme().getAppUnits.get().unitY * 16,
+          height: Et3Theme().getAppUnits.get().unitY * 18,
         }}>
         <View
           style={{
@@ -74,16 +79,22 @@ const UpdateModalInputProperty: React.FC<Props> = props => {
             {i18n.get('link')}
           </Text>
         </View>
-        <TextInput
-          value={link}
+        <View
           style={{
-            borderBottomWidth: 2,
-            borderBottomColor: Colors.BLUE,
-            color: Colors.BLACK,
-          }}
-          placeholder={i18n.get('link')}
-          onChangeText={onChangeText2}
-        />
+            justifyContent: 'flex-end',
+            height: Et3Theme().getAppUnits.get().childY * 17,
+          }}>
+          <TextInput
+            value={link}
+            style={{
+              borderBottomWidth: 2,
+              borderBottomColor: Colors.BLUE,
+              color: Colors.BLACK,
+            }}
+            placeholder={i18n.get('link')}
+            onChangeText={onChangeText2}
+          />
+        </View>
       </View>
     </View>
   );

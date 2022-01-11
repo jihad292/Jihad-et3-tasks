@@ -28,7 +28,7 @@ const HeadPage: React.FC<props> = props => {
               LanguageStore().languageText.get() === 'ENGLISH'
                 ? 'row'
                 : 'row-reverse',
-            height: 'auto',
+            height: Et3Theme().getAppUnits.get().childY * 20,
             alignItems: 'flex-start',
             paddingTop: Et3Theme().getAppUnits.get().unitY * 3,
             paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
@@ -40,12 +40,14 @@ const HeadPage: React.FC<props> = props => {
               borderBottomWidth: 1,
               borderColor: Colors.BLUE,
               marginHorizontal: Et3Theme().getAppUnits.get().unitX * 2,
+              justifyContent: 'flex-end',
+              height: Et3Theme().getAppUnits.get().childY * 14,
             }}>
             <TextInput
               style={{
                 color: Colors.BLACK,
                 fontStyle: 'italic',
-                height: Et3Theme().getAppUnits.get().unitY * 12,
+                height: Et3Theme().getAppUnits.get().unitY * 17,
                 fontSize: Et3Theme().getThemeData.get().getKhFontSize(6),
               }}
               value={value}

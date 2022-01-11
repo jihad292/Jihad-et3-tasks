@@ -16,14 +16,15 @@ const TextInputComponent: React.FC<Props> = props => {
   return (
     <View
       style={{
+        marginTop: Et3Theme().getAppUnits.get().childY * 1,
+        height: Et3Theme().getAppUnits.get().unitY * 16,
         padding: Et3Theme().getAppUnits.get().unitX * 0.2,
-        marginBottom: Et3Theme().getAppUnits.get().unitX * 0.1,
+        marginBottom: Et3Theme().getAppUnits.get().unitX * 0.2,
         flexDirection:
           LanguageStore().languageText.get() === 'ENGLISH'
             ? 'row'
             : 'row-reverse',
         paddingHorizontal: Et3Theme().getAppUnits.get().unitX * 1.5,
-        marginTop: 0,
       }}>
       <View
         style={{
@@ -40,8 +41,12 @@ const TextInputComponent: React.FC<Props> = props => {
           {title}
         </Text>
       </View>
-      <View style={{height: Et3Theme().getAppUnits.get().unitY * 14}}>
-        <View>
+      <View style={{height: Et3Theme().getAppUnits.get().unitY * 18}}>
+        <View
+          style={{
+            justifyContent: 'flex-end',
+            height: Et3Theme().getAppUnits.get().childY * 17,
+          }}>
           <TextInput
             value={value}
             style={{
