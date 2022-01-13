@@ -165,6 +165,7 @@ export class PrsStoreImpl {
     this.setByStatus('');
     this.setAhStatus('');
     this.setHtStatus('');
+    this.setId(0);
   }
 
   addChecker() {
@@ -245,7 +246,7 @@ export class PrsStoreImpl {
       this.setHtStatus('No');
     }
     const pr = {
-      id: this.float2int(Number(+Math.random().toFixed(4) * 10000)),
+      id: this.id.get(),
       comment: this.comment.get(),
       link: this.link.get(),
       se: this.se.get(),
@@ -283,6 +284,7 @@ export class PrsStoreImpl {
         this.dateS.get() !== ''
       ) {
         this.prsTotalNumber.set(this.prsTotalNumber.get() + 1);
+        this.setId(this.float2int(Number(+Math.random().toFixed(4) * 10000)));
         this.addPr();
         this.resetStore();
       }
