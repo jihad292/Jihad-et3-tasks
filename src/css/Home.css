@@ -1,25 +1,25 @@
-.homeMain{
-    background-image: url(../images/ReactBackgroung.png);
-    background-size: cover;
+.homeMain {
+  background-image: url(../images/ReactBackgroung.png);
+  background-size: cover;
 }
 
-@media (max-width: 767px){
-    .homeMain{
-        background-image: url(../images/ReactBackgroungMedia.jpg);
-    }
+@media (max-width: 767px) {
+  .homeMain {
+    background-image: url(../images/ReactBackgroungMedia.jpg);
+  }
 }
 
-.body{
-    height:100vh;
-    width: 100%;
+.body {
+  height: 100vh;
+  width: 100%;
 }
 
-.body .ReactNativePart{
-    display:flex;
+.body .ReactNativePart {
+  display: flex;
 }
 
-.body .ReactNativePart p{
-    color:crimson;
-    font-size:20px;
-    font-style: oblique;
+.body .ReactNativePart p {
+  color: crimson;
+  font-size: 20px;
+  font-style: oblique;
 }
