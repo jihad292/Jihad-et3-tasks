@@ -2,6 +2,7 @@ import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import issueData from '../data/data-api'
 
 export class PrsStoreImpl {
   prsData = observable.box<prItem[]>([]);
@@ -274,7 +275,25 @@ export class PrsStoreImpl {
   pressHandler = () => {
     runInAction(() => {
       this.addChecker();
-      if (
+      if (this.reviewByBY.get() === true) {
+        this.setByStatus('Yes');
+      }
+      if (this.reviewByBY.get() === false) {
+        this.setByStatus('No');
+      }
+      if (this.reviewByAH.get() === true) {
+        this.setAhStatus('Yes');
+      }
+      if (this.reviewByAH.get() === false) {
+        this.setAhStatus('No');
+      }
+      if (this.reviewByHT.get() === true) {
+        this.setHtStatus('Yes');
+      }
+      if (this.reviewByHT.get() === false) {
+        this.setHtStatus('No');
+      }
+      if ( 
         this.comment.get() !== '' &&
         this.link.get() !== '' &&
         this.se.get() !== '' &&
@@ -287,7 +306,10 @@ export class PrsStoreImpl {
         this.prsTotalNumber.set(this.prsTotalNumber.get() + 1);
         this.setId(this.float2int(Number(+Math.random().toFixed(4) * 10000)));
         this.addPr();
+        issueData.addIssueOnServer();
         this.resetStore();
+        issueData.fetchIssuesFromServer();
+        
       }
     });
   };

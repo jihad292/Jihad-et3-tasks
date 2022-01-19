@@ -2,7 +2,7 @@ import {PrsStore} from '../mobxStore/prs-store';
 import {runInAction} from 'mobx';
 
 const issueData = {
-  async fetchIssues() {
+  async fetchIssuesFromServer() {
     return fetch('http://192.168.1.107:3333/issues')
       .then(response => response.json())
       .then(json => {
@@ -59,6 +59,37 @@ const issueData = {
       .catch(error => {
         console.error(error);
       });
+  },
+
+  async addIssueOnServer() {
+    const booleanNumberReturner = (state: boolean): number => {
+      return state ? 1 : 0;
+    };
+    fetch('http://192.168.1.107:3333/issues/createIssue', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        issue_id: PrsStore().id.get(),
+        comment: PrsStore().comment.get(),
+        link: PrsStore().link.get(),
+        se: PrsStore().se.get(),
+        platform: PrsStore().platform.get(),
+        size: PrsStore().size.get(),
+        difficulty: PrsStore().difficulty.get(),
+        status: PrsStore().status.get(),
+        version: PrsStore().version.get(),
+        by_state: booleanNumberReturner(PrsStore().reviewByBY.get()),
+        ah_state: booleanNumberReturner(PrsStore().reviewByAH.get()),
+        ht_state: booleanNumberReturner(PrsStore().reviewByHT.get()),
+        date: '2022-1-19',
+        is_deleted: 0,
+      }),
+    }).catch(error => {
+      console.log(error);
+    });
   },
 };
 

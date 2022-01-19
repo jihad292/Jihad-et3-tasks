@@ -6,11 +6,11 @@ export default function App() {
   useEffect(() => {
     PrsStore().retrivePrs();
     PrsStore().printPrsNumber();
-    setTimeout(() => issueData.fetchIssues(), 2000);
+    setTimeout(() => issueData.fetchIssuesFromServer(), 2000);
   }, []);
-
+  
   return (
-    <>
+    <>  
       <MainComponent />
     </>
   );
