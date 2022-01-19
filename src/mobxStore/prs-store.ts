@@ -275,24 +275,6 @@ export class PrsStoreImpl {
   pressHandler = () => {
     runInAction(() => {
       this.addChecker();
-      if (this.reviewByBY.get() === true) {
-        this.setByStatus('Yes');
-      }
-      if (this.reviewByBY.get() === false) {
-        this.setByStatus('No');
-      }
-      if (this.reviewByAH.get() === true) {
-        this.setAhStatus('Yes');
-      }
-      if (this.reviewByAH.get() === false) {
-        this.setAhStatus('No');
-      }
-      if (this.reviewByHT.get() === true) {
-        this.setHtStatus('Yes');
-      }
-      if (this.reviewByHT.get() === false) {
-        this.setHtStatus('No');
-      }
       if ( 
         this.comment.get() !== '' &&
         this.link.get() !== '' &&
@@ -308,7 +290,6 @@ export class PrsStoreImpl {
         this.addPr();
         issueData.addIssueOnServer();
         this.resetStore();
-        issueData.fetchIssuesFromServer();
         
       }
     });
