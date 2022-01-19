@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from '../Common/colors';
 import Et3Theme from '../Common/getTheme';
+import issueData from '../../data/data-api'
 
 const HomeScreen = () => {
+
   return (
     <View
       style={{
@@ -32,6 +34,8 @@ const HomeScreen = () => {
         size={Et3Theme().getThemeData.get().getKhFontSize(20)}
         color={Colors.OLIVE_GREEN}
       />
+
+      <Button title='fetch' onPress={()=>issueData.fetchIssues()} />
     </View>
   );
 };

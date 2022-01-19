@@ -4,6 +4,7 @@ import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class PrsStoreImpl {
+  prsData = observable.box<prItem[]>([]);
   prs = observable.box<prItem[]>([]);
   id = observable.box<number>(0);
   comment = observable.box<string>('');
