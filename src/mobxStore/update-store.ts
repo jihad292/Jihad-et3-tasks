@@ -2,6 +2,7 @@ import memoize from 'lodash/memoize';
 import {runInAction, observable} from 'mobx';
 import {PrsStore} from './prs-store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import issueData from '../data/data-api';
 
 export class UpdateStoreImpl {
   updateModalStatus = observable.box<boolean>(false);
@@ -100,6 +101,7 @@ export class UpdateStoreImpl {
         PrsStore().flatListRender.set(!PrsStore().flatListRender.get());
         AsyncStorage.clear();
         PrsStore().storePrs();
+        issueData.updateIssueOnServer();
         this.closeModal();
       }
     });

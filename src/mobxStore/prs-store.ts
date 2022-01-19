@@ -2,7 +2,7 @@ import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import issueData from '../data/data-api'
+import issueData from '../data/data-api';
 
 export class PrsStoreImpl {
   prsData = observable.box<prItem[]>([]);
@@ -275,7 +275,7 @@ export class PrsStoreImpl {
   pressHandler = () => {
     runInAction(() => {
       this.addChecker();
-      if ( 
+      if (
         this.comment.get() !== '' &&
         this.link.get() !== '' &&
         this.se.get() !== '' &&
@@ -290,16 +290,17 @@ export class PrsStoreImpl {
         this.addPr();
         issueData.addIssueOnServer();
         this.resetStore();
-        
       }
     });
   };
 
   deletePr(value: number) {
     runInAction(() => {
+      this.id.set(value);
       let test = this.prs.get().filter(pr => {
         return pr.id != value;
       });
+      issueData.deleteIssueOnServer();
       this.setPrs(test);
       this.setPrsTotalNumber(this.prsTotalNumber.get() - 1);
       this.flatListRender.set(!this.flatListRender.get());
