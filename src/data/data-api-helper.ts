@@ -23,7 +23,7 @@ const generalApi = (api: string, method: string) => {
       by_state: booleanNumberReturner(PrsStore().reviewByBY.get()),
       ah_state: booleanNumberReturner(PrsStore().reviewByAH.get()),
       ht_state: booleanNumberReturner(PrsStore().reviewByHT.get()),
-      date: '2022-1-19',
+      date: PrsStore().date.get(),
       is_deleted: 0,
     }),
   }).catch(error => {
