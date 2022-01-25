@@ -11,7 +11,16 @@ interface AddPrProps {
 }
 
 export const AddPr: React.FC<AddPrProps> = ({ addPR }) => {
-  const [id, setId] = useState<number>(0);
+  const float2int = (value: number) => {
+    return value | 0;
+  };
+
+  const [id, setId] = useState<number>(
+    float2int(
+      Number(+Math.random().toFixed(6) * 100000) +
+        Number(+Math.random().toFixed(4) * 100000)
+    )
+  );
   const [date, setDate] = useState<Date>(new Date());
   const [sE, setSE] = useState<string>("");
   const [platform, setPlatform] = useState<string>("");
@@ -44,12 +53,13 @@ export const AddPr: React.FC<AddPrProps> = ({ addPR }) => {
     id: id,
   };
 
-  const float2int = (value: number) => {
-    return value | 0;
-  };
-
   const setPrId = () => {
-    setId(float2int(Number(+Math.random().toFixed(6) * 100000)));
+    setId(
+      float2int(
+        Number(+Math.random().toFixed(6) * 100000) +
+          Number(+Math.random().toFixed(4) * 100000)
+      )
+    );
   };
 
   const handleAddPr = (): void => {

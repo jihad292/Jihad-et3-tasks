@@ -24,6 +24,10 @@ export const PrItem: React.FC<PrItemProps> = ({
     setUpdateIconStatus(test);
   };
 
+  const booleanNumberReturner = (state: string): number => {
+    return state === "Yes" ? 1 : 0;
+  };
+
   const updatePr = (): void => {
     handleUpdateIcon();
     if (updatingOnProgress === false) {
@@ -33,6 +37,33 @@ export const PrItem: React.FC<PrItemProps> = ({
       setUpdatingOnProgress(false);
       handleUpdate(pr);
       submitUpdate(pr);
+      try {
+        fetch("http://localhost:3333/issues/updateIssue", {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            issue_id: pr.id,
+            comment: pr.Comment,
+            link: pr.PR,
+            se: pr.SE,
+            platform: pr.Platform,
+            size: pr.Size,
+            difficulty: pr.Difficulty,
+            status: pr.Status,
+            version: pr.Version,
+            by_state: booleanNumberReturner(pr.BYStatus),
+            ah_state: booleanNumberReturner(pr.AHStatus),
+            ht_state: booleanNumberReturner(pr.HTStatus),
+            date: pr.date,
+            is_deleted: 0,
+          }),
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

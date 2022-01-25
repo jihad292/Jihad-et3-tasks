@@ -8,6 +8,64 @@ import { UpdatePr } from "../hooks/UpdatePr";
 import { BiCaretDownCircle } from "react-icons/bi";
 
 export const Prs: React.FC = () => {
+  React.useEffect(() => {
+    fetch("http://localhost:3333/issues")
+      .then((response) => response.json())
+      .then((json) => {
+        setPrs([]);
+        let prsFetched: PR[] = [];
+        for (let i = 0; i < json.length; i++) {
+          let prFetched: PR = {
+            Date: new Date(),
+            date: "",
+            SE: "",
+            Platform: "",
+            Version: "",
+            Comment: "",
+            PR: "",
+            Size: "",
+            Difficulty: "",
+            Status: "",
+            BYStatus: "",
+            AHStatus: "",
+            HTStatus: "",
+            id: 0,
+          };
+          let ByStatus: string = "No";
+          let AhStatus: string = "No";
+          let HtStatus: string = "No";
+          if (json[i].by_state === 1) {
+            ByStatus = "Yes";
+          }
+          if (json[i].ah_state === 1) {
+            AhStatus = "Yes";
+          }
+          if (json[i].ht_state === 1) {
+            HtStatus = "Yes";
+          }
+          prFetched.id = json[i].issue_id;
+          prFetched.Comment = json[i].comment;
+          prFetched.PR = json[i].link;
+          prFetched.SE = json[i].se;
+          prFetched.Platform = json[i].platform;
+          prFetched.Size = json[i].size;
+          prFetched.Difficulty = json[i].difficulty;
+          prFetched.Status = json[i].status;
+          prFetched.Version = json[i].version;
+          prFetched.BYStatus = ByStatus;
+          prFetched.AHStatus = AhStatus;
+          prFetched.HTStatus = HtStatus;
+          prFetched.date = json[i].date;
+          prFetched.Date = json[i].date;
+          prsFetched.push(prFetched);
+        }
+        setPrs(prsFetched);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   const [initialPrs, setInitialPrs] = useState<Array<PR>>([]);
   const [prToBeUpdated, setPrToBeUpdated] = useState<PR>({
     Date: new Date(),
@@ -50,8 +108,39 @@ export const Prs: React.FC = () => {
     }
   };
 
+  const booleanNumberReturner = (state: string): number => {
+    return state === "Yes" ? 1 : 0;
+  };
+
   const addPR: AddPR = (pr) => {
     setPrs([...prs, pr]);
+    try {
+      fetch("http://localhost:3333/issues/createIssue", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          issue_id: pr.id,
+          comment: pr.Comment,
+          link: pr.PR,
+          se: pr.SE,
+          platform: pr.Platform,
+          size: pr.Size,
+          difficulty: pr.Difficulty,
+          status: pr.Status,
+          version: pr.Version,
+          by_state: booleanNumberReturner(pr.BYStatus),
+          ah_state: booleanNumberReturner(pr.AHStatus),
+          ht_state: booleanNumberReturner(pr.HTStatus),
+          date: pr.date,
+          is_deleted: 0,
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deletePr: DeletePr = (selectedPr) => {
@@ -59,12 +148,23 @@ export const Prs: React.FC = () => {
       return prFilter !== selectedPr;
     });
     setPrs(test);
+    try {
+      fetch(`http://localhost:3333/issues/deleteIssue/${selectedPr.id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleUpdate: HandleUpdate = (selectedPr) => {
+  const handleUpdate: HandleUpdate = (pr) => {
     let test: boolean = !updateProgress;
     setUpdateProgress(test);
-    setPrToBeUpdated(selectedPr);
+    setPrToBeUpdated(pr);
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
